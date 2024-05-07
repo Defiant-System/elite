@@ -1,0 +1,63 @@
+
+background: #000;
+overflow: visible;
+
+content {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	border-radius: inherit;
+	background: linear-gradient(180deg, #ff00ff2a, transparent 30%, transparent 60%, #0000ff2f);
+
+	&[data-show="start"] {
+		.start-view {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+
+	.start-view {
+		// opacity: 0;
+		// visibility: hidden;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		text-align: center;
+
+		h2 {
+			margin-top: 31px;
+			font-weight: 400;
+			font-size: 73px;
+			font-family: Righteous, sans-serif;
+			text-transform: uppercase;
+			color: #fff0ffbb;
+			text-shadow: 0 0 7px #ffaaaabb,
+						0 0 13px #ff1e90bb,
+						0 0 19px #ff0000bb;
+		}
+
+		h3 {
+			font-weight: 400;
+			font-size: 23px;
+			font-family: Righteous, sans-serif;
+			text-transform: uppercase;
+			color: #f0ffffcc;
+			text-shadow: 0 0 3px #aaaaff66,
+						0 0 7px #1e90ff66;
+		}
+	}
+}
+
+// custom fonts
+@font-face {
+	font-family: "Righteous";
+	font-style: normal;
+	font-weight: 400;
+	// font-display: swap;
+	src: url(~/fonts/Righteous-latin.woff2) format("woff2");
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
