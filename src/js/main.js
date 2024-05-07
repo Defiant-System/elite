@@ -1,4 +1,5 @@
 
+@import "./modules/bg.js"
 @import "./modules/test.js"
 
 
@@ -6,6 +7,9 @@ const elite = {
 	init() {
 		// fast references
 		this.content = window.find("content");
+		
+		// init objects
+		Bg.init();
 
 		// DEV-ONLY-START
 		Test.init(this);

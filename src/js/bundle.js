@@ -1,0 +1,26 @@
+
+import * as THREE from "./modules/threejs/build/three.module.js";
+import { OrbitControls } from './modules/threejs/editor/js/Loader.js';
+import { OBJLoader } from './modules/threejs/editor/js/Loader.js';
+
+import { EffectComposer } from './modules/threejs/examples/jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from './modules/threejs/examples/jsm/postprocessing/RenderPass.js';
+import { OutlinePass } from './modules/threejs/examples/jsm/postprocessing/OutlinePass.js';
+
+
+
+// custom THREE.js "dispose"
+THREE_dispose = () => {
+	delete window.__THREE__;
+};
+
+
+module.exports = {
+	THREE,
+	THREE_dispose,
+	OBJLoader,
+
+	EffectComposer,
+	RenderPass,
+	OutlinePass,
+};

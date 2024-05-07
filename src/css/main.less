@@ -18,7 +18,17 @@ content {
 		}
 	}
 
-	.start-view {
+	.game-bg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+	}
+
+	.start-view,
+	.game-view {
 		// opacity: 0;
 		// visibility: hidden;
 		position: absolute;
@@ -48,6 +58,16 @@ content {
 			color: #f0ffffcc;
 			text-shadow: 0 0 3px #aaaaff66,
 						0 0 7px #1e90ff66;
+		}
+	}
+
+	.game-view {
+		canvas.game-cvs {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
 		}
 	}
 }
