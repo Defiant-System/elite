@@ -1,4 +1,5 @@
 
+@import "./main.three.js";
 @import "./modules/bg.js"
 @import "./modules/test.js"
 
@@ -10,6 +11,11 @@ const elite = {
 		
 		// init objects
 		Bg.init();
+
+		// console.log( THREE );
+		// console.log( OBJLoader );
+		// console.log( OrbitControls );
+		// console.log( EffectComposer, RenderPass, OutlinePass );
 
 		// DEV-ONLY-START
 		Test.init(this);
