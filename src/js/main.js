@@ -1,6 +1,7 @@
 
 @import "./main.three.js";
 @import "./modules/bg.js"
+@import "./modules/cockpit.js"
 @import "./modules/test.js"
 
 
@@ -11,6 +12,7 @@ const elite = {
 		
 		// init objects
 		Bg.init();
+		Cockpit.init();
 
 		// console.log( THREE );
 		// console.log( OBJLoader );

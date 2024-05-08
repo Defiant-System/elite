@@ -6,7 +6,7 @@
 	</Build>
 	<Head>
 		<meta name="id" value="elite"/>
-		<meta name="title" value="Elite" version="1.0"/>
+		<meta name="title" value="Elite Redux" version="1.0"/>
 		<meta name="author" value="Hakan Bilgin" namespace="ant"/>
 		<meta name="license" value="AGPL-3.0"/>
 		<meta name="repository" value="https://github.com/Defiant-System/elite"/>

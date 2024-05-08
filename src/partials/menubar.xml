@@ -1,5 +1,5 @@
 <MenuBar>
-	<Menu name="Elite">
+	<Menu name="Elite Redux">
 		<Menu name="About Elite" shell="win -a"/>
 		<Menu type="divider"/>
 		<Menu name="Quit Elite" shell="win -c"/>
