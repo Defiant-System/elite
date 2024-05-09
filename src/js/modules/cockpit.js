@@ -51,6 +51,7 @@ let Cockpit = {
 		scene.add(group);
 		group.add(obj3d);
 
+		return;
 
 		let loader = new OBJLoader();
 		loader.load("~/3d/cobra-mk3.obj", object => {

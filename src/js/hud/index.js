@@ -24,14 +24,14 @@
 				Self.sets.map(set => {
 					let width = set.cvs.width,
 						height = set.cvs.height;
-
-					set.camera.aspect = width / height;
-					set.camera.updateProjectionMatrix();
-
+					// call tick if set has any
+					if (set.tick) set.tick();
+					// renderer
 					Self.renderer.setSize(width, height);
 					Self.renderer.render(set.scene, set.camera);
 					// clear canvas
 					set.cvs.width = width;
+					// transfer rendered image
 					set.ctx.drawImage(Self.renderer.domElement, 0, 0);
 				});
 			}
@@ -53,6 +53,7 @@
 				break;
 		}
 	},
+	scanner: @import "./scanner.js",
 	hTarget: @import "./hologram-target.js",
 	hShip: @import "./hologram-ship.js",
 }

@@ -34,8 +34,16 @@
 				// canvas element
 				let cvs = Self.els.cvs[0];
 				let ctx = cvs.getContext("2d");
+				// temporary tick function
+				let tick = () => {
+						mesh.rotation.y -= 0.01;
+						mesh.rotation.x += 0.02;
+					};
+				// fick camera aspect
+				camera.aspect = cvs.width / cvs.height;
+				camera.updateProjectionMatrix();
 				// add scene setup for hud FPS
-				APP.hud.dispatch({ type: "register-set", set: { scene, camera, mesh, cvs, ctx } });
+				APP.hud.dispatch({ type: "register-set", set: { scene, camera, tick, cvs, ctx } });
 				break;
 		}
 	}
