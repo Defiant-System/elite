@@ -13,9 +13,11 @@ let Cockpit = {
 				switch (event.keyCode) {
 					case 37: // left
 					case 65: // a
+						Bg.dispatch({ worker: "stars", type: "roll-left" });
 						break;
 					case 39: // right
 					case 68: // d
+						Bg.dispatch({ worker: "stars", type: "roll-right" });
 						break;
 					case 38: // up
 					case 87: // w
@@ -26,8 +28,6 @@ let Cockpit = {
 						Bg.dispatch({ worker: "stars", type: "speed-down" });
 						break;
 				}
-				break;
-			case "window.keyup":
 				break;
 			// custom events
 			case "some-event":

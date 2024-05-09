@@ -2,6 +2,8 @@
 import * as THREE from "./modules/threejs/build/three.module.js";
 
 import { OBJLoader } from "./modules/threejs/examples/jsm/loaders/OBJLoader.js";
+import { SVGLoader } from "./modules/threejs/examples/jsm/loaders/SVGLoader.js";
+
 import { OrbitControls } from "./modules/threejs/examples/jsm/controls/OrbitControls.js";
 import { EffectComposer } from "./modules/threejs/examples/jsm/postprocessing/EffectComposer.js";
 import { RenderPass } from "./modules/threejs/examples/jsm/postprocessing/RenderPass.js";
@@ -19,6 +21,8 @@ module.exports = {
 	THREE_dispose,
 	
 	OBJLoader,
+	SVGLoader,
+	
 	OrbitControls,
 	EffectComposer,
 	RenderPass,

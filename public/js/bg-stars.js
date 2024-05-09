@@ -40,6 +40,9 @@ let Stars = {
 			case "speed-down":
 				Self.speed.value = Math.max(Self.speed.value - .01, Self.speed.min);
 				break;
+			case "roll-left":
+			case "roll-right":
+				break;
 			case "create-scene":
 				Self.maxDepth = 64;
 				Self.stars = [];

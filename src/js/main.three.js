@@ -5,6 +5,8 @@ let {
 	THREE_dispose,
 	
 	OBJLoader,
+	SVGLoader,
+
 	OrbitControls,
 	EffectComposer,
 	RenderPass,
