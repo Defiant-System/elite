@@ -116,7 +116,43 @@ content {
 					// background-color: rgba(#fff,.1);
 					background-repeat: no-repeat;
 					background-image: url(~/icons/scanner-heat-bg.png);
+					background-size: 0 0;
 					background-position: -278px -499px;
+					--val: 0;
+
+					&:before,
+					&:after {
+						content: "";
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: inherit;
+						height: inherit;
+						background: inherit;
+						background-size: 860px 620px;
+					}
+
+					&:before {
+						opacity: .35;
+					}
+
+					&:after {
+						filter: sepia(1) hue-rotate(75deg) saturate(2.5);
+						clip-path: inset(calc( 100% * calc( 1 - var( --val ) ) ) 0 0 0);
+					}
+
+					.max {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 31px;
+						height: 29px;
+						opacity: .65;
+						// background-color: rgba(#fff,.1);
+						background-repeat: no-repeat;
+						background-image: url(~/icons/scanner-heat-max.png);
+						background-position: -278px -499px;
+					}
 				}
 
 				.speed-gage {
@@ -138,7 +174,7 @@ content {
 						height: 81px;
 						overflow: hidden;
 						// background-color: rgba(#fff,.1);
-						--val: .65;
+						--val: 0;
 
 						&:before {
 							content: "";
@@ -166,6 +202,29 @@ content {
 						background-repeat: no-repeat;
 						background-image: url(~/icons/scanner-speed-val.png);
 						background-position: -529px -499px;
+						background-size: 0 0;
+						--val: 0;
+
+						&:before,
+						&:after {
+							content: "";
+							position: absolute;
+							top: 0;
+							left: 0;
+							width: inherit;
+							height: inherit;
+							background: inherit;
+							background-size: 860px 620px;
+						}
+
+						&:before {
+							opacity: .35;
+						}
+
+						&:after {
+							filter: sepia(1) hue-rotate(75deg) saturate(2.5);
+							clip-path: inset(calc( 100% * calc( 1 - var( --val ) ) ) 0 0 0);
+						}
 					}
 				}
 			}
