@@ -21,9 +21,10 @@ let Cockpit = {
 		renderer.setPixelRatio(window.devicePixelRatio);
 		renderer.setSize(width, height);
 		camera.position.set(0, 30, 40);
-		scene.background = null;
+		camera.lookAt(0, 0, 0);
+		// scene.background = null;
 		scene.add(camera);
-		scene.add(ambientLight);
+		// scene.add(ambientLight);
 		camera.add(pointLight);
 
 		camera.aspect = width / height;
@@ -49,6 +50,7 @@ let Cockpit = {
 		let group = new THREE.Group();
 		scene.add(group);
 		group.add(obj3d);
+
 
 		let loader = new OBJLoader();
 		loader.load("~/3d/cobra-mk3.obj", object => {

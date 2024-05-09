@@ -13,6 +13,11 @@ const elite = {
 		// init objects
 		Bg.init();
 		Cockpit.init();
+		
+		// init all sub-objects
+		Object.keys(this)
+			.filter(i => typeof this[i].init === "function")
+			.map(i => this[i].init());
 
 		// console.log( THREE );
 		// console.log( OBJLoader );
@@ -33,7 +38,8 @@ const elite = {
 				karaqu.shell("fs -u '~/help/index.md'");
 				break;
 		}
-	}
+	},
+	hud: @import "./hud/index.js",
 };
 
 window.exports = elite;
