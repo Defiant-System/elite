@@ -2,8 +2,8 @@
 let Bank = (() => {
 
 	let ships = [
-			{ color: 0x00aa00, id: "cobra", path: "~/3d/cobra-mk3.obj" },
-			{ color: 0xcc7700, id: "canister", path: "~/3d/canister.obj" },
+			{ color: 0x003300, lines: 0x00aa00, id: "cobra", path: "~/3d/cobra-mk3.obj" },
+			{ color: 0xff9900, lines: 0xcc7700, id: "canister", path: "~/3d/canister.obj" },
 		];
 
 	let Bank = {
@@ -22,13 +22,13 @@ let Bank = (() => {
 			this.dispatch({ type: "load-ships" });
 		},
 		clone(id) {
-			let color = this.vault[id].color,
-				obj3d = this.vault[id].obj3d.clone(),
+			let obj3d = this.vault[id].obj3d.clone(),
 				mesh = obj3d.children[0].children[0];
-			
+			// set mesh color
+			mesh.material.color.setHex(this.vault[id].color);
 			// wireframe
 			let geo = new THREE.EdgesGeometry(mesh.geometry);
-			let mat = new THREE.LineBasicMaterial({ color });
+			let mat = new THREE.LineBasicMaterial({ color: this.vault[id].lines });
 			let wireframe = new THREE.LineSegments(geo, mat);
 			obj3d.add(wireframe);
 
