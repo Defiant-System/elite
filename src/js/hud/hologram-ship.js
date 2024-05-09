@@ -8,28 +8,31 @@
 			el: window.find(`.hud .hologram.ship`),
 			cvs: window.find(`.hud .hologram.ship canvas`),
 		};
-		// initiate hologram scene
-		this.dispatch({ type: "setup-scene" });
+		// subscribe to events
+		window.on("bank-ready", this.dispatch);
 	},
 	dispatch(event) {
 		let APP = elite,
 			Self = APP.hud.hShip,
 			el;
 		switch (event.type) {
+			// subscribed events
+			case "bank-ready":
+				// initiate hologram scene
+				Self.dispatch({ type: "setup-scene" });
+				break;
+			// custom events
 			case "setup-scene":
 				let scene = new THREE.Scene(),
 					camera = new THREE.PerspectiveCamera(45, 2, 1, 1000),
 					light = new THREE.PointLight(0xffffff, 20, 0, 0);
 				// camera settings
-				camera.position.set(0, 2, 1);
+				camera.position.set(0, 0, 50);
 				camera.lookAt(0, 0, 0);
 				camera.add(light);
-				// scene.background = null;
 				scene.add(camera);
 				// setup model
-				let geo = new THREE.BoxGeometry(1, 1, 1);
-				let mat = new THREE.MeshPhongMaterial({ color: 0xff0000 });
-				let mesh = new THREE.Mesh(geo, mat);
+				let mesh = Bank.clone("cobra");
 				scene.add(mesh);
 				// canvas element
 				let cvs = Self.els.cvs[0];

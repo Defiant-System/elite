@@ -252,11 +252,6 @@ content {
 					top: -100px;
 					left: -5px;
 					z-index: 2;
-
-				// 	filter: drop-shadow(2px 0 0 #2c2)
-				// 			drop-shadow(-2px 0 0 #2c2)
-				// 			drop-shadow(0px -2px 0 #2c2)
-				// 			drop-shadow(0px 2px 0 #2c2);
 				}
 
 				&:before {
@@ -264,7 +259,7 @@ content {
 					position: absolute;
 					left: 0;
 					right: 0;
-					bottom: -17px;
+					bottom: 47px;
 					height: 37px;
 					background: radial-gradient(ellipse at center, var( --color ), transparent 70%);
 					opacity: .25;
@@ -280,6 +275,13 @@ content {
 					right: 113px;
 					--color: #3a3;
 					// transform: rotate(2deg);
+
+					canvas {
+						filter: drop-shadow(1px 0 3px #11ee1133)
+								drop-shadow(-1px 0 3px #11ee1133)
+								drop-shadow(0px -1px 3px #11ee1133)
+								drop-shadow(0px 1px 3px #11ee1133);
+					}
 
 					.gage {
 						left: auto;

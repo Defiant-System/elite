@@ -1,6 +1,7 @@
 
 @import "./main.three.js";
 @import "./modules/bg.js"
+@import "./modules/bank.js"
 @import "./modules/cockpit.js"
 @import "./modules/test.js"
 
@@ -12,17 +13,13 @@ const elite = {
 		
 		// init objects
 		Bg.init();
+		Bank.init();
 		Cockpit.init();
 		
 		// init all sub-objects
 		Object.keys(this)
 			.filter(i => typeof this[i].init === "function")
 			.map(i => this[i].init());
-
-		// console.log( THREE );
-		// console.log( OBJLoader );
-		// console.log( OrbitControls );
-		// console.log( EffectComposer, RenderPass, OutlinePass );
 
 		// DEV-ONLY-START
 		Test.init(this);
