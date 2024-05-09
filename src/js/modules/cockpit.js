@@ -20,7 +20,7 @@ let Cockpit = {
 
 		renderer.setPixelRatio(window.devicePixelRatio);
 		renderer.setSize(width, height);
-		camera.position.set(35, 20, 40);
+		camera.position.set(0, 30, 40);
 		scene.background = null;
 		scene.add(camera);
 		scene.add(ambientLight);

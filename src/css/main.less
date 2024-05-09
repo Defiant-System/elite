@@ -97,8 +97,8 @@ content {
 
 				.compass {
 					position: absolute;
-					top: -9px;
-					left: -56px;
+					top: -3px;
+					left: -67px;
 					width: 41px;
 					height: 41px;
 					// background-color: rgba(#fff,.1);
@@ -136,10 +136,24 @@ content {
 						left: 4px;
 						width: 71px;
 						height: 81px;
+						overflow: hidden;
 						// background-color: rgba(#fff,.1);
-						background-repeat: no-repeat;
-						background-image: url(~/icons/scanner-speed-rec.png);
-						background-position: -476px -499px;
+						--val: .65;
+
+						&:before {
+							content: "";
+							position: absolute;
+							top: -499px;
+							left: -476px;
+							width: 860px;
+							height: 620px;
+							background-image: linear-gradient(0deg, transparent, #09f, transparent);
+							// background-color: #fff;
+							background-size: 100% 36px;
+							background-position: 0 calc( 561px - calc( var( --val ) * 74px ) ); // max: 487		min: 561
+							background-repeat: no-repeat;
+							mask-image: url(~/icons/scanner-speed-rec.png);
+						}
 					}
 
 					.val {
@@ -165,10 +179,12 @@ content {
 
 				&.target {
 					left: 113px;
+					// transform: rotate(-2deg);
 				}
 
 				&.ship {
 					right: 113px;
+					// transform: rotate(2deg);
 
 					.gage {
 						left: auto;
