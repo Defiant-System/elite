@@ -259,7 +259,7 @@ content {
 					position: absolute;
 					left: 0;
 					right: 0;
-					bottom: 47px;
+					bottom: 51px;
 					height: 37px;
 					background: radial-gradient(ellipse at center, var( --color ), transparent 70%);
 					opacity: .25;
@@ -267,8 +267,15 @@ content {
 
 				&.target {
 					left: 113px;
-					--color: #b65;
+					--color: #f90;
 					// transform: rotate(-2deg);
+
+					canvas {
+						filter: drop-shadow(1px 0 3px #ee228855)
+								drop-shadow(-1px 0 3px #ee228855)
+								drop-shadow(0px -1px 3px #ee228855)
+								drop-shadow(0px 1px 3px #ee228855);
+					}
 				}
 
 				&.ship {

@@ -27,20 +27,20 @@
 					camera = new THREE.PerspectiveCamera(45, 2, 1, 1000),
 					light = new THREE.PointLight(0xffffff, 20, 0, 0);
 				// camera settings
-				camera.position.set(0, 0, 50);
+				camera.position.set(0, 0, 280);
 				camera.lookAt(0, 0, 0);
 				camera.add(light);
 				scene.add(camera);
 				// setup model
-				let mesh = Bank.clone("canister");
+				let mesh = Bank.clone("thargoid");
 				scene.add(mesh);
 				// canvas element
 				let cvs = Self.els.cvs[0];
 				let ctx = cvs.getContext("2d");
 				// temporary tick function
 				let tick = () => {
-						mesh.rotation.y += 0.0075;
-						mesh.rotation.x -= 0.005;
+						mesh.rotation.y -= 0.01;
+						mesh.rotation.x -= 0.0125;
 					};
 				// fick camera aspect
 				camera.aspect = cvs.width / cvs.height;

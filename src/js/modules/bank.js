@@ -3,7 +3,9 @@ let Bank = (() => {
 
 	let ships = [
 			{ color: 0x003300, lines: 0x00aa00, id: "cobra", path: "~/3d/cobra-mk3.obj" },
-			{ color: 0xff9900, lines: 0xcc7700, id: "canister", path: "~/3d/canister.obj" },
+			{ color: 0xcc0066, lines: 0xcc1188, id: "thargoid", path: "~/3d/thargoid.obj" },
+			{ color: 0xcc6600, lines: 0xcc7700, id: "coriolis", path: "~/3d/coriolis.obj" },
+			{ color: 0xcc6600, lines: 0xff9900, id: "canister", path: "~/3d/canister.obj" },
 		];
 
 	let Bank = {
@@ -12,12 +14,6 @@ let Bank = (() => {
 			this.vault = {};
 			// default loader
 			this.loader = new OBJLoader();
-			// default material
-			this.phongMaterial = new THREE.MeshPhongMaterial({
-				color: 0x003300,
-				opacity: .825,
-				transparent: true,
-			});
 			// start loading 3d objects
 			this.dispatch({ type: "load-ships" });
 		},
@@ -42,20 +38,24 @@ let Bank = (() => {
 					// get next item to load
 					item = ships.pop();
 
+					let material = new THREE.MeshPhongMaterial({
+							color: item.color,
+							transparent: true,
+							opacity: .75,
+						});
+
 					// start loading
 					Self.loader.load(item.path, object => {
 						object.traverse(child => {
 							if (child.isMesh) {
-								child.material = Self.phongMaterial;
+								child.material = material;
 							}
 						});
-
+						// group item
 						let obj3d = new THREE.Object3D();
 						obj3d.add(object);
-
 						// save to bank vault
 						Self.vault[item.id] = { ...item, obj3d };
-
 						// load next, if any
 						if (ships.length) Self.dispatch({ type: "load-ships" });
 						else window.emit("bank-ready");
