@@ -95,10 +95,22 @@ content {
 				background: url(~/icons/scanner-base.png) no-repeat;
 				background-position: -312px -476px;
 
+				.compass {
+					position: absolute;
+					top: -9px;
+					left: -56px;
+					width: 41px;
+					height: 41px;
+					// background-color: rgba(#fff,.1);
+					background-repeat: no-repeat;
+					background-image: url(~/icons/hud-compass.png);
+					background-position: -262px -462px;
+				}
+
 				.heat-gage {
 					position: absolute;
-					top: 24px;
-					left: -35px;
+					top: 27px;
+					left: -33px;
 					width: 79px;
 					height: 84px;
 					// background-color: rgba(#fff,.1);
@@ -109,8 +121,8 @@ content {
 
 				.speed-gage {
 					position: absolute;
-					top: 24px;
-					right: -35px;
+					top: 27px;
+					right: -33px;
 					width: 85px;
 					height: 87px;
 					// background-color: rgba(#fff,.1);
@@ -141,6 +153,85 @@ content {
 						background-image: url(~/icons/scanner-speed-val.png);
 						background-position: -529px -499px;
 					}
+				}
+			}
+
+			.hologram {
+				position: absolute;
+				top: 29px;
+				width: 139px;
+				height: 95px;
+				// background-color: rgba(#f66,.1);
+
+				&.target {
+					left: 113px;
+				}
+
+				&.ship {
+					right: 113px;
+
+					.gage {
+						left: auto;
+						right: -2px;
+						// background-color: rgba(#fff,.1);
+						background-image: url(~/icons/holo-gage-right.png);
+						background-position: -630px -530px;
+					}
+				}
+
+				.gage {
+					position: absolute;
+					top: 23px;
+					left: -2px;
+					width: 86px;
+					height: 50px;
+					// background-color: rgba(#fff,.1);
+					background-image: url(~/icons/holo-gage-left.png);
+					background-position: -128px -530px;
+				}
+
+				.ring-1 {
+					position: absolute;
+					top: 0;
+					left: 0px;
+					width: 139px;
+					height: 44px;
+					// background-color: rgba(#fff,.1);
+					background-image: url(~/icons/holo-ring-1.png);
+					background-position: -129px -507px;
+				}
+
+				.ring-2 {
+					position: absolute;
+					top: 7px;
+					left: 0px;
+					width: 139px;
+					height: 48px;
+					// background-color: rgba(#fff,.1);
+					background-image: url(~/icons/holo-ring-2.png);
+					background-position: -129px -511px;
+				}
+
+				.base-2 {
+					position: absolute;
+					bottom: 13px;
+					left: 0px;
+					width: 139px;
+					height: 32px;
+					// background-color: rgba(#fff,.1);
+					background-image: url(~/icons/holo-base-2.png);
+					background-position: -129px -556px;
+				}
+
+				.base-1 {
+					position: absolute;
+					bottom: 0;
+					left: 0px;
+					width: 139px;
+					height: 32px;
+					// background-color: rgba(#fff,.1);
+					background-image: url(~/icons/holo-base-1.png);
+					background-position: -129px -565px;
 				}
 			}
 		}
