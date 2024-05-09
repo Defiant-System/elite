@@ -44,10 +44,10 @@ content {
 			font-size: 73px;
 			font-family: Righteous, sans-serif;
 			text-transform: uppercase;
-			color: #fff0ffbb;
-			text-shadow: 0 0 7px #ffaaaabb,
-						0 0 13px #ff1e90bb,
-						0 0 19px #ff0000bb;
+			color: #c0ffc0bb;
+			text-shadow: 0 0 5px #aaffaa66,
+						0 0 17px #1eff9066,
+						0 0 29px #00ff0066;
 		}
 
 		h3 {
@@ -55,9 +55,9 @@ content {
 			font-size: 23px;
 			font-family: Righteous, sans-serif;
 			text-transform: uppercase;
-			color: #f0ffffcc;
-			text-shadow: 0 0 3px #aaaaff66,
-						0 0 7px #1e90ff66;
+			color: #fff0ffbb;
+			text-shadow: 0 0 3px #ffaaaabb,
+						0 0 7px #ff1e90bb;
 		}
 	}
 
@@ -68,6 +68,81 @@ content {
 			left: 0;
 			width: 100%;
 			height: 100%;
+		}
+
+		.scope {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: url(~/icons/cockpit-scope.png) 50% 50%/cover no-repeat;
+		}
+
+		.hud {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			height: 137px;
+
+			.scanner {
+				position: absolute;
+				top: 0;
+				left: 320px;
+				width: 216px;
+				height: 107px;
+				background: url(~/icons/scanner-base.png) no-repeat;
+				background-position: -312px -476px;
+
+				.heat-gage {
+					position: absolute;
+					top: 24px;
+					left: -35px;
+					width: 79px;
+					height: 84px;
+					// background-color: rgba(#fff,.1);
+					background-repeat: no-repeat;
+					background-image: url(~/icons/scanner-heat-bg.png);
+					background-position: -278px -499px;
+				}
+
+				.speed-gage {
+					position: absolute;
+					top: 24px;
+					right: -35px;
+					width: 85px;
+					height: 87px;
+					// background-color: rgba(#fff,.1);
+					background-repeat: no-repeat;
+					background-image: url(~/icons/scanner-speed-bg.png);
+					background-position: -471px -499px;
+
+					.rec {
+						position: absolute;
+						top: 0;
+						left: 4px;
+						width: 71px;
+						height: 81px;
+						// background-color: rgba(#fff,.1);
+						background-repeat: no-repeat;
+						background-image: url(~/icons/scanner-speed-rec.png);
+						background-position: -476px -499px;
+					}
+
+					.val {
+						position: absolute;
+						top: 0;
+						right: -7px;
+						width: 35px;
+						height: 81px;
+						// background-color: rgba(#fff,.1);
+						background-repeat: no-repeat;
+						background-image: url(~/icons/scanner-speed-val.png);
+						background-position: -529px -499px;
+					}
+				}
+			}
 		}
 	}
 }
