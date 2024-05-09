@@ -1,8 +1,7 @@
 
 let Bg = {
 	init() {
-		let worker = new Worker("~/js/bg-worker.js"),
-			cvs = window.find(".game-bg"),
+		let cvs = window.find(".game-bg"),
 			width = +cvs.prop("offsetWidth"),
 			height = +cvs.prop("offsetHeight");
 		// reset canvas
@@ -10,7 +9,7 @@ let Bg = {
 
 		// save references to items
 		this.cvs = cvs;
-		this.worker = worker;
+		this.stars = new Worker("~/js/bg-stars.js");
 
 		// auto start bg
 		this.dispatch({ type: "start" });
@@ -22,17 +21,14 @@ let Bg = {
 			case "start":
 				// transfer canvas control
 				value = Self.cvs[0].transferControlToOffscreen();
-				Self.worker.postMessage({ ...event, canvas: value }, [value]);
-				break;
-			case "pause":
-				if (!window.isFocused) Self.worker.postMessage(event);
-				break;
-			case "resume":
-				if (window.isFocused && !Anim.zoomed) Self.worker.postMessage(event);
+				Self.stars.postMessage({ ...event, canvas: value }, [value]);
 				break;
 			case "dispose":
-				Self.worker.terminate();
 				break;
+			default:
+				if (event.worker) {
+					Self[event.worker].postMessage(event);
+				}
 		}
 	}
 };

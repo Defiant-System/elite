@@ -30,6 +30,10 @@ const elite = {
 			// system events
 			case "window.init":
 				break;
+			case "window.keystroke":
+				// forward events
+				Cockpit.dispatch(event);
+				break;
 			// custom events
 			case "open-help":
 				karaqu.shell("fs -u '~/help/index.md'");

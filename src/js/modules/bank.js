@@ -2,10 +2,10 @@
 let Bank = (() => {
 
 	let ships = [
-			{ color: 0x003300, lines: 0x00aa00, id: "cobra", path: "~/3d/cobra-mk3.obj" },
-			{ color: 0xcc0066, lines: 0xcc1188, id: "thargoid", path: "~/3d/thargoid.obj" },
-			{ color: 0xcc6600, lines: 0xcc7700, id: "coriolis", path: "~/3d/coriolis.obj" },
-			{ color: 0xcc6600, lines: 0xff9900, id: "canister", path: "~/3d/canister.obj" },
+			{ color: 0x003300, lines: 0x00aa00, opacity: .80, id: "cobra", path: "~/3d/cobra-mk3.obj" },
+			{ color: 0xcc0066, lines: 0xcc1188, opacity: .25, id: "thargoid", path: "~/3d/thargoid.obj" },
+			{ color: 0xcc6600, lines: 0xcc7700, opacity: .25, id: "coriolis", path: "~/3d/coriolis.obj" },
+			{ color: 0xcc6600, lines: 0xff9900, opacity: .25, id: "canister", path: "~/3d/canister.obj" },
 		];
 
 	let Bank = {
@@ -40,8 +40,8 @@ let Bank = (() => {
 
 					let material = new THREE.MeshPhongMaterial({
 							color: item.color,
+							opacity: item.opacity,
 							transparent: true,
-							opacity: .75,
 						});
 
 					// start loading

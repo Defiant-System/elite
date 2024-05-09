@@ -1,14 +1,19 @@
-
-let Anim = {
+let Stars = {
 	init(canvas) {
 		// initial values
 		this.paused = false;
 		this.TAU = Math.PI * 2;
+		// speed
+		this.speed = {
+			min: .005,
+			max: .05,
+			value: .005,
+		};
 
 		// setTimeout(() => { this.paused = true }, 300);
 	},
 	dispatch(event) {
-		let Self = Anim,
+		let Self = Stars,
 			value;
 		switch (event.type) {
 			case "start":
@@ -28,6 +33,12 @@ let Anim = {
 					Self.paused = false;
 					Self.draw();
 				}
+				break;
+			case "speed-up":
+				Self.speed.value = Math.min(Self.speed.value + .01, Self.speed.max);
+				break;
+			case "speed-down":
+				Self.speed.value = Math.max(Self.speed.value - .01, Self.speed.min);
 				break;
 			case "create-scene":
 				Self.maxDepth = 64;
@@ -55,16 +66,16 @@ let Anim = {
 			len = stars.length;
 
 		while (len--) {
-			stars[len].z -= 0.015;
+			stars[len].z -= Self.speed.value;
 			if (stars[len].z <= 0) {
 				stars[len].x = Utils.random(-25, 25) | 0;
 				stars[len].y = Utils.random(-25, 25) | 0;
-				stars[len].z = Utils.random(1, Self.maxDepth) | 0
+				stars[len].z = Utils.random(1, Self.maxDepth) | 0;
 			}
 		}
 	},
 	draw() {
-		let Self = Anim,
+		let Self = Stars,
 			cvs = Self.cvs,
 			ctx = Self.ctx,
 			stars = Self.stars,
@@ -85,7 +96,7 @@ let Anim = {
 
 			if (px >= 0 && px <= Self.width && py >= 0 && py <= Self.height) {
 				let alpha = 1 - stars[len].z / 48,
-					size = Math.max(alpha, 0.1) + 0.3,
+					size = Math.max(alpha, .1) + .3,
 					c = 255 - Math.round(Math.abs(alpha * 64));
 				ctx.beginPath();
 				ctx.fillStyle = `rgba(${c}, ${c}, ${c}, ${alpha})`;
@@ -100,10 +111,10 @@ let Anim = {
 };
 
 // auto call init
-Anim.init();
+Stars.init();
 
 // forward message / event
-self.onmessage = event => Anim.dispatch(event.data);
+self.onmessage = event => Stars.dispatch(event.data);
 
 
 
@@ -120,4 +131,3 @@ let Utils = {
 		return Math.sqrt((xDistance ** 2) + (yDistance ** 2));
 	}
 };
-

@@ -2,7 +2,7 @@
 	<Build>
 		<task action="skip" importmap="src/js/importmap.json" folder="src/js/modules/threejs/"/>
 		<task action="skip" source="src/js/bundle.js" destination="public/js/bundle.js"/>
-		<task action="skip" source="src/js/modules/bg-worker.js" destination="public/js/bg-worker.js"/>
+		<task action1="skip" source="src/js/modules/bg-stars.js" destination="public/js/bg-stars.js"/>
 	</Build>
 	<Head>
 		<meta name="id" value="elite"/>
