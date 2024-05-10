@@ -91,7 +91,7 @@ let Bank = (() => {
 							shapes.forEach((shape) => {
 								let extrudeSettings = {
 									steps: 1,
-									depth: 2.5,
+									depth: 2.75,
 									bevelEnabled: true,
 									bevelThickness: .25,
 									bevelSize: .25,

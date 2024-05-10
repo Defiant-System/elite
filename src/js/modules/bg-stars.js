@@ -1,6 +1,6 @@
 
 let Stars = {
-	init(canvas) {
+	init() {
 		// initial values
 		this.paused = false;
 		this.TAU = Math.PI * 2;

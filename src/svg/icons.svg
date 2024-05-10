@@ -3,9 +3,12 @@
 	<svg id="cockpit-scope" viewBox="0 0 860 620" size="keep">
 		<style type="text/css">
 			.st0{fill:none;opacity:.5;stroke:#393;stroke-width:2;stroke-miterlimit:10;}
+			.st1{fill:none;opacity:.5;stroke:#171;stroke-width:1.5;stroke-miterlimit:10;}
 		</style>
 		<path id="left" class="st0" d="M182.8,171.8h-3.5c-17.7,35.8-27.6,76.1-27.6,118.7c0,42,9.7,81.8,26.9,117.2h4.2"/>
 		<path id="right" class="st0" d="M656,171.8h4.5c17.7,35.8,27.6,76.1,27.6,118.7c0,42.4-9.8,82.4-27.3,118.1H656"/>
+		<path id="inner-left" class="st1" d="M168.51,209.29c-8.25,25.59-12.7,52.88-12.7,81.2c0,28.02,4.39,55.05,12.48,80.42"/>
+		<path id="inner-right" class="st1" d="M671.29,209.29c8.25,25.59,12.7,52.88,12.7,81.2c0,28.06-4.36,55.06-12.45,80.42"/>
 	</svg>
 
 	<svg id="scanner-base" viewBox="0 0 860 620" size="keep">

@@ -7,9 +7,4 @@ let {
 	OBJLoader,
 	SVGLoader,
 
-	OrbitControls,
-	EffectComposer,
-	RenderPass,
-	OutlinePass,
-
 } = await window.fetch("~/js/bundle.js");
