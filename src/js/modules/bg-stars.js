@@ -135,10 +135,6 @@ let Stars = {
 			case "brake":
 				// change speed
 				Self.speed = Math.max(Self.speed - .1, 0.15);
-				// if speed is less than 20% - auto turn off "super cruise"
-				if (Self.speed <= Self.cruise.minSpeed) {
-					Self.dispatch({ type: "super-cruise-off" });
-				}
 				// update view
 				Self.dispatch({ type: `look-${Self.stars.view}`, update: true });
 				break;
@@ -248,7 +244,7 @@ let Stars = {
 			Self.cruise.l1.map(item => {
 				item.x += (item.x - Self.focal.x) * Self.speed * .000025 * item.z;
 				item.z += Self.speed * .45;
-				item.a = item.z * Self.speed * .0025;
+				item.a = item.z * Self.speed * .004;
 				if (item.x < -Self.focal.x) {
 					item.a = 0;
 					item.x = 0;
@@ -259,7 +255,7 @@ let Stars = {
 			Self.cruise.l2.map(item => {
 				item.x += (item.x - Self.focal.x) * Self.speed * .000025 * item.z;
 				item.z += Self.speed * 2;
-				item.a = item.z * Self.speed * .001;
+				item.a = item.z * Self.speed * .0015;
 				if (item.x < -Self.focal.x) {
 					item.a = 0;
 					item.x = 0;

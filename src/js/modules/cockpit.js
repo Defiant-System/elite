@@ -29,6 +29,11 @@ let Cockpit = {
 					case 40: // down
 					case 83: // s
 						Bg.dispatch({ worker: "stars", type: "brake" });
+						
+						// if speed is less than 20% - auto turn off "super cruise"
+						// if (Self.speed <= Self.cruise.minSpeed) {
+						// 	Self.dispatch({ type: "super-cruise-off" });
+						// }
 						break;
 
 					case 104: // numpad 8 - front
