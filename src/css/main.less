@@ -18,6 +18,12 @@ content {
 		}
 	}
 
+	&[data-show="space"] {
+		.start-view {
+			display: none;
+		}
+	}
+
 	.game-bg {
 		position: absolute;
 		top: 0;
@@ -55,13 +61,64 @@ content {
 			font-size: 23px;
 			font-family: Righteous, sans-serif;
 			text-transform: uppercase;
-			color: #fff0ffbb;
-			text-shadow: 0 0 3px #ffaaaabb,
-						0 0 7px #ff1e90bb;
+			color: #f0f0ffbb;
+			text-shadow: 0 0 3px #aaaaffbb,
+						0 0 7px #1e90ffbb;
 		}
 	}
 
 	.cockpit-view {
+		&[data-show="back"] {
+			.front-view { display:none; }
+			.back-view { display: block; }
+		}
+
+		&[data-show="left"] {
+			.front-view { display:none; }
+			.left-view { display: block; }
+		}
+
+		&[data-show="right"] {
+			.front-view { display:none; }
+			.right-view { display: block; }
+		}
+
+		&[data-show="up"] {
+			.front-view { display:none; }
+			.up-view { display: block; }
+		}
+
+		&[data-show="down"] {
+			.front-view { display:none; }
+			.down-view { display: block; }
+		}
+
+
+		.back-view,
+		.left-view,
+		.right-view,
+		.up-view,
+		.down-view {
+			display: none;
+			position: relative;
+			padding: 37px 0 0;
+
+			h5 {
+				font-weight: 400;
+				font-size: 23px;
+				font-family: Rajdhani, sans-serif;
+				text-transform: uppercase;
+				color: #f0f0ffbb;
+				text-shadow: 0 0 3px #aaaaffbb,
+							0 0 7px #1e90ffbb;
+			}
+		}
+
+		.front-view {
+			display: block;
+			// notthing to declare (!?)
+		}
+
 		canvas.game-cvs {
 			position: absolute;
 			top: 0;
@@ -380,5 +437,14 @@ content {
 	font-weight: 400;
 	// font-display: swap;
 	src: url(~/fonts/Righteous-latin.woff2) format("woff2");
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+	font-family: "Rajdhani";
+	font-style: normal;
+	font-weight: 400;
+	// font-display: swap;
+	src: url(~/fonts/Rajdhani-latin.woff2) format("woff2");
 	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }

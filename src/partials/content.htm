@@ -1,4 +1,4 @@
-<content>
+<content data-show="space">
 	<canvas class="game-bg"></canvas>
 
 	<div class="start-view">
@@ -6,39 +6,48 @@
 		<h3>Redux</h3>
 	</div>
 
-	<div class="cockpit-view">
-		<!-- three.js canvas goes here -->
-		<div class="scope"></div>
-		<div class="hud">
-			<div class="hologram target">
-				<canvas width="150" height="150"></canvas>
-				<div class="gage"></div>
-				<div class="ring-1"></div>
-				<div class="ring-2"></div>
-				<div class="base-2"></div>
-				<div class="base-1"></div>
-			</div>
-
-			<div class="scanner">
-				<div class="compass"></div>
-				<canvas width="215" height="170"></canvas>
-				<div class="heat-gage" style="--val: 0.43;">
-					<div class="max"></div>
+	<div class="cockpit-view" data-show="front">
+		<div class="front-view">
+			<!-- three.js canvas goes here -->
+			<div class="scope"></div>
+			<div class="hud">
+				<div class="hologram target">
+					<canvas width="150" height="150"></canvas>
+					<div class="gage"></div>
+					<div class="ring-1"></div>
+					<div class="ring-2"></div>
+					<div class="base-2"></div>
+					<div class="base-1"></div>
 				</div>
-				<div class="speed-gage">
-					<div class="rec" style="--val: 0.65;"></div>
-					<div class="val" style="--val: 0.6;"></div>
-				</div>
-			</div>
 
-			<div class="hologram ship">
-				<canvas width="150" height="150"></canvas>
-				<div class="gage"></div>
-				<div class="ring-1"></div>
-				<div class="ring-2"></div>
-				<div class="base-2"></div>
-				<div class="base-1"></div>
+				<div class="scanner">
+					<div class="compass"></div>
+					<canvas width="215" height="170"></canvas>
+					<div class="heat-gage" style="--val: 0.43;">
+						<div class="max"></div>
+					</div>
+					<div class="speed-gage">
+						<div class="rec" style="--val: 0.65;"></div>
+						<div class="val" style="--val: 0.6;"></div>
+					</div>
+				</div>
+
+				<div class="hologram ship">
+					<canvas width="150" height="150"></canvas>
+					<div class="gage"></div>
+					<div class="ring-1"></div>
+					<div class="ring-2"></div>
+					<div class="base-2"></div>
+					<div class="base-1"></div>
+				</div>
 			</div>
 		</div>
+
+		<div class="back-view"><h5>Back View</h5></div>
+		<div class="left-view"><h5>Left View</h5></div>
+		<div class="right-view"><h5>Right View</h5></div>
+		<div class="up-view"><h5>Up View</h5></div>
+		<div class="down-view"><h5>Down View</h5></div>
+
 	</div>
 </content>

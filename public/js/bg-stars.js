@@ -9,7 +9,7 @@ let Stars = {
 
 		this.inertia = 11;
 		this.stars = {
-			view: "front",
+			view: null,
 			velocity: {
 				x: 0,
 				y: 0,
@@ -55,7 +55,7 @@ let Stars = {
 				Self.cruise.step = (Self.focal.x + 50) / Self.cruise.count;
 
 				// apply speed + view value
-				Self.dispatch({ type: "look-front" });
+				Self.dispatch({ type: "view-front" });
 				// create star field
 				Self.dispatch({ type: "create-scene" });
 				// create super cruise lines
@@ -73,49 +73,61 @@ let Stars = {
 					Self.draw();
 				}
 				break;
-			case "look-front":
+			case "view-front":
 				// set view
-				Self.stars.view = event.type.split("-")[1];
+				value = event.type.split("-")[1];
+				if (Self.stars.view === value) return;
+				Self.stars.view = value;
 				// set stars velocity
 				Self.stars.velocity = { x: 0, y: 0, z: Self.speed * .0025 };
 				// create star field
 				if (!event.update) Self.dispatch({ type: "create-scene" });
 				break;
-			case "look-rear":
+			case "view-back":
 				// set view
-				Self.stars.view = event.type.split("-")[1];
+				value = event.type.split("-")[1];
+				if (Self.stars.view === value) return;
+				Self.stars.view = value;
 				// set stars velocity
 				Self.stars.velocity = { x: 0, y: 0, z: -Self.speed * .0025 };
 				// create star field
 				if (!event.update) Self.dispatch({ type: "create-scene" });
 				break;
-			case "look-up":
+			case "view-up":
 				// set view
-				Self.stars.view = event.type.split("-")[1];
+				value = event.type.split("-")[1];
+				if (Self.stars.view === value) return;
+				Self.stars.view = value;
 				// set stars velocity
 				Self.stars.velocity = { x: 0, y: -Self.speed * 2, z: 0 };
 				// create star field
 				if (!event.update) Self.dispatch({ type: "create-scene" });
 				break;
-			case "look-down":
+			case "view-down":
 				// set view
-				Self.stars.view = event.type.split("-")[1];
+				value = event.type.split("-")[1];
+				if (Self.stars.view === value) return;
+				Self.stars.view = value;
 				// set stars velocity
 				Self.stars.velocity = { x: 0, y: Self.speed * 2, z: 0 };
 				// create star field
 				if (!event.update) Self.dispatch({ type: "create-scene" });
 				break;
-			case "look-left":
+			case "view-left":
 				// set view
-				Self.stars.view = event.type.split("-")[1];
+				value = event.type.split("-")[1];
+				if (Self.stars.view === value) return;
+				Self.stars.view = value;
 				// set stars velocity
 				Self.stars.velocity = { x: -Self.speed * 2, y: 0, z: 0 };
 				// create star field
 				if (!event.update) Self.dispatch({ type: "create-scene" });
 				break;
-			case "look-right":
+			case "view-right":
 				// set view
-				Self.stars.view = event.type.split("-")[1];
+				value = event.type.split("-")[1];
+				if (Self.stars.view === value) return;
+				Self.stars.view = value;
 				// set stars velocity
 				Self.stars.velocity = { x: Self.speed * 2, y: 0, z: 0 };
 				// create star field
@@ -129,13 +141,13 @@ let Stars = {
 				// change speed
 				Self.speed = Math.min(Self.speed + .1, 1);
 				// update view
-				Self.dispatch({ type: `look-${Self.stars.view}`, update: true });
+				Self.dispatch({ type: `view-${Self.stars.view}`, update: true });
 				break;
 			case "brake":
 				// change speed
 				Self.speed = Math.max(Self.speed - .1, 0.15);
 				// update view
-				Self.dispatch({ type: `look-${Self.stars.view}`, update: true });
+				Self.dispatch({ type: `view-${Self.stars.view}`, update: true });
 				break;
 			case "set-focal-point":
 				// mostly for dev purposes for now
@@ -157,7 +169,7 @@ let Stars = {
 					// turn off super cruise and "force" speed drop
 					Self.speed = Self.cruise.minSpeed;
 					// update view
-					Self.dispatch({ type: `look-${Self.stars.view}`, update: true });
+					Self.dispatch({ type: `view-${Self.stars.view}`, update: true });
 				}
 				Self.cruise.l1 = [];
 				Self.cruise.l2 = [];
@@ -165,42 +177,42 @@ let Stars = {
 		}
 	},
 	recycle(star={}) {
-		let velocity = this.stars.velocity,
-			threshold = this.stars.threshold,
-			view = this.stars.view,
+		let Self = this,
+			velocity = Self.stars.velocity,
+			threshold = Self.stars.threshold,
+			view = Self.stars.view,
 			getPos = (star, dir) => {
 				switch (dir) {
 					case "left":
 						star.x = -threshold;
-						star.y = Utils.random(0, this.height);
+						star.y = Utils.random(0, Self.height);
 						break;
 					case "right":
-						star.x = this.width + threshold;
-						star.y = Utils.random(0, this.height);
+						star.x = Self.width + threshold;
+						star.y = Utils.random(0, Self.height);
 						break;
 					case "up":
-						star.x = Utils.random(0, this.width);
+						star.x = Utils.random(0, Self.width);
 						star.y = -threshold;
 						break;
 					case "down":
-						star.x = Utils.random(0, this.width);
-						star.y = this.height + threshold;
+						star.x = Utils.random(0, Self.width);
+						star.y = Self.height + threshold;
 						break;
 				}
 			};
-
 		// randomzie
-		star.z = Utils.random(this.stars.min, this.stars.size);
+		star.z = Utils.random(Self.stars.min, Self.stars.size);
 		// create star for direction
 		switch (view) {
 			case "front":
-				star.x = Utils.random(0, this.width);
-				star.y = Utils.random(0, this.height);
+				star.x = Utils.random(0, Self.width);
+				star.y = Utils.random(0, Self.height);
 				if (star.z > .35) star.z -= .3;
 				break;
-			case "rear":
-				star.x = Utils.random(0, this.width);
-				star.y = Utils.random(0, this.height);
+			case "back":
+				star.x = Utils.random(0, Self.width);
+				star.y = Utils.random(0, Self.height);
 				// star.z += .3;
 				break;
 				/* falls through */
@@ -266,7 +278,7 @@ let Stars = {
 	draw() {
 		let Self = Stars,
 			ctx = Self.ctx,
-			multiplier = Self.stars.view === "rear" ? .45 : 0;
+			multiplier = Self.stars.view === "back" ? .45 : 0;
 
 		// reset canvas
 		Self.cvs.width = Self.cvs.width;

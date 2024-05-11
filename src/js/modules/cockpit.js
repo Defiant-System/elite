@@ -1,6 +1,10 @@
 
 let Cockpit = {
 	init() {
+		// fast references
+		this.els = {
+			el: window.find(".cockpit-view"),
+		};
 		// save states here
 		this.state = {
 			"super-cruise": false,
@@ -9,6 +13,7 @@ let Cockpit = {
 	dispatch(event) {
 		let APP = elite,
 			Self = Cockpit,
+			show,
 			el;
 		switch (event.type) {
 			// system events
@@ -37,22 +42,34 @@ let Cockpit = {
 						break;
 
 					case 104: // numpad 8 - front
-						Bg.dispatch({ worker: "stars", type: "look-front" });
+						show = "front";
+						Self.els.el.data({ show });
+						Bg.dispatch({ worker: "stars", type: `view-${show}` });
 						break;
 					case 98: // numpad 2 - rear
-						Bg.dispatch({ worker: "stars", type: "look-rear" });
+						show = "back";
+						Self.els.el.data({ show });
+						Bg.dispatch({ worker: "stars", type: `view-${show}` });
 						break;
 					case 100: // numpad 4 - left
-						Bg.dispatch({ worker: "stars", type: "look-left" });
+						show = "left";
+						Self.els.el.data({ show });
+						Bg.dispatch({ worker: "stars", type: `view-${show}` });
 						break;
 					case 102: // numpad 6 - right
-						Bg.dispatch({ worker: "stars", type: "look-right" });
+						show = "right";
+						Self.els.el.data({ show });
+						Bg.dispatch({ worker: "stars", type: `view-${show}` });
 						break;
 					case 101: // numpad 5 - up
-						Bg.dispatch({ worker: "stars", type: "look-up" });
+						show = "up";
+						Self.els.el.data({ show });
+						Bg.dispatch({ worker: "stars", type: `view-${show}` });
 						break;
 					case 96: // numpad 0 - down
-						Bg.dispatch({ worker: "stars", type: "look-down" });
+						show = "down";
+						Self.els.el.data({ show });
+						Bg.dispatch({ worker: "stars", type: `view-${show}` });
 						break;
 
 					case 70: // "F" - Frame Shift Drive
