@@ -20,6 +20,9 @@ let Star = {
 					planets = event.data.planets.map(data => new Planet(data, sun));
 
 				this.system = { sun, planets };
+
+				// emit events
+				window.emit("star-system-ready");
 				break;
 		}
 	}

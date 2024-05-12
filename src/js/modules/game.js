@@ -37,10 +37,11 @@ let Game = {
 				});
 			}
 		});
-
-
 		// subscribe to events
-		window.on("bank-ready", this.dispatch);
+		window.on("star-system-ready", this.dispatch);
+
+		// start loading solar system
+		Star.init();
 	},
 	dispatch(event) {
 		let APP = elite,
@@ -48,9 +49,7 @@ let Game = {
 			el;
 		switch (event.type) {
 			// subscribed events
-			case "bank-ready":
-				// must come after "fpsControl"
-				Star.init();
+			case "star-system-ready":
 				// initiate hologram scene
 				Self.dispatch({ type: "setup-scene" });
 				break;
@@ -62,9 +61,29 @@ let Game = {
 			case "setup-scene":
 				let scene = new THREE.Scene(),
 					camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.05, 5 * Math.pow(10, 13)),
-					light = new THREE.PointLight(0xffffff, 20, 0, 0);
+					light = new THREE.PointLight(0x666666, 20, 0, 0);
+				// camera settings
+				camera.position.set(0, 0, 15000);
+				camera.lookAt(0, 0, 0);
+				camera.add(light);
+				scene.add(camera);
+				
+				// add sun to scene
+				scene.add(Star.system.sun.threeObject);
 
-				console.log( Star );
+				// canvas element
+				let cvs = Self.els.cvs[0];
+				let ctx = cvs.getContext("2d");
+				// camera aspect
+				camera.aspect = cvs.width / cvs.height;
+				camera.updateProjectionMatrix();
+
+				// temporary tick function
+				let tick = () => {
+						Star.system.sun.threeObject.rotation.z += 0.0025
+					};
+				
+				Self.dispatch({ type: "register-set", set: { scene, camera, tick, cvs, ctx } });
 				break;
 		}
 	}

@@ -40,11 +40,11 @@ class Sun extends CelestialObject {
 	}
 
 	createThreeDiameter() {
-		return this._diameter * Constants.celestialScale;
+		return this._diameter * Constants.CELESTIAL_SCALE;
 	}
 
 	createThreeRadius() {
-		return this._diameter * Constants.celestialScale / 2;
+		return this._diameter * Constants.CELESTIAL_SCALE / 2;
 	}
 
 	createGeometry(surface) {
@@ -52,11 +52,11 @@ class Sun extends CelestialObject {
 		let mesh = new THREE.Mesh(geometry, surface);
 		let lightColor = 0xffffff;
 		let intesity = 1;
-		let lightDistanceStrength = Constants.DISTANCE_TO_KUIPER_BELT * Constants.universeScale;
+		let lightDistanceStrength = Constants.DISTANCE_TO_KUIPER_BELT * Constants.UNIVERSE_SCALE;
 		let lightDecayRate = 0.6;
 		let sunLight = new THREE.PointLight(lightColor, intesity, lightDistanceStrength, lightDecayRate);
 
-		mesh.rotation.x = 90 * Constants.degreesToRadiansRatio;
+		mesh.rotation.x = 90 * Constants.DEGREES_TO_RADIANS_RATIO;
 		mesh.add(sunLight);
 		return mesh;
 	}
@@ -69,9 +69,9 @@ class Sun extends CelestialObject {
 
 		return new THREE.MeshPhongMaterial({
 			map: texture,
-			lightMap: texture,
-			transparent: true,
-			opacity: 0.85, // 0.8
+			// lightMap: texture,
+			// transparent: true,
+			// opacity: 0.85, // 0.8
 			// shading: THREE.SmoothShading
 		});
 	}

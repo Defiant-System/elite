@@ -2,5 +2,4 @@
 _build
 .DS_Store
 
-public/img/textures
 src/js/modules/threejs
