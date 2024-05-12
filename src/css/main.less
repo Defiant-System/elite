@@ -97,8 +97,7 @@ content {
 		pointer-events: none;
 	}
 
-	.start-view,
-	.cockpit-view {
+	.start-view {
 		// opacity: 0;
 		// visibility: hidden;
 		position: absolute;
@@ -132,6 +131,13 @@ content {
 	}
 
 	.cockpit-view {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		text-align: center;
+
 		&[data-show="back"] {
 			.front-view { display:none; }
 			.back-view { display: block; }
@@ -170,7 +176,7 @@ content {
 			h5 {
 				font-weight: 400;
 				font-size: 23px;
-				font-family: Rajdhani, sans-serif;
+				font-family: Righteous, sans-serif;
 				text-transform: uppercase;
 				color: #f0f0ffbb;
 				text-shadow: 0 0 3px #aaaaffbb,
@@ -207,6 +213,7 @@ content {
 			left: 427px;
 			width: 50px;
 			height: 50px;
+			font-family: Rajdhani, sans-serif;
 
 			&:before {
 				content: "";
@@ -241,6 +248,7 @@ content {
 				font-size: 14px;
 				white-space: nowrap;
 				text-shadow: none;
+				text-transform: uppercase;
 			}
 
 			h4 {

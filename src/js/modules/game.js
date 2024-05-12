@@ -60,10 +60,10 @@ let Game = {
 				break;
 			case "setup-scene":
 				let scene = new THREE.Scene(),
-					camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.05, 5 * Math.pow(10, 13)),
+					camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.05, 5e13),
 					light = new THREE.PointLight(0x666666, 20, 0, 0);
 				// camera settings
-				camera.position.set(0, 0, 15000);
+				camera.position.set(0, 0, 20e3);
 				camera.lookAt(0, 0, 0);
 				camera.add(light);
 				scene.add(camera);
@@ -80,7 +80,7 @@ let Game = {
 
 				// temporary tick function
 				let tick = () => {
-						Star.system.sun.threeObject.rotation.z += 0.015
+						Star.system.sun.threeObject.rotation.z += 0.005
 					};
 				
 				Self.dispatch({ type: "register-set", set: { scene, camera, tick, cvs, ctx } });

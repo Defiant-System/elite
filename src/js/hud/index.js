@@ -8,7 +8,7 @@
 			el: window.find(`.hud`),
 		};
 
-		return;
+		// return;
 		
 		// init all sub-objects
 		Object.keys(this)
