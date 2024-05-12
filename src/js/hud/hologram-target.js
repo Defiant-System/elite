@@ -44,8 +44,8 @@
 				// fick camera aspect
 				camera.aspect = cvs.width / cvs.height;
 				camera.updateProjectionMatrix();
-				// add scene setup for hud FPS
-				APP.hud.dispatch({ type: "register-set", set: { scene, camera, tick, cvs, ctx } });
+				// add scene setup for game FPS
+				Game.dispatch({ type: "register-set", set: { scene, camera, tick, cvs, ctx } });
 				break;
 		}
 	}

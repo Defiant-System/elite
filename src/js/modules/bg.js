@@ -1,11 +1,9 @@
 
 let Bg = {
 	init() {
-		let cvs = window.find(".bg-stars"),
-			width = +cvs.prop("offsetWidth"),
-			height = +cvs.prop("offsetHeight");
+		let cvs = window.find(".bg-stars");
 		// reset canvas
-		cvs.attr({ width, height });
+		cvs.attr({ width: window.innerWidth, height: window.innerHeight });
 
 		// save references to items
 		this.cvs = cvs;
