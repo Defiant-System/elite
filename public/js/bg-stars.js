@@ -7,7 +7,7 @@ let Stars = {
 		// ship speed
 		this.speed = .35;
 
-		this.inertia = 11;
+		this.inertia = 5;
 		this.stars = {
 			view: null,
 			angle: 0,
@@ -42,15 +42,14 @@ let Stars = {
 				Self.width = Self.cvs.width;
 				Self.height = Self.cvs.height;
 				// defaults
-				Self.target = {
+				Self.center = {
 					x: Self.width >> 1,
 					y: Self.height >> 1,
 				};
+				// defaults
+				Self.target = { ...Self.center };
 				// focus point
-				Self.focal = {
-					x: Self.width >> 1,
-					y: Self.height >> 1,
-				};
+				Self.focal = { ...Self.center };
 
 				Self.cruise.step = (Self.focal.x + 60) / Self.cruise.count;
 
@@ -140,8 +139,10 @@ let Stars = {
 				Self.stars.rotate = event.state ? -.5 * (Math.PI / 180) : null;
 				break;
 			case "dive":
+				Self.target = event.state ? { x: Self.width >> 1, y: Self.height * 3 } : Self.center;
+				break;
 			case "climb":
-				console.log("TODO: ", event.type);
+				Self.target = event.state ? { x: Self.width >> 1, y: -Self.height * 2 } : Self.center;
 				break;
 			case "set-focal-point":
 				// mostly for dev purposes for now

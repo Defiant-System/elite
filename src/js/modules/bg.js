@@ -1,7 +1,7 @@
 
 let Bg = {
 	init() {
-		let cvs = window.find(".game-bg"),
+		let cvs = window.find(".bg-stars"),
 			width = +cvs.prop("offsetWidth"),
 			height = +cvs.prop("offsetHeight");
 		// reset canvas

@@ -1,6 +1,7 @@
 
 @import "./main.three.js";
 @import "./modules/bg.js"
+@import "./modules/star-system.js"
 @import "./modules/bank.js"
 @import "./modules/cockpit.js"
 @import "./modules/test.js"
@@ -20,6 +21,9 @@ const elite = {
 		Object.keys(this)
 			.filter(i => typeof this[i].init === "function")
 			.map(i => this[i].init());
+
+		// must come after "hud"
+		Star.init();
 
 		// DEV-ONLY-START
 		Test.init(this);

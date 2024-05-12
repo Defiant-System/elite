@@ -98,11 +98,11 @@ let Cockpit = {
 						break;
 					case 38: // up
 					case 87: // w
-						Bg.dispatch({ worker: "stars", type: "climb", state: true });
+						Bg.dispatch({ worker: "stars", type: "dive", state: true });
 						break;
 					case 40: // down
 					case 83: // s
-						Bg.dispatch({ worker: "stars", type: "dive", state: true });
+						Bg.dispatch({ worker: "stars", type: "climb", state: true });
 						break;
 				}
 				break;
@@ -118,11 +118,11 @@ let Cockpit = {
 						break;
 					case 38: // up
 					case 87: // w
-						Bg.dispatch({ worker: "stars", type: "climb", state: false });
+						Bg.dispatch({ worker: "stars", type: "dive", state: false });
 						break;
 					case 40: // down
 					case 83: // s
-						Bg.dispatch({ worker: "stars", type: "dive", state: false });
+						Bg.dispatch({ worker: "stars", type: "climb", state: false });
 						break;
 				}
 				break;
