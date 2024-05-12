@@ -19,7 +19,7 @@ let Stars = {
 			min: 0.2,
 			size: 1.5,
 			threshold: 50,
-			count: 255,
+			count: 128,
 			list: [],
 		};
 

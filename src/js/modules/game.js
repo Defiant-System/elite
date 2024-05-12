@@ -80,7 +80,7 @@ let Game = {
 
 				// temporary tick function
 				let tick = () => {
-						Star.system.sun.threeObject.rotation.z += 0.0025
+						Star.system.sun.threeObject.rotation.z += 0.015
 					};
 				
 				Self.dispatch({ type: "register-set", set: { scene, camera, tick, cvs, ctx } });

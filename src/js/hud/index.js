@@ -8,6 +8,8 @@
 			el: window.find(`.hud`),
 		};
 
+		return;
+		
 		// init all sub-objects
 		Object.keys(this)
 			.filter(i => typeof this[i].init === "function")
