@@ -6,11 +6,12 @@ let Stars = {
 		this.TAU = Math.PI * 2;
 
 		// ship speed
-		this.speed = .25;
+		this.speed = .35;
 
 		this.inertia = 11;
 		this.stars = {
 			view: null,
+			angle: 0,
 			velocity: {
 				x: 0,
 				y: 0,
@@ -50,10 +51,9 @@ let Stars = {
 				Self.focal = {
 					x: Self.width >> 1,
 					y: Self.height >> 1,
-					cy: Self.height * .42 | 0, // cruise lines
 				};
-				// number of cruise lines
-				Self.cruise.step = (Self.focal.x + 50) / Self.cruise.count;
+
+				Self.cruise.step = (Self.focal.x + 60) / Self.cruise.count;
 
 				// apply speed + view value
 				Self.dispatch({ type: "view-front" });
@@ -76,9 +76,7 @@ let Stars = {
 				break;
 			case "view-front":
 				// set view
-				value = event.type.split("-")[1];
-				if (Self.stars.view === value) return;
-				Self.stars.view = value;
+				Self.stars.view = event.type.split("-")[1];
 				// set stars velocity
 				Self.stars.velocity = { x: 0, y: 0, z: Self.speed * .0025 };
 				// create star field
@@ -86,9 +84,7 @@ let Stars = {
 				break;
 			case "view-back":
 				// set view
-				value = event.type.split("-")[1];
-				if (Self.stars.view === value) return;
-				Self.stars.view = value;
+				Self.stars.view = event.type.split("-")[1];
 				// set stars velocity
 				Self.stars.velocity = { x: 0, y: 0, z: -Self.speed * .0025 };
 				// create star field
@@ -96,47 +92,35 @@ let Stars = {
 				break;
 			case "view-up":
 				// set view
-				value = event.type.split("-")[1];
-				if (Self.stars.view === value) return;
-				Self.stars.view = value;
-				// set stars velocity
-				Self.stars.velocity = { x: 0, y: -Self.speed * 2, z: 0 };
-				// create star field
-				if (!event.update) Self.dispatch({ type: "create-scene" });
-				break;
-			case "view-down":
-				// set view
-				value = event.type.split("-")[1];
-				if (Self.stars.view === value) return;
-				Self.stars.view = value;
+				Self.stars.view = event.type.split("-")[1];
 				// set stars velocity
 				Self.stars.velocity = { x: 0, y: Self.speed * 2, z: 0 };
 				// create star field
 				if (!event.update) Self.dispatch({ type: "create-scene" });
 				break;
-			case "view-left":
+			case "view-down":
 				// set view
-				value = event.type.split("-")[1];
-				if (Self.stars.view === value) return;
-				Self.stars.view = value;
+				Self.stars.view = event.type.split("-")[1];
 				// set stars velocity
-				Self.stars.velocity = { x: -Self.speed * 2, y: 0, z: 0 };
+				Self.stars.velocity = { x: 0, y: -Self.speed * 2, z: 0 };
 				// create star field
 				if (!event.update) Self.dispatch({ type: "create-scene" });
 				break;
-			case "view-right":
+			case "view-left":
 				// set view
-				value = event.type.split("-")[1];
-				if (Self.stars.view === value) return;
-				Self.stars.view = value;
+				Self.stars.view = event.type.split("-")[1];
 				// set stars velocity
 				Self.stars.velocity = { x: Self.speed * 2, y: 0, z: 0 };
 				// create star field
 				if (!event.update) Self.dispatch({ type: "create-scene" });
 				break;
-			case "roll-left":
-			case "roll-right":
-				console.log("TODO: ", event.type);
+			case "view-right":
+				// set view
+				Self.stars.view = event.type.split("-")[1];
+				// set stars velocity
+				Self.stars.velocity = { x: -Self.speed * 2, y: 0, z: 0 };
+				// create star field
+				if (!event.update) Self.dispatch({ type: "create-scene" });
 				break;
 			case "thrust":
 				// change speed
@@ -149,6 +133,16 @@ let Stars = {
 				Self.speed = Math.max(Self.speed - .1, 0.15);
 				// update view
 				Self.dispatch({ type: `view-${Self.stars.view}`, update: true });
+				break;
+			case "roll-left":
+				Self.stars.rotate = event.state ? .5 * (Math.PI / 180) : null;
+				break;
+			case "roll-right":
+				Self.stars.rotate = event.state ? -.5 * (Math.PI / 180) : null;
+				break;
+			case "dive":
+			case "climb":
+				console.log("TODO: ", event.type);
 				break;
 			case "set-focal-point":
 				// mostly for dev purposes for now
@@ -170,7 +164,7 @@ let Stars = {
 					// turn off super cruise and "force" speed drop
 					Self.speed = Self.cruise.minSpeed;
 					// update view
-					Self.dispatch({ type: `view-${Self.stars.view}`, update: true });
+					Self.dispatch({ type: `look-${Self.stars.view}`, update: true });
 				}
 				Self.cruise.l1 = [];
 				Self.cruise.l2 = [];
@@ -237,6 +231,15 @@ let Stars = {
 		Self.focal.y += dy / Self.inertia;
 
 		Self.stars.list.map(star => {
+			if (!!Self.stars.rotate) {
+				let cX = Self.focal.x,
+					cY = Self.focal.y,
+					rad = Math.atan2(star.y - cY, star.x - cX),
+					dist = Utils.calculateDistance(cX, cY, star.x, star.y);
+				star.x = cX + dist * Math.cos(rad + Self.stars.rotate);
+				star.y = cY + dist * Math.sin(rad + Self.stars.rotate);
+			}
+
 			star.x += velocity.x * star.z;
 			star.y += velocity.y * star.z;
 			star.x += (star.x - Self.focal.x) * velocity.z * star.z;
@@ -256,18 +259,18 @@ let Stars = {
 			Self.cruise.l1.map(item => {
 				item.x += (item.x - Self.focal.x) * Self.speed * .000025 * item.z;
 				item.z += Self.speed * .45;
-				item.a = item.z * Self.speed * .004;
+				item.a = item.z * Self.speed * .0025;
 				if (item.x < -Self.focal.x) {
 					item.a = 0;
 					item.x = 0;
 					item.z = .15;
 				}
 			});
-			// faster lines
+
 			Self.cruise.l2.map(item => {
 				item.x += (item.x - Self.focal.x) * Self.speed * .000025 * item.z;
 				item.z += Self.speed * 2;
-				item.a = item.z * Self.speed * .0015;
+				item.a = item.z * Self.speed * .001;
 				if (item.x < -Self.focal.x) {
 					item.a = 0;
 					item.x = 0;
@@ -287,7 +290,7 @@ let Stars = {
 		// update stars
 		Self.update(Self);
 
-		// render stars
+		// render
 		Self.stars.list.map(star => {
 			let size = star.z * .85,
 				alpha = (size / Self.stars.size) + multiplier,
@@ -299,15 +302,14 @@ let Stars = {
 		});
 
 		if (Self.stars.view === "front" && Self.cruise.l1.length) {
-			// super cruise lines
 			ctx.save();
-			ctx.translate(0, Self.focal.cy);
+			ctx.translate(0, Self.height * .5);
 			ctx.lineWidth = 1;
 			[...Self.cruise.l1, ...Self.cruise.l2]
 				.map(item => {
-					let px = item.x + (Self.focal.x - 100),
-						py = 50 - ((px * 40) / Self.focal.x);
-					ctx.strokeStyle = `rgba(170,255,170,${item.a})`;
+					let px = item.x + (Self.focal.x - 150),
+						py = 80 - ((px * 70) / Self.focal.y);
+					ctx.strokeStyle = `rgba(255,255,255,${item.a})`;
 
 					ctx.beginPath();
 					ctx.moveTo(px, -py);

@@ -33,7 +33,18 @@ content {
 						opacity: 0;
 					}
 
-					.heat-gage,
+					.heat-gage {
+						transform: translateY(-7px);
+						
+						&:after {
+							opacity: 0;
+						}
+						
+						.max {
+							filter: brightness(.5);
+						}
+					}
+
 					.speed-gage {
 						transform: translateY(-7px);
 					}
@@ -269,6 +280,8 @@ content {
 					&:after {
 						filter: sepia(1) hue-rotate(75deg) saturate(2.5);
 						clip-path: inset(calc( 100% * calc( 1 - var( --val ) ) ) 0 0 0);
+						opacity: 1;
+						transition: opacity @hudAnim ease-in-out;
 					}
 
 					.max {
@@ -277,11 +290,13 @@ content {
 						left: 0;
 						width: 37px;
 						height: 29px;
-						opacity: .65;
 						// background-color: rgba(#fff,.1);
 						background-repeat: no-repeat;
 						background-image: url(~/icons/scanner-heat-max.png);
 						background-position: -278px -499px;
+						opacity: .65;
+						filter: none;
+						transition: filter @hudAnim ease-in-out;
 					}
 				}
 

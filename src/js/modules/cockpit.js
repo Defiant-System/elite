@@ -33,28 +33,6 @@ let Cockpit = {
 						}
 						break;
 
-					case 37: // left
-					case 65: // a
-						Bg.dispatch({ worker: "stars", type: "roll-left" });
-						break;
-					case 39: // right
-					case 68: // d
-						Bg.dispatch({ worker: "stars", type: "roll-right" });
-						break;
-					case 38: // up
-					case 87: // w
-						Bg.dispatch({ worker: "stars", type: "thrust" });
-						break;
-					case 40: // down
-					case 83: // s
-						Bg.dispatch({ worker: "stars", type: "brake" });
-						
-						// if speed is less than 20% - auto turn off "super cruise"
-						// if (Self.speed <= Self.cruise.minSpeed) {
-						// 	Self.dispatch({ type: "super-cruise-off" });
-						// }
-						break;
-
 					case 104: // numpad 8 - front
 						show = "front";
 						Self.els.el.data({ show });
@@ -86,6 +64,17 @@ let Cockpit = {
 						Bg.dispatch({ worker: "stars", type: `view-${show}` });
 						break;
 
+					case 107: // numpad plus
+						Bg.dispatch({ worker: "stars", type: "thrust" });
+						break;
+					case 109: // numpad minus
+						Bg.dispatch({ worker: "stars", type: "brake" });
+						// if speed is less than 20% - auto turn off "super cruise"
+						// if (Self.speed <= Self.cruise.minSpeed) {
+						// 	Self.dispatch({ type: "super-cruise-off" });
+						// }
+						break;
+
 					case 70: // "F" - Frame Shift Drive
 						if (!Self.state["super-cruise"]) {
 							Bg.dispatch({ worker: "stars", type: "super-cruise-on" });
@@ -97,6 +86,47 @@ let Cockpit = {
 						break;
 				}
 				break;
+			case "window.keydown":
+				switch (event.keyCode) {
+					case 37: // left
+					case 65: // a
+						Bg.dispatch({ worker: "stars", type: "roll-left", state: true });
+						break;
+					case 39: // right
+					case 68: // d
+						Bg.dispatch({ worker: "stars", type: "roll-right", state: true });
+						break;
+					case 38: // up
+					case 87: // w
+						Bg.dispatch({ worker: "stars", type: "climb", state: true });
+						break;
+					case 40: // down
+					case 83: // s
+						Bg.dispatch({ worker: "stars", type: "dive", state: true });
+						break;
+				}
+				break;
+			case "window.keyup":
+				switch (event.keyCode) {
+					case 37: // left
+					case 65: // a
+						Bg.dispatch({ worker: "stars", type: "roll-left", state: false });
+						break;
+					case 39: // right
+					case 68: // d
+						Bg.dispatch({ worker: "stars", type: "roll-right", state: false });
+						break;
+					case 38: // up
+					case 87: // w
+						Bg.dispatch({ worker: "stars", type: "climb", state: false });
+						break;
+					case 40: // down
+					case 83: // s
+						Bg.dispatch({ worker: "stars", type: "dive", state: false });
+						break;
+				}
+				break;
+
 			// custom events
 			case "some-event":
 				break;

@@ -30,6 +30,8 @@ const elite = {
 			// system events
 			case "window.init":
 				break;
+			case "window.keyup":
+			case "window.keydown":
 			case "window.keystroke":
 				// forward events
 				Cockpit.dispatch(event);
