@@ -30,7 +30,7 @@
 		},
 		"_3d": {
 			"textures": {
-				"base": "~/img/textures/sun_detailed.png"
+				"base": "~/img/textures/sun.jpg"
 			}
 		}
 	},

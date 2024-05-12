@@ -49,10 +49,8 @@ let Game = {
 		switch (event.type) {
 			// subscribed events
 			case "bank-ready":
-
-				// must come after "hud"
+				// must come after "fpsControl"
 				Star.init();
-
 				// initiate hologram scene
 				Self.dispatch({ type: "setup-scene" });
 				break;
@@ -63,32 +61,10 @@ let Game = {
 				break;
 			case "setup-scene":
 				let scene = new THREE.Scene(),
-					camera = new THREE.PerspectiveCamera(45, 2, 1, 1000),
+					camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.05, 5 * Math.pow(10, 13)),
 					light = new THREE.PointLight(0xffffff, 20, 0, 0);
-				// camera settings
-				camera.position.set(0, 0, 20);
-				camera.lookAt(0, 0, 0);
-				camera.add(light);
-				scene.add(camera);
-				// canvas element
-				let cvs = Self.els.cvs[0];
-				let ctx = cvs.getContext("2d");
-				// camera aspect
-				camera.aspect = cvs.width / cvs.height;
-				camera.updateProjectionMatrix();
-				// setup model
-				let geo = new THREE.SphereGeometry(.5);
-				let mat = new THREE.MeshPhongMaterial({ color: 0x993300 });
-				let mesh = new THREE.Mesh(geo, mat);
-				scene.add(mesh);
 
-				// temporary tick function
-				let tick = () => {
-						// mesh.rotation.y -= 0.01;
-						// mesh.rotation.x += 0.02;
-					};
-				
-				Self.dispatch({ type: "register-set", set: { scene, camera, tick, cvs, ctx } });
+				console.log( Star );
 				break;
 		}
 	}
