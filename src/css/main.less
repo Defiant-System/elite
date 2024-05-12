@@ -1,4 +1,7 @@
 
+@hudAnim: 500ms;
+
+
 background: #000;
 overflow: visible;
 
@@ -11,14 +14,63 @@ content {
 	border-radius: inherit;
 	background: linear-gradient(180deg, #ff00ff2a, transparent 30%, transparent 60%, #0000ff2f);
 
-	&[data-show="start"] {
+	&[data-status="start"] {
 		.start-view {
 			opacity: 1;
 			visibility: visible;
 		}
+
+		.cockpit-view {
+			.scope {
+				opacity: 0;
+			}
+
+			.hud {
+				.scanner {
+					transform: translateY(23px) rotateX(37deg);
+
+					.compass {
+						opacity: 0;
+					}
+
+					.heat-gage,
+					.speed-gage {
+						transform: translateY(-7px);
+					}
+				}
+
+				.hologram {
+					&:before {
+						opacity: .2;
+						transform: translateY(23px);
+					}
+
+					canvas {
+						transform: translateY(21px);
+					}
+
+					.gage {
+						opacity: 0;
+						transition-duration: @hudAnim * .5;
+					}
+
+					.ring-1 {
+						transform: translateY(31px);
+					}
+
+					.ring-2 {
+						transform: translateY(23px);
+					}
+
+					.base-2 {
+						transform: translateY(7px);
+					}
+				}
+			}
+		}
 	}
 
-	&[data-show="space"] {
+	&[data-status="space"] {
 		.start-view {
 			display: none;
 		}
@@ -116,7 +168,6 @@ content {
 
 		.front-view {
 			display: block;
-			// notthing to declare (!?)
 		}
 
 		canvas.game-cvs {
@@ -134,6 +185,7 @@ content {
 			right: 0;
 			bottom: 0;
 			background: url(~/icons/cockpit-scope.png) 50% -31px/cover no-repeat;
+			opacity: 1;
 		}
 
 		.hud {
@@ -156,20 +208,9 @@ content {
 				background: url(~/icons/scanner-base.png) no-repeat;
 				background-position: -312px -476px;
 				perspective: 500px;
-
-				// &:before {
-				// 	content: "";
-				// 	position: absolute;
-				// 	top: -72px;
-				// 	left: 3px;
-				// 	width: 210px;
-				// 	height: 229px;
-				// 	transform-style: preserve-3d;
-				// 	transform: rotateX(63deg);
-				// 	border-radius: 50%;
-				// 	background: radial-gradient(ellipse at center, #131, #010 50%);
-				// 	mix-blend-mode: overlay;
-				// }
+				transform: translateY(0px) rotateX(0deg);
+				transform-origin: 50% 100%;
+				transition: transform @hudAnim ease-in-out;
 
 				.compass {
 					position: absolute;
@@ -181,6 +222,8 @@ content {
 					background-repeat: no-repeat;
 					background-image: url(~/icons/hud-compass.png);
 					background-position: -262px -462px;
+					opacity: 1;
+					transition: opacity @hudAnim ease-in-out;
 				}
 
 				canvas {
@@ -188,6 +231,8 @@ content {
 					top: -43px;
 					left: 0;
 					z-index: 2;
+					transform: translateY(0px);
+					transition: transform @hudAnim ease-in-out;
 				}
 
 				.heat-gage {
@@ -201,6 +246,8 @@ content {
 					background-image: url(~/icons/scanner-heat-bg.png);
 					background-size: 0 0;
 					background-position: -278px -499px;
+					transform: translateY(0px);
+					transition: transform @hudAnim ease-in-out;
 					--val: 0;
 
 					&:before,
@@ -248,6 +295,8 @@ content {
 					background-repeat: no-repeat;
 					background-image: url(~/icons/scanner-speed-bg.png);
 					background-position: -471px -499px;
+					transform: translateY(0px);
+					transition: transform @hudAnim ease-in-out;
 
 					.rec {
 						position: absolute;
@@ -324,6 +373,8 @@ content {
 					top: -100px;
 					left: -5px;
 					z-index: 2;
+					transform: translateY(0px);
+					transition: transform (@hudAnim * 1.75) ease-in-out;
 				}
 
 				&:before {
@@ -335,6 +386,9 @@ content {
 					height: 37px;
 					background: radial-gradient(ellipse at center, var( --color ), transparent 70%);
 					opacity: .25;
+					transform: translateY(0px);
+					transition: opacity @hudAnim ease-in-out,
+								transform @hudAnim ease-in-out;
 				}
 
 				&.target {
@@ -380,6 +434,8 @@ content {
 					// background-color: rgba(#fff,.1);
 					background-image: url(~/icons/holo-gage-left.png);
 					background-position: -128px -530px;
+					opacity: 1;
+					transition: opacity (@hudAnim * 1.5) ease-in-out;
 				}
 
 				.ring-1 {
@@ -391,6 +447,8 @@ content {
 					// background-color: rgba(#fff,.1);
 					background-image: url(~/icons/holo-ring-1.png);
 					background-position: -129px -507px;
+					transform: translateY(0px);
+					transition: transform @hudAnim ease-in-out;
 				}
 
 				.ring-2 {
@@ -402,6 +460,8 @@ content {
 					// background-color: rgba(#fff,.1);
 					background-image: url(~/icons/holo-ring-2.png);
 					background-position: -129px -511px;
+					transform: translateY(0px);
+					transition: transform @hudAnim ease-in-out;
 				}
 
 				.base-2 {
@@ -413,6 +473,8 @@ content {
 					// background-color: rgba(#fff,.1);
 					background-image: url(~/icons/holo-base-2.png);
 					background-position: -129px -556px;
+					transform: translateY(0px);
+					transition: transform @hudAnim ease-in-out;
 				}
 
 				.base-1 {

@@ -4,9 +4,11 @@ let Cockpit = {
 		// fast references
 		this.els = {
 			el: window.find(".cockpit-view"),
+			content: window.find("content"),
 		};
 		// save states here
 		this.state = {
+			"status": "start",
 			"super-cruise": false,
 		};
 	},
@@ -14,11 +16,23 @@ let Cockpit = {
 		let APP = elite,
 			Self = Cockpit,
 			show,
+			value,
 			el;
 		switch (event.type) {
 			// system events
 			case "window.keystroke":
+				// console.log(event);
 				switch (event.keyCode) {
+					case 27: // esc
+						if (Self.state.status === "start") {
+							Self.state.status = "space";
+							Self.els.content.data({ status: Self.state.status });
+						} else  {
+							Self.state.status = "start";
+							Self.els.content.data({ status: Self.state.status });
+						}
+						break;
+
 					case 37: // left
 					case 65: // a
 						Bg.dispatch({ worker: "stars", type: "roll-left" });
@@ -82,7 +96,6 @@ let Cockpit = {
 						}
 						break;
 				}
-				// console.log(event);
 				break;
 			// custom events
 			case "some-event":
