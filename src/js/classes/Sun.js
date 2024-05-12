@@ -13,6 +13,8 @@ class Sun extends CelestialObject {
 		this._threeRadius = this.createThreeRadius();
 		this._surface = this.createSurface(data._3d.textures.base, data._3d.textures.topo);
 		this._threeObject = this.createGeometry(this._surface);
+
+		// this._label = new THREE.Sprite(labelMaterial);
 	}
 
 	/**
@@ -39,6 +41,32 @@ class Sun extends CelestialObject {
 		}
 	}
 
+	createLabelSprite() {
+		let cvs = document.createElement("canvas");
+		let ctx = cvs.getContext("2d");
+
+		let fontSize = 18;
+
+		ctx.font = `Bold ${fontSize}px Arial`;
+		ctx.fillStyle = "#f00";
+		ctx.strokeStyle = "#fff";
+
+		let textWidth = ctx.measureText(this._name).width;
+
+		cvs.width = textWidth;
+		cvs.height = 18;
+		ctx.fillText(this._name, 0, 0);
+
+		let map = new THREE.Texture(cvs);
+		map.needsUpdate = true;
+
+		let spriteMaterial = new THREE.SpriteMaterial({ map });
+		let sprite = new THREE.Sprite(spriteMaterial);
+		sprite.scale.set(1, 1, 1);
+
+		return sprite;  
+	}
+
 	createThreeDiameter() {
 		return this._diameter * Constants.CELESTIAL_SCALE;
 	}
@@ -55,6 +83,9 @@ class Sun extends CelestialObject {
 		let lightDistanceStrength = Constants.DISTANCE_TO_KUIPER_BELT * Constants.UNIVERSE_SCALE;
 		let lightDecayRate = 0.6;
 		let sunLight = new THREE.PointLight(lightColor, intesity, lightDistanceStrength, lightDecayRate);
+
+		let labelSprite = this.createLabelSprite();
+		mesh.add(labelSprite);
 
 		mesh.rotation.x = 90 * Constants.DEGREES_TO_RADIANS_RATIO;
 		mesh.add(sunLight);
