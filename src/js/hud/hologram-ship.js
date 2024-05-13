@@ -32,8 +32,10 @@
 				camera.add(light);
 				scene.add(camera);
 				// setup model
-				let mesh = Bank.clone("cobra");
+				let { mesh, color } = Bank.clone("cobra");
 				scene.add(mesh);
+				// hologram outline color (with transparency)
+				Self.els.cvs.css({ "--color": `#${color.toString(16)}77` });
 				// canvas element
 				let cvs = Self.els.cvs[0];
 				let ctx = cvs.getContext("2d");

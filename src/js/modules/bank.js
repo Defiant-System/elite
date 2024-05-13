@@ -2,10 +2,10 @@
 let Bank = (() => {
 
 	let ships = [
-			{ color: 0x003300, lines: 0x00aa00, opacity: .80, id: "cobra", path: "~/3d/cobra-mk3.obj" },
-			{ color: 0xcc0066, lines: 0xcc1188, opacity: .25, id: "thargoid", path: "~/3d/thargoid.obj" },
-			{ color: 0xcc6600, lines: 0xcc7700, opacity: .25, id: "coriolis", path: "~/3d/coriolis.obj" },
-			{ color: 0xcc6600, lines: 0xff9900, opacity: .25, id: "canister", path: "~/3d/canister.obj" },
+			{ color: 0x55bb55, id: "cobra", path: "~/3d/cobra-mk3.obj" },
+			{ color: 0xcc0066, id: "thargoid", path: "~/3d/thargoid.obj" },
+			{ color: 0xcc6600, id: "coriolis", path: "~/3d/coriolis.obj" },
+			{ color: 0xcc6600, id: "canister", path: "~/3d/canister.obj" },
 		];
 
 	let emblems = [
@@ -26,17 +26,10 @@ let Bank = (() => {
 			let org = this.vault[id];
 			if (org.svg) return org.obj3d.clone();
 
-			let obj3d = org.obj3d.clone(),
-				mesh = obj3d.children[0].children[0];
-			// set mesh color
-			mesh.material.color.setHex(this.vault[id].color);
-			// wireframe
-			let geo = new THREE.EdgesGeometry(mesh.geometry);
-			let mat = new THREE.LineBasicMaterial({ color: this.vault[id].lines });
-			let wireframe = new THREE.LineSegments(geo, mat);
-			obj3d.add(wireframe);
+			let mesh = org.obj3d.clone(),
+				color = org.color;
 
-			return obj3d;
+			return { mesh, color };
 		},
 		dispatch(event) {
 			let Self = Bank,
@@ -49,17 +42,11 @@ let Bank = (() => {
 					// get next item to load
 					item = ships.pop();
 
-					let material = new THREE.MeshPhongMaterial({
-							color: item.color,
-							opacity: item.opacity,
-							transparent: true,
-						});
-
 					// start loading
 					loader.load(item.path, object => {
 						object.traverse(child => {
 							if (child.isMesh) {
-								child.material = material;
+								child.material = Self.createHologramMaterial(item.color);
 							}
 						});
 						// group item
@@ -122,6 +109,61 @@ let Bank = (() => {
 					});
 					break;
 			}
+		},
+		createHologramMaterial(color) {
+			// hologram material
+			return new THREE.ShaderMaterial({
+				uniforms: {
+					uFresnelColor: { value: new THREE.Color(color) },
+					uBaseColor: { value: new THREE.Color(0x000000) },
+					uFresnelAmt : { value: .45 },
+					uFresnelOffset: { value: 0.05 },
+					uFresnelIntensity: { value: 1.5 },
+					uFresnelAlpha: { value: 1 },
+				},
+				vertexShader: `
+					out vec3 vView;
+					out vec3 vNormal;
+
+					void main() {
+						vec3 objectPosition = ( modelMatrix * vec4( position, 1.0 ) ).xyz; // object space coordinates
+						vView = normalize( cameraPosition - objectPosition ); // view direction in object space
+						vNormal = normalize( ( modelMatrix * vec4( normal, 0.0 ) ).xyz ); // normalized object space normals
+						gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+					}
+				`,
+				fragmentShader: `
+					uniform vec3 uFresnelColor;
+					uniform vec3 uBaseColor;
+					uniform float uFresnelAmt;
+					uniform float uFresnelOffset;
+					uniform float uFresnelIntensity;
+					uniform float uFresnelAlpha;
+
+					in vec3 vView;
+					in vec3 vNormal;
+
+					float lambertLighting( vec3 normal, vec3 viewDirection ) {
+						return max( dot( normal, viewDirection ), 0.0 );
+					}
+
+					float fresnelFunc( float amount, float offset, vec3 normal, vec3 view) {
+						return offset + ( 1.0 - offset ) * pow( 1.0 - dot( normal , view ), amount );
+					}
+
+					void main() {
+						// fresnel color
+						float fresnel = fresnelFunc( uFresnelAmt, uFresnelOffset, vNormal, vView );
+						vec3 fresnelColor = ( uFresnelColor * fresnel ) * uFresnelIntensity;
+						// lambert color
+						float diffuse = lambertLighting( vNormal, vView );
+						vec3 diffuseColor = uBaseColor * diffuse;
+						vec3 finalColor = mix( diffuseColor, fresnelColor, fresnel * uFresnelAlpha );
+						float alpha =  1.0;
+						gl_FragColor = vec4( finalColor, 1.0 );
+					}
+				`
+			});
 		}
 	};
 

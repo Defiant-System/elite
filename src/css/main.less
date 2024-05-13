@@ -41,7 +41,7 @@ content {
 					}
 
 					.speed-gage {
-						transform: translateY(-7px);
+						transform: translateY(0px);
 					}
 				}
 
@@ -254,6 +254,7 @@ content {
 		}
 
 		.crosshair {
+			// display: none;
 			// background-color: rgba(#fff,.1);
 			position: absolute;
 			top: 308px;
@@ -311,21 +312,21 @@ content {
 
 			h4 {
 				position: absolute;
-				top: 5px;
+				top: 7px;
 				left: 50%;
 				padding: 0 0 0 7px;
 				color: #393;
-				font-size: 10px;
+				font-size: 11px;
 				white-space: nowrap;
 			}
 
 			h5 {
 				position: absolute;
-				top: 17px;
+				top: 19px;
 				left: 50%;
 				padding: 0 0 0 7px;
 				color: #171;
-				font-size: 10px;
+				font-size: 11px;
 				white-space: nowrap;
 			}
 		}
@@ -441,7 +442,7 @@ content {
 					background-repeat: no-repeat;
 					background-image: url(~/icons/scanner-speed-bg.png);
 					background-position: -471px -499px;
-					transform: translateY(0px);
+					transform: translateY(-7px);
 					transition: transform @hudAnim ease-in-out;
 
 					.rec {
@@ -516,10 +517,10 @@ content {
 
 				canvas {
 					position: absolute;
-					top: -100px;
-					left: -5px;
+					top: -91px;
+					left: 5px;
 					z-index: 2;
-					transform: translateY(21px);
+					transform: translateY(29px);
 					transition: transform (@hudAnim * 1.75) ease-in-out;
 				}
 
@@ -539,27 +540,27 @@ content {
 
 				&.target {
 					left: 113px;
-					--color: #f90;
+					--color: #ff9900aa;
 					// transform: rotate(-2deg);
 
 					canvas {
-						filter: drop-shadow(1px 0 0 #ff9900aa)
-								drop-shadow(-1px 0 0 #ff9900aa)
-								drop-shadow(0 -1px 0 #ff9900aa)
-								drop-shadow(0 1px 0 #ff9900aa);
+						filter: drop-shadow(1px 0 0 var( --color ))
+								drop-shadow(-1px 0 0 var( --color ))
+								drop-shadow(0 -1px 0 var( --color ))
+								drop-shadow(0 1px 0 var( --color ));
 					}
 				}
 
 				&.ship {
 					right: 113px;
-					--color: #3a3;
+					--color: #11ee1199;
 					// transform: rotate(2deg);
 
 					canvas {
-						filter: drop-shadow(1px 0 0 #11ee1199)
-								drop-shadow(-1px 0 0 #11ee1199)
-								drop-shadow(0 -1px 0 #11ee1199)
-								drop-shadow(0 1px 0 #11ee1199);
+						filter: drop-shadow(1px 0 0 var( --color ))
+								drop-shadow(-1px 0 0 var( --color ))
+								drop-shadow(0 -1px 0 var( --color ))
+								drop-shadow(0 1px 0 var( --color ));
 					}
 
 					.gage {

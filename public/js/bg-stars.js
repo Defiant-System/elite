@@ -5,7 +5,7 @@ let Stars = {
 		this.TAU = Math.PI * 2;
 
 		// ship speed
-		this.speed = .25;
+		this.speed = .2;
 
 		this.inertia = 5;
 		this.stars = {
