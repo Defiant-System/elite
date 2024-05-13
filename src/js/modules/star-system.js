@@ -1,5 +1,6 @@
 
 @import "./constants.js"
+@import "../classes/Orbit.js"
 @import "../classes/CelestialObject.js"
 @import "../classes/Sun.js"
 @import "../classes/Planet.js"
@@ -50,6 +51,8 @@ let Star = {
 	dispatch(event) {
 		let APP = elite,
 			Self = Star,
+			scene, camera, light, sphere,
+			cvs, ctx, tick,
 			el;
 		switch (event.type) {
 			// custom events
@@ -57,7 +60,7 @@ let Star = {
 				let sun = new Sun(event.data.parent),
 					planets = event.data.planets.map(data => new Planet(data, sun));
 
-				this.system = { sun, planets };
+				Self.system = { sun, planets };
 
 				// emit events
 				window.emit("star-system-ready");
@@ -90,10 +93,47 @@ let Star = {
 				Self.sets.push(event.set);
 				break;
 			case "render-system-map":
-				let scene = new THREE.Scene(),
-					camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 10, 500),
-					light = new THREE.PointLight(0x666666, 20, 0, 0),
-					sphere = Star.system.sun.threeObject.clone();
+				Self.dispatch({ type: "add-sun" });
+				// Self.dispatch({ type: "add-planet" });
+				break;
+
+			case "add-sun":
+				scene = new THREE.Scene();
+				camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 10, 500);
+				light = new THREE.PointLight(0x666666, 20, 0, 0);
+				sphere = Star.system.sun.threeObject.clone();
+				// camera settings
+				camera.position.set(0, 0, 100);
+				camera.lookAt(0, 0, 0);
+				camera.add(light);
+				scene.add(camera);
+				
+				// scale down star
+				sphere.scale.set(.175, .175, .175);
+				// position star
+				sphere.position.set(-30, 0, 0);
+				// position star
+				sphere.rotation.set(.125, 0, 0);
+				// add sun to scene
+				scene.add(sphere);
+
+				// canvas element
+				cvs = Self.els.cvs[0];
+				ctx = cvs.getContext("2d");
+				// camera aspect
+				camera.aspect = cvs.width / cvs.height;
+				camera.updateProjectionMatrix();
+
+				// temporary tick function
+				tick = () => { sphere.rotation.z -= 0.0025 };
+				
+				Self.dispatch({ type: "register-celestial", set: { scene, camera, tick, cvs, ctx } });
+				break;
+			case "add-planet":
+				scene = new THREE.Scene();
+				camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 10, 500);
+				light = new THREE.PointLight(0x666666, 20, 0, 0);
+				sphere = Self.system.planets[2].threeObject.clone();
 				// camera settings
 				camera.position.set(0, 0, 300);
 				camera.lookAt(0, 0, 0);
@@ -101,23 +141,23 @@ let Star = {
 				scene.add(camera);
 				
 				// scale down star
-				sphere.scale.set(.5, .5, .5);
-
-				sphere.position.set(-90, 0, 0);
+				sphere.scale.set(35, 35, 35);
+				// position star
+				sphere.position.set(10, 0, 0);
+				// position star
+				sphere.rotation.set(.5, .5, 0);
 				// add sun to scene
 				scene.add(sphere);
 
 				// canvas element
-				let cvs = Self.els.cvs[0];
-				let ctx = cvs.getContext("2d");
+				cvs = Self.els.cvs[0];
+				ctx = cvs.getContext("2d");
 				// camera aspect
 				camera.aspect = cvs.width / cvs.height;
 				camera.updateProjectionMatrix();
 
 				// temporary tick function
-				let tick = () => {
-						sphere.rotation.z += 0.005
-					};
+				tick = () => { sphere.rotation.z += 0.005 };
 				
 				Self.dispatch({ type: "register-celestial", set: { scene, camera, tick, cvs, ctx } });
 				break;

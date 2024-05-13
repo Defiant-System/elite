@@ -61,7 +61,7 @@
 			"_3d": {
 				"textures": {
 					"base": "~/img/textures/mercury.jpg",
-					"topo": "~/img/textures/mercury_topo.jpg"
+					"topo": null
 				}
 			}
 		},
@@ -91,7 +91,7 @@
 			"_3d": {
 				"textures": {
 					"base": "~/img/textures/venus.jpg",
-					"topo": "~/img/textures/venus_topo.jpg"
+					"topo": null
 				}
 			}
 		},
@@ -133,8 +133,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				}
@@ -148,10 +148,8 @@
 			],
 			"_3d": {
 				"textures": {
-					"base": "~/img/textures/earth_4k.jpg",
-					"topo": "~/img/textures/earth_topo_4k.jpg",
-					"specular": "~/img/textures/earth_ocean_reflectance_10k.jpg",
-					"clouds": "~/img/textures/earth_clouds_active2.png"
+					"base": "~/img/textures/earth.jpg",
+					"topo": null
 				}
 			}
 		},
@@ -194,8 +192,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -215,16 +213,15 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				}
 			],
 			"_3d": {
 				"textures": {
-					"base": "~/img/textures/mars.jpg",
-					"topo": "~/img/textures/mars_topo.jpg"
+					"base": "~/img/textures/mars.jpg"
 				}
 			}
 		},
@@ -337,8 +334,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -358,8 +355,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -379,8 +376,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -400,8 +397,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -421,8 +418,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -442,8 +439,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -463,8 +460,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -484,8 +481,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -505,8 +502,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -526,8 +523,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -547,8 +544,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -568,8 +565,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -589,8 +586,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -610,8 +607,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -631,8 +628,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -652,8 +649,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -673,8 +670,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -694,8 +691,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -715,8 +712,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -736,8 +733,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -757,8 +754,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -778,8 +775,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -799,8 +796,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -820,8 +817,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -841,8 +838,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -862,8 +859,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -883,8 +880,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				}
@@ -941,8 +938,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -962,8 +959,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -983,8 +980,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1004,8 +1001,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1025,8 +1022,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1046,8 +1043,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1088,8 +1085,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1109,8 +1106,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1193,8 +1190,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1235,8 +1232,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1256,8 +1253,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1277,8 +1274,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1298,8 +1295,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1319,8 +1316,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1340,8 +1337,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1361,8 +1358,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1382,8 +1379,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1403,8 +1400,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1424,8 +1421,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1445,8 +1442,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1466,8 +1463,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1487,8 +1484,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				}
@@ -1538,8 +1535,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1559,8 +1556,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1580,8 +1577,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1601,8 +1598,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1622,8 +1619,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1643,8 +1640,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1664,8 +1661,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1685,8 +1682,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1706,8 +1703,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1727,8 +1724,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1748,8 +1745,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1769,8 +1766,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1790,8 +1787,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1811,8 +1808,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1832,8 +1829,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1853,8 +1850,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1874,8 +1871,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1895,8 +1892,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1916,8 +1913,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1937,8 +1934,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1958,8 +1955,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -1979,8 +1976,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -2000,8 +1997,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -2021,8 +2018,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -2042,8 +2039,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				}
@@ -2093,8 +2090,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -2114,8 +2111,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -2135,8 +2132,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -2156,8 +2153,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -2177,8 +2174,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -2198,8 +2195,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -2219,8 +2216,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -2240,8 +2237,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -2261,8 +2258,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -2282,8 +2279,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -2303,8 +2300,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -2324,8 +2321,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -2345,8 +2342,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				}
@@ -2396,8 +2393,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -2417,8 +2414,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -2438,8 +2435,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -2459,8 +2456,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -2480,8 +2477,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				}
@@ -2587,8 +2584,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				},
@@ -2608,8 +2605,8 @@
 					},
 					"_3d": {
 						"textures": {
-							"base": "~/img/textures/earth/satellites/moon_1k.jpg",
-							"topo": "~/img/textures/earth/satellites/moon_topo_1k.jpg"
+							"base": "~/img/textures/earth/satellites/moon.jpg",
+							"topo": null
 						}
 					}
 				}
