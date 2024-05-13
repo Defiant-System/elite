@@ -83,6 +83,13 @@ content {
 		}
 	}
 
+	&[data-status="system-map"] {
+		.system-map {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+
 	&[data-status="pause"] {
 		.pause-view {
 			opacity: 1;
@@ -142,6 +149,143 @@ content {
 		top: 0;
 		left: 0;
 		pointer-events: none;
+	}
+
+	.system-map {
+		opacity: 0;
+		visibility: hidden;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 2;
+		background: #000;
+		background-image: repeating-linear-gradient(90deg, hsla(69,0%,61%,0.05) 0px, hsla(69,0%,61%,0.05) 1px,transparent 1px, transparent 104px),
+						repeating-linear-gradient(0deg, hsla(69,0%,61%,0.05) 0px, hsla(69,0%,61%,0.05) 1px,transparent 1px, transparent 104px),
+						repeating-linear-gradient(0deg, hsla(69,0%,61%,0.08) 0px, hsla(69,0%,61%,0.08) 1px,transparent 1px, transparent 13px),
+						repeating-linear-gradient(90deg, hsla(69,0%,61%,0.08) 0px, hsla(69,0%,61%,0.08) 1px,transparent 1px, transparent 13px);
+
+
+		.sidebar {
+			position: absolute;
+			top: 17px;
+			bottom: 17px;
+			left: 17px;
+			width: 257px;
+			border-radius: 6px;
+			background: rgba(#000,.45);
+			backdrop-filter: blur(5px);
+			box-shadow: 0 2px 5px rgba(#000,.35);
+			padding: 11px;
+			color: #eee;
+			font-size: 11px;
+			text-shadow: 0 1px 0 rgba(#000,.25);
+			text-transform: uppercase;
+
+			.cart-head {
+				padding: 5px 0 17px;
+				display: flex;
+
+				.unicart-logo {
+					position: relative;
+					padding-left: 37px;
+					width: 68%;
+
+					i.icon-uni-cart-logo {
+						position: absolute;
+						top: -3px;
+						left: -1px;
+						width: 31px;
+						height: 31px;
+						background: url(~/icons/icon-unicart-logo.png) 50% 50%/contain no-repeat;
+					}
+
+					h4 {
+						font-size: 15px;
+						letter-spacing: 3.6px;
+					}
+
+					h3 {
+						letter-spacing: 1px;
+						font-size: 12px;
+					}
+				}
+
+				.game-date {
+					position: relative;
+					font-size: 12px;
+					padding-top: 1px;
+					flex: 1;
+
+					&:before {
+						content: "";
+						position: absolute;
+						top: -2px;
+						bottom: -2px;
+						left: -3px;
+						border-left: 2px solid #141;
+					}
+
+					span {
+						display: block;
+						text-align: right;
+
+						&:nth-child(1) {
+							font-weight: 700;
+							height: 14px;
+						}
+
+						&:nth-child(2) {
+							opacity: .65;
+						}
+					}
+				}
+			}
+
+			.cart-body {
+				
+			}
+
+			h2 {
+				color: #5d5;
+				border-top: 2px solid #141;
+				border-bottom: 2px solid #141;
+				padding: 6px 0 5px;
+				margin-bottom: 11px;
+				font-size: 12px;
+
+				&:not(:first-child) {
+					margin-top: 23px;
+				}
+			}
+
+			.row {
+				margin: 3px 0 7px;
+				display: flex;
+
+				span {
+					&:nth-child(1) {
+						width: 63%;
+						text-align: right;
+						opacity: .65;
+
+						&:after {
+							content: ":";
+						}
+					}
+
+					&:nth-child(2) {
+						flex: 1;
+						padding-left: 3px;
+					}
+				}
+			}
+
+			.summary {
+				text-align: left;
+			}
+		}
 	}
 
 	.start-view {

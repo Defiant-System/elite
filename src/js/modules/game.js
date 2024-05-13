@@ -98,7 +98,7 @@ let Game = {
 						Star.system.sun.threeObject.rotation.z += 0.005
 					};
 				
-				// Self.dispatch({ type: "register-set", set: { scene, camera, tick, cvs, ctx } });
+				Self.dispatch({ type: "register-set", set: { scene, camera, tick, cvs, ctx } });
 				break;
 		}
 	}
