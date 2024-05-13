@@ -231,24 +231,35 @@ content {
 			&:after {
 				content: "";
 				position: absolute;
-				top: 0;
-				left: 27px;
-				height: 2px;
-				width: 150%;
+				top: 29px;
+				left: 1px;
+				width: 2px;
+				height: 4px;
+				background: #393;
 				opacity: .45;
-				background: linear-gradient(90deg, #393, transparent);
 			}
 
 			h3 {
 				position: absolute;
-				top: -17px;
-				left: 50%;
+				top: -14px;
+				left: 27px;
 				padding: 0 0 0 3px;
 				color: #393;
 				font-size: 14px;
 				white-space: nowrap;
 				text-shadow: none;
 				text-transform: uppercase;
+
+				&:after {
+					content: "";
+					position: absolute;
+					bottom: -2px;
+					left: 0;
+					height: 2px;
+					width: 100%;
+					opacity: .45;
+					background: linear-gradient(90deg, #393, #393 37%, transparent);
+				}
 			}
 
 			h4 {
