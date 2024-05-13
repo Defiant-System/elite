@@ -3,6 +3,7 @@ let Game = {
 	init() {
 		// fast references
 		this.els = {
+			content: window.find("content"),
 			cvs: window.find(".main-cvs"),
 		}
 		// reset canvas
@@ -48,6 +49,20 @@ let Game = {
 			Self = Game,
 			el;
 		switch (event.type) {
+			// "super" events
+			case "game-resume":
+				// resume background worker
+				Bg.dispatch({ worker: "stars", type: "resume" });
+				Self.fpsControl.start();
+				Self.els.content.data({ status: "start" });
+				break;
+			case "game-pause":
+				// resume background worker
+				Bg.dispatch({ worker: "stars", type: "pause" });
+				Self.fpsControl.stop();
+				Self.els.content.data({ status: "pause" });
+				break;
+
 			// subscribed events
 			case "star-system-ready":
 				// initiate hologram scene
@@ -83,7 +98,7 @@ let Game = {
 						Star.system.sun.threeObject.rotation.z += 0.005
 					};
 				
-				Self.dispatch({ type: "register-set", set: { scene, camera, tick, cvs, ctx } });
+				// Self.dispatch({ type: "register-set", set: { scene, camera, tick, cvs, ctx } });
 				break;
 		}
 	}

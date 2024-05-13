@@ -14,34 +14,29 @@ content {
 	border-radius: inherit;
 	background: linear-gradient(180deg, #ff00ff2a, transparent 30%, transparent 60%, #0000ff2f);
 
-	&[data-status="start"] {
-		.start-view {
-			opacity: 1;
-			visibility: visible;
-		}
-
+	&[data-status="game"] {
 		.cockpit-view {
 			.scope {
-				opacity: 0;
+				opacity: 1;
 			}
 
 			.hud {
 				.scanner {
-					transform: translateY(23px) rotateX(37deg);
+					transform: translateY(0px) rotateX(0deg);
 
 					.compass {
-						opacity: 0;
+						opacity: 1;
 					}
 
 					.heat-gage {
-						transform: translateY(-7px);
+						transform: translateY(0px);
 						
 						&:after {
-							opacity: 0;
+							opacity: 1;
 						}
 						
 						.max {
-							filter: brightness(.5);
+							filter: none;
 						}
 					}
 
@@ -52,38 +47,92 @@ content {
 
 				.hologram {
 					&:before {
-						opacity: .2;
-						transform: translateY(23px);
+						opacity: .25;
+						transform: translateY(0px);
 					}
 
 					canvas {
-						transform: translateY(21px);
+						transform: translateY(0px);
 					}
 
 					.gage {
-						opacity: 0;
-						transition-duration: @hudAnim * .5;
+						opacity: 1;
+						transition-duration: @hudAnim * 1.5;
 					}
 
 					.ring-1 {
-						transform: translateY(31px);
+						transform: translateY(0px);
 					}
 
 					.ring-2 {
-						transform: translateY(23px);
+						transform: translateY(0px);
 					}
 
 					.base-2 {
-						transform: translateY(7px);
+						transform: translateY(0px);
 					}
 				}
 			}
 		}
 	}
 
-	&[data-status="space"] {
+	&[data-status="start"] {
 		.start-view {
-			display: none;
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+
+	&[data-status="pause"] {
+		.pause-view {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+
+	&[data-status="over"] {
+		.over-view {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+
+	.pause-view,
+	.over-view {
+		opacity: 0;
+		visibility: hidden;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 2;
+		text-align: center;
+
+		&:before {
+			content: "";
+			position: absolute;
+			top: 11px;
+			left: 11px;
+			right: 11px;
+			bottom: 11px;
+			border-radius: 4px;
+			background: rgba(#000,.25);
+			backdrop-filter: blur(3px);
+		}
+
+		h3 {
+			position: relative;
+			z-index: 2;
+			margin-top: 153px;
+			font-weight: 400;
+			font-size: 59px;
+			font-family: Righteous, sans-serif;
+			text-transform: uppercase;
+			color: #f0f0ffbb;
+			text-shadow: 0 0 5px #aaaaff99,
+						0 0 17px #1e90ff99,
+						0 0 29px #0000ff99;
 		}
 	}
 
@@ -92,14 +141,12 @@ content {
 		position: absolute;
 		top: 0;
 		left: 0;
-		// width: 100%;
-		// height: 100%;
 		pointer-events: none;
 	}
 
 	.start-view {
-		// opacity: 0;
-		// visibility: hidden;
+		opacity: 0;
+		visibility: hidden;
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -203,7 +250,7 @@ content {
 			right: 0;
 			bottom: 0;
 			background: url(~/icons/cockpit-scope.png) 50% -31px/cover no-repeat;
-			opacity: 1;
+			opacity: 0;
 		}
 
 		.crosshair {
@@ -303,8 +350,8 @@ content {
 				background: url(~/icons/scanner-base.png) no-repeat;
 				background-position: -312px -476px;
 				perspective: 500px;
-				transform: translateY(0px) rotateX(0deg);
 				transform-origin: 50% 100%;
+				transform: translateY(23px) rotateX(37deg);
 				transition: transform @hudAnim ease-in-out;
 
 				.compass {
@@ -317,7 +364,7 @@ content {
 					background-repeat: no-repeat;
 					background-image: url(~/icons/hud-compass.png);
 					background-position: -262px -462px;
-					opacity: 1;
+					opacity: 0;
 					transition: opacity @hudAnim ease-in-out;
 				}
 
@@ -341,7 +388,7 @@ content {
 					background-image: url(~/icons/scanner-heat-bg.png);
 					background-size: 0 0;
 					background-position: -278px -499px;
-					transform: translateY(0px);
+					transform: translateY(-7px);
 					transition: transform @hudAnim ease-in-out;
 					--val: 0;
 
@@ -364,7 +411,7 @@ content {
 					&:after {
 						filter: sepia(1) hue-rotate(75deg) saturate(2.5);
 						clip-path: inset(calc( 100% * calc( 1 - var( --val ) ) ) 0 0 0);
-						opacity: 1;
+						opacity: 0;
 						transition: opacity @hudAnim ease-in-out;
 					}
 
@@ -379,7 +426,7 @@ content {
 						background-image: url(~/icons/scanner-heat-max.png);
 						background-position: -278px -499px;
 						opacity: .65;
-						filter: none;
+						filter: brightness(.5);
 						transition: filter @hudAnim ease-in-out;
 					}
 				}
@@ -472,7 +519,7 @@ content {
 					top: -100px;
 					left: -5px;
 					z-index: 2;
-					transform: translateY(0px);
+					transform: translateY(21px);
 					transition: transform (@hudAnim * 1.75) ease-in-out;
 				}
 
@@ -484,8 +531,8 @@ content {
 					bottom: 51px;
 					height: 37px;
 					background: radial-gradient(ellipse at center, var( --color ), transparent 70%);
-					opacity: .25;
-					transform: translateY(0px);
+					opacity: .2;
+					transform: translateY(23px);
 					transition: opacity @hudAnim ease-in-out,
 								transform @hudAnim ease-in-out;
 				}
@@ -533,8 +580,8 @@ content {
 					// background-color: rgba(#fff,.1);
 					background-image: url(~/icons/holo-gage-left.png);
 					background-position: -128px -530px;
-					opacity: 1;
-					transition: opacity (@hudAnim * 1.5) ease-in-out;
+					opacity: 0;
+					transition: opacity (@hudAnim * .5) ease-in-out;
 				}
 
 				.ring-1 {
@@ -546,7 +593,7 @@ content {
 					// background-color: rgba(#fff,.1);
 					background-image: url(~/icons/holo-ring-1.png);
 					background-position: -129px -507px;
-					transform: translateY(0px);
+					transform: translateY(31px);
 					transition: transform @hudAnim ease-in-out;
 				}
 
@@ -559,7 +606,7 @@ content {
 					// background-color: rgba(#fff,.1);
 					background-image: url(~/icons/holo-ring-2.png);
 					background-position: -129px -511px;
-					transform: translateY(0px);
+					transform: translateY(23px);
 					transition: transform @hudAnim ease-in-out;
 				}
 
@@ -572,7 +619,7 @@ content {
 					// background-color: rgba(#fff,.1);
 					background-image: url(~/icons/holo-base-2.png);
 					background-position: -129px -556px;
-					transform: translateY(0px);
+					transform: translateY(7px);
 					transition: transform @hudAnim ease-in-out;
 				}
 

@@ -5,7 +5,7 @@ let Stars = {
 		this.TAU = Math.PI * 2;
 
 		// ship speed
-		this.speed = .35;
+		this.speed = .25;
 
 		this.inertia = 5;
 		this.stars = {
@@ -17,7 +17,7 @@ let Stars = {
 				z: 0,
 			},
 			min: 0.2,
-			size: 1.5,
+			max: 1.5,
 			threshold: 50,
 			count: 128,
 			list: [],
@@ -38,7 +38,7 @@ let Stars = {
 		switch (event.type) {
 			case "start":
 				Self.cvs = event.canvas;
-				Self.ctx = Self.cvs.getContext("2d", { willReadFrequently: true });
+				Self.ctx = Self.cvs.getContext("2d");
 				Self.width = Self.cvs.width;
 				Self.height = Self.cvs.height;
 				// defaults
@@ -76,7 +76,7 @@ let Stars = {
 				// set view
 				Self.stars.view = event.type.split("-")[1];
 				// set stars velocity
-				Self.stars.velocity = { x: 0, y: 0, z: Self.speed * .0025 };
+				Self.stars.velocity = { x: 0, y: 0, z: Self.speed * .025 };
 				// create star field
 				if (!event.update) Self.dispatch({ type: "create-scene" });
 				break;
@@ -84,7 +84,7 @@ let Stars = {
 				// set view
 				Self.stars.view = event.type.split("-")[1];
 				// set stars velocity
-				Self.stars.velocity = { x: 0, y: 0, z: -Self.speed * .0025 };
+				Self.stars.velocity = { x: 0, y: 0, z: -Self.speed * .025 };
 				// create star field
 				if (!event.update) Self.dispatch({ type: "create-scene" });
 				break;
@@ -133,16 +133,16 @@ let Stars = {
 				Self.dispatch({ type: `view-${Self.stars.view}`, update: true });
 				break;
 			case "roll-left":
-				Self.stars.rotate = event.state ? .5 * (Math.PI / 180) : null;
+				Self.stars.rotate = event.state ? 1.25 * (Math.PI / 180) : null;
 				break;
 			case "roll-right":
-				Self.stars.rotate = event.state ? -.5 * (Math.PI / 180) : null;
+				Self.stars.rotate = event.state ? -1.25 * (Math.PI / 180) : null;
 				break;
 			case "dive":
-				Self.target = event.state ? { x: Self.width >> 1, y: Self.height * 3 } : Self.center;
+				Self.target = event.state ? { x: Self.width >> 1, y: Self.height * 3.5 } : Self.center;
 				break;
 			case "climb":
-				Self.target = event.state ? { x: Self.width >> 1, y: -Self.height * 2 } : Self.center;
+				Self.target = event.state ? { x: Self.width >> 1, y: -Self.height * 2.5 } : Self.center;
 				break;
 			case "set-focal-point":
 				// mostly for dev purposes for now
@@ -152,7 +152,7 @@ let Stars = {
 				Self.stars.list = [...Array(Self.stars.count)].map(s => ({
 						x: Utils.random(0, Self.width),
 						y: Utils.random(0, Self.height),
-						z: Utils.random(Self.stars.min, Self.stars.size),
+						z: Utils.random(Self.stars.min, Self.stars.max),
 					}));
 				break;
 			case "super-cruise-on":
@@ -197,7 +197,7 @@ let Stars = {
 				}
 			};
 		// randomzie
-		star.z = Utils.random(Self.stars.min, Self.stars.size);
+		star.z = Utils.random(Self.stars.min, Self.stars.max);
 		// create star for direction
 		switch (view) {
 			case "front":
@@ -224,6 +224,8 @@ let Stars = {
 	update(Self) {
 		let velocity = Self.stars.velocity,
 			threshold = Self.stars.threshold,
+			fx = Self.focal.x,
+			fy = Self.focal.y,
 			dx = Self.target.x - Self.focal.x,
 			dy = Self.target.y - Self.focal.y;
 
@@ -282,10 +284,17 @@ let Stars = {
 	draw() {
 		let Self = Stars,
 			ctx = Self.ctx,
-			multiplier = Self.stars.view === "back" ? .45 : 0;
+			sMax = Self.stars.max,
+			multiplier = Self.stars.view === "back" ? .45 : 0,
+			now = Date.now();
+
+		// next tick
+		if (!Self.paused) requestAnimationFrame(Self.draw);
+		if (now - Self.then < 50) return;
+		Self.then = now;
 
 		// reset canvas
-		Self.cvs.width = Self.cvs.width;
+		Self.cvs.width = Self.width;
 
 		// update stars
 		Self.update(Self);
@@ -293,8 +302,8 @@ let Stars = {
 		// render
 		Self.stars.list.map(star => {
 			let size = star.z * .85,
-				alpha = (size / Self.stars.size) + multiplier,
-				c = 255 - Math.round((Self.stars.size - size) * 255);
+				alpha = (size / sMax) + multiplier,
+				c = 255 - Math.round((sMax - size) * 255);
 			ctx.beginPath();
 			ctx.fillStyle = `rgba(${c},${c},${c},${alpha})`;
 			ctx.arc(star.x, star.y, size, 0, Self.TAU);
@@ -323,9 +332,6 @@ let Stars = {
 				});
 			ctx.restore();
 		}
-
-		// next tick
-		if (!Self.paused) requestAnimationFrame(Self.draw);
 	}
 };
 

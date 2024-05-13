@@ -25,7 +25,7 @@ let Cockpit = {
 				switch (event.keyCode) {
 					case 27: // esc
 						if (Self.state.status === "start") {
-							Self.state.status = "space";
+							Self.state.status = "game";
 							Self.els.content.data({ status: Self.state.status });
 						} else  {
 							Self.state.status = "start";

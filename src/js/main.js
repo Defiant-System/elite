@@ -10,9 +10,6 @@
 
 const elite = {
 	init() {
-		// fast references
-		this.content = window.find("content");
-		
 		// init objects
 		Bg.init();
 		Game.init();
@@ -32,6 +29,12 @@ const elite = {
 		switch (event.type) {
 			// system events
 			case "window.init":
+				break;
+			case "window.focus":
+				Game.dispatch({ type: "game-resume" });
+				break;
+			case "window.blur":
+				Game.dispatch({ type: "game-pause" });
 				break;
 			case "window.keyup":
 			case "window.keydown":
