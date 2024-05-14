@@ -1,10 +1,11 @@
 
 class CelestialObject {
-	constructor(diameter, mass, gravity, density) {
+	constructor(diameter, mass, gravity, density, chart) {
 		this._diameter = diameter || 1;
 		this._mass = mass || 1;
 		this._gravity = gravity || 1;
 		this._density = density || 1;
+		this._chart = chart || null;
 		this._core = new THREE.Object3D();
 		this._objectCentroid = new THREE.Object3D();
 	}
@@ -27,6 +28,10 @@ class CelestialObject {
 
 	get density() {
 		return this._density;
+	}
+
+	get chart() {
+		return this._chart;
 	}
 
 	get objectCentroid() {

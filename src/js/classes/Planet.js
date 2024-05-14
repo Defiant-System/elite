@@ -1,11 +1,10 @@
 
 class Planet extends CelestialObject {
 	constructor(data, threeParent) {
-		super(data.diameter, data.mass, data.gravity, data.density);
+		super(data.diameter, data.mass, data.gravity, data.density, data.chart);
 		
 		this._id = data.id || null;
 		this._name = data.name || null;
-		this._chart = data.chart || null;
 		this._rotationPeriod = data.rotationPeriod || null;
 		this._lengthOfDay = data.lengthOfDay || null;
 		this._distanceFromParent = data.distanceFromParent || null;
@@ -47,10 +46,6 @@ class Planet extends CelestialObject {
 
 	get name() {
 		return this._name;
-	}
-
-	get chart() {
-		return this._chart;
 	}
 
 	get rotationPeriod() {

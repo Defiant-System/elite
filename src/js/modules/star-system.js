@@ -1,6 +1,7 @@
 
 @import "./constants.js"
 @import "../classes/Orbit.js"
+@import "../classes/RadialRingGeometry.js"
 @import "../classes/CelestialObject.js"
 @import "../classes/Sun.js"
 @import "../classes/Planet.js"
@@ -51,7 +52,7 @@ let Star = {
 	dispatch(event) {
 		let APP = elite,
 			Self = Star,
-			scene, camera, light, sun, planets,
+			scene, camera, light, sun, planets, chart,
 			cvs, ctx, tick,
 			el;
 		switch (event.type) {
@@ -93,34 +94,23 @@ let Star = {
 				camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 10, 500);
 				light = new THREE.PointLight(0x666666, 20, 0, 0);
 				sun = Star.system.sun.threeObject.clone();
+				chart = Star.system.sun.chart;
 				// camera settings
 				camera.position.set(0, 0, 100);
 				camera.lookAt(0, 0, 0);
 				camera.add(light);
 				scene.add(camera);
 
-				// let cData = [
-				// 		{ name: "Mercury", position: -12, scale: 3.75 },
-				// 		{ name: "Venus", position: -6, scale: 2.25 },
-				// 		{ name: "Earth", position: 1, scale: 2.25 },
-				// 		{ name: "Mars", position: 8, scale: 3 },
-				// 		{ name: "Jupiter", position: 16.5, scale: .365 },
-				// 		{ name: "Saturn", position: 27, scale: .35 },
-				// 		{ name: "Uranus", position: 37, scale: .65 },
-				// 		{ name: "Neptune", position: 45.5, scale: .8 },
-				// 		{ name: "Pluto", position: 53, scale: 8 },
-				// 	];
-				
 				// scale down star
-				sun.scale.set(.15, .15, .15);
+				sun.scale.set(chart.scale, chart.scale, chart.scale);
 				// position star
-				sun.position.set(-33, 0, 0);
+				sun.position.set(chart.position, 0, 0);
 				// position star
-				sun.rotation.set(.125, 0, 0);
+				sun.rotation.set(2, 0, 0);
 				// add sun to scene
 				scene.add(sun);
 
-				
+				// system planets
 				Self.system.planets.map((org, i) => {
 					let planet = org.threeObject.clone(),
 						chart = org.chart; // cData[i];

@@ -1,7 +1,7 @@
 
 class Sun extends CelestialObject {
 	constructor(data) {
-		super(data.diameter, data.mass, data.gravity, data.density);
+		super(data.diameter, data.mass, data.gravity, data.density, data.chart);
 
 		this._id = data.id || null;
 		this._name = data.name || null;
