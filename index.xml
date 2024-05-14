@@ -10,10 +10,10 @@
 		<meta name="author" value="Hakan Bilgin" namespace="ant"/>
 		<meta name="license" value="AGPL-3.0"/>
 		<meta name="repository" value="https://github.com/Defiant-System/elite"/>
-		<meta name="width" value="860"/>
+		<meta name="width" value="920"/>
 		<meta name="height" value="620"/>
 		<meta name="top" value="190"/>
-		<meta name="left" value="185"/>
+		<meta name="left" value="125"/>
 		<meta name="minimize"/>
 		<meta name="maximize" value="disabled"/>
 		<meta name="resize" value="disabled"/>

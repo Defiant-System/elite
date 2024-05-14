@@ -40,7 +40,7 @@ let Star = {
 					// clear canvas
 					set.cvs.width = width;
 					// transfer rendered image
-					set.ctx.drawImage(Self.renderer.domElement, 0, 0);
+					set.ctx.drawImage(Self.renderer.domElement, 0, -100);
 				});
 			}
 		});
@@ -92,7 +92,7 @@ let Star = {
 			case "render-system-map":
 				scene = new THREE.Scene();
 				camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 10, 500);
-				light = new THREE.PointLight(0x666666, 20, 0, 0);
+				light = new THREE.PointLight(0x666666, 5, 0, 0);
 				sun = Star.system.sun.threeObject.clone();
 				chart = Star.system.sun.chart;
 				// camera settings
@@ -124,6 +124,12 @@ let Star = {
 					scene.add(planet);
 				});
 
+
+				light = new THREE.PointLight(0xffffff, 1.75, 0, 0);
+				light.position.set(chart.position, 0, 0);
+				light.target = Self.system.planets[0];
+				scene.add(light);
+
 				// canvas element
 				cvs = Self.els.cvs[0];
 				ctx = cvs.getContext("2d");
@@ -133,8 +139,7 @@ let Star = {
 
 				// temporary tick function
 				tick = () => {
-					sun.rotation.y += 0.0015;
-					// planet.rotation.z += 0.0005;
+					sun.rotation.z -= 0.002;
 				};
 				
 				// add set to sets array - to be rendered next tick

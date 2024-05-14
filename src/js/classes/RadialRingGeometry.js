@@ -6,6 +6,7 @@ class RadialRingGeometry {
 		this.thetaSegments = thetaSegments || 8;
 
 		var normal  = new THREE.Vector3(0, 0, 1);
-		
+
+		console.log(123);
 	}
 }

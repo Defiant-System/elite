@@ -167,8 +167,27 @@ content {
 						repeating-linear-gradient(0deg, rgba(#999,.05) 0px, rgba(#999,.05) 1px,transparent 1px, transparent 13px),
 						repeating-linear-gradient(90deg, rgba(#999,.05) 0px, rgba(#999,.05) 1px,transparent 1px, transparent 13px);
 
+		.hover-discs {
+			position: absolute;
+			top: 0;
+			left: 0;
+
+			.sun {
+				position: absolute;
+				top: 85px;
+				left: 42px;
+				width: 266px;
+				height: 250px;
+				border-radius: 50%;
+				mix-blend-mode: screen;
+				background: #620;
+				box-shadow: 0 0 19px rgba(#f93,.5),
+							0 0 31px rgba(#f90,.5);
+			}
+		}
 
 		.sidebar {
+			// display: none;
 			position: absolute;
 			top: 17px;
 			bottom: 17px;
@@ -210,6 +229,7 @@ content {
 					h3 {
 						letter-spacing: 1px;
 						font-size: 12px;
+						opacity: .65;
 					}
 				}
 
@@ -403,7 +423,7 @@ content {
 			// background-color: rgba(#fff,.1);
 			position: absolute;
 			top: 308px;
-			left: 427px;
+			left: 458px;
 			width: 50px;
 			height: 50px;
 			font-family: Rajdhani, sans-serif;
@@ -490,7 +510,7 @@ content {
 			.scanner {
 				position: absolute;
 				top: 0;
-				left: 320px;
+				left: 352px;
 				width: 216px;
 				height: 107px;
 				background: url(~/icons/scanner-base.png) no-repeat;
@@ -684,7 +704,7 @@ content {
 				}
 
 				&.target {
-					left: 113px;
+					left: 153px;
 					--color: #ff9900aa;
 					// transform: rotate(-2deg);
 
@@ -697,7 +717,7 @@ content {
 				}
 
 				&.ship {
-					right: 113px;
+					right: 153px;
 					--color: #11ee1199;
 					// transform: rotate(2deg);
 

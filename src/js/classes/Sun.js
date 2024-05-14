@@ -51,7 +51,7 @@ class Sun extends CelestialObject {
 		let geometry = new THREE.SphereGeometry(this._threeRadius, 84, 42);
 		let mesh = new THREE.Mesh(geometry, surface);
 		let lightColor = 0xffffff;
-		let intesity = 1;
+		let intesity = 5;
 		let lightDistanceStrength = Constants.DISTANCE_TO_KUIPER_BELT * Constants.UNIVERSE_SCALE;
 		let lightDecayRate = 0.6;
 		let sunLight = new THREE.PointLight(lightColor, intesity, lightDistanceStrength, lightDecayRate);
@@ -69,10 +69,10 @@ class Sun extends CelestialObject {
 
 		return new THREE.MeshPhongMaterial({
 			map: texture,
-			// lightMap: texture,
+			lightMap: texture,
+			// emissive: 0xdd7700,
 			// transparent: true,
-			// opacity: 0.15, // 0.8
-			// shading: THREE.SmoothShading
+			// opacity: 0.5
 		});
 	}
 }
