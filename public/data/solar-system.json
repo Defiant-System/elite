@@ -2,6 +2,10 @@
 	"parent": {
 		"id": "0",
 		"name": "Sun",
+		"chart": {
+			"position": -33,
+			"scale": 0.15
+		},
 		"diameter": 1391016,
 		"mass": 1988500,
 		"gravity": 274,
@@ -38,6 +42,10 @@
 		{
 			"id": 1,
 			"name": "Mercury",
+			"chart": {
+				"position": -12,
+				"scale": 3.75
+			},
 			"diameter": 4879,
 			"mass": 0.330,
 			"gravity": 3.7,
@@ -68,6 +76,10 @@
 		{
 			"id": 2,
 			"name": "Venus",
+			"chart": {
+				"position": -6,
+				"scale": 2.25
+			},
 			"diameter": 12104,
 			"mass": 4.87,
 			"gravity": 8.9,
@@ -99,6 +111,10 @@
 			"id": 3,
 			"name": "Earth",
 			"diameter": 12756,
+			"chart": {
+				"position": 1,
+				"scale": 2.25
+			},
 			"mass": 5.97,
 			"gravity": 9.8,
 			"density": 5514,
@@ -156,6 +172,10 @@
 		{
 			"id": 4,
 			"name": "Mars",
+			"chart": {
+				"position": 8,
+				"scale": 3
+			},
 			"diameter": 6792,
 			"mass": 0.642,
 			"gravity": 3.7,
@@ -228,6 +248,10 @@
 		{
 			"id": 5,
 			"name": "Jupiter",
+			"chart": {
+				"position": 16.5,
+				"scale": 0.365
+			},
 			"diameter": 142984,
 			"mass": 1898,
 			"gravity": 23.1,
@@ -895,6 +919,10 @@
 		{
 			"id": 6,
 			"name": "Saturn",
+			"chart": {
+				"position": 27,
+				"scale": 0.35
+			},
 			"diameter": 120536,
 			"mass": 568,
 			"density": 687,
@@ -1499,6 +1527,10 @@
 		{
 			"id": 7,
 			"name": "Uranus",
+			"chart": {
+				"position": 37,
+				"scale": 0.65
+			},
 			"mass": 86.8,
 			"diameter": 51118,
 			"density": 1271,
@@ -2054,6 +2086,10 @@
 		{
 			"id": 8,
 			"name": "Neptune",
+			"chart": {
+				"position": 45.5,
+				"scale": 0.8
+			},
 			"mass": 102,
 			"diameter": 49528,
 			"density": 1638,
@@ -2357,6 +2393,10 @@
 		{
 			"id": 9,
 			"name": "Pluto",
+			"chart": {
+				"position": 53,
+				"scale": 8
+			},
 			"mass": 102,
 			"diameter": 2374,
 			"density": 1638,

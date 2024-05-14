@@ -51,14 +51,14 @@ let Star = {
 	dispatch(event) {
 		let APP = elite,
 			Self = Star,
-			scene, camera, light, sphere,
+			scene, camera, light, sun, planets,
 			cvs, ctx, tick,
 			el;
 		switch (event.type) {
 			// custom events
 			case "load-star-system":
-				let sun = new Sun(event.data.parent),
-					planets = event.data.planets.map(data => new Planet(data, sun));
+				sun = new Sun(event.data.parent);
+				planets = event.data.planets.map(data => new Planet(data, sun));
 
 				Self.system = { sun, planets };
 
@@ -88,34 +88,51 @@ let Star = {
 				// start game FPS
 				Game.fpsControl.start();
 				break;
-			case "register-celestial":
-				// add set to sets array - to be rendered next tick
-				Self.sets.push(event.set);
-				break;
 			case "render-system-map":
-				Self.dispatch({ type: "add-sun" });
-				// Self.dispatch({ type: "add-planet" });
-				break;
-
-			case "add-sun":
 				scene = new THREE.Scene();
 				camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 10, 500);
 				light = new THREE.PointLight(0x666666, 20, 0, 0);
-				sphere = Star.system.sun.threeObject.clone();
+				sun = Star.system.sun.threeObject.clone();
 				// camera settings
 				camera.position.set(0, 0, 100);
 				camera.lookAt(0, 0, 0);
 				camera.add(light);
 				scene.add(camera);
+
+				// let cData = [
+				// 		{ name: "Mercury", position: -12, scale: 3.75 },
+				// 		{ name: "Venus", position: -6, scale: 2.25 },
+				// 		{ name: "Earth", position: 1, scale: 2.25 },
+				// 		{ name: "Mars", position: 8, scale: 3 },
+				// 		{ name: "Jupiter", position: 16.5, scale: .365 },
+				// 		{ name: "Saturn", position: 27, scale: .35 },
+				// 		{ name: "Uranus", position: 37, scale: .65 },
+				// 		{ name: "Neptune", position: 45.5, scale: .8 },
+				// 		{ name: "Pluto", position: 53, scale: 8 },
+				// 	];
 				
 				// scale down star
-				sphere.scale.set(.175, .175, .175);
+				sun.scale.set(.15, .15, .15);
 				// position star
-				sphere.position.set(-30, 0, 0);
+				sun.position.set(-33, 0, 0);
 				// position star
-				sphere.rotation.set(.125, 0, 0);
+				sun.rotation.set(.125, 0, 0);
 				// add sun to scene
-				scene.add(sphere);
+				scene.add(sun);
+
+				
+				Self.system.planets.map((org, i) => {
+					let planet = org.threeObject.clone(),
+						chart = org.chart; // cData[i];
+					// scale planet
+					planet.scale.set(chart.scale, chart.scale, chart.scale);
+					// position planet
+					planet.position.set(chart.position, 0, 0);
+					// rotate planet
+					planet.rotation.set(2, 0, 0);
+					// add sun to scene
+					scene.add(planet);
+				});
 
 				// canvas element
 				cvs = Self.els.cvs[0];
@@ -125,41 +142,13 @@ let Star = {
 				camera.updateProjectionMatrix();
 
 				// temporary tick function
-				tick = () => { sphere.rotation.z -= 0.0025 };
+				tick = () => {
+					sun.rotation.y += 0.0015;
+					// planet.rotation.z += 0.0005;
+				};
 				
-				Self.dispatch({ type: "register-celestial", set: { scene, camera, tick, cvs, ctx } });
-				break;
-			case "add-planet":
-				scene = new THREE.Scene();
-				camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 10, 500);
-				light = new THREE.PointLight(0x666666, 20, 0, 0);
-				sphere = Self.system.planets[2].threeObject.clone();
-				// camera settings
-				camera.position.set(0, 0, 300);
-				camera.lookAt(0, 0, 0);
-				camera.add(light);
-				scene.add(camera);
-				
-				// scale down star
-				sphere.scale.set(35, 35, 35);
-				// position star
-				sphere.position.set(10, 0, 0);
-				// position star
-				sphere.rotation.set(.5, .5, 0);
-				// add sun to scene
-				scene.add(sphere);
-
-				// canvas element
-				cvs = Self.els.cvs[0];
-				ctx = cvs.getContext("2d");
-				// camera aspect
-				camera.aspect = cvs.width / cvs.height;
-				camera.updateProjectionMatrix();
-
-				// temporary tick function
-				tick = () => { sphere.rotation.z += 0.005 };
-				
-				Self.dispatch({ type: "register-celestial", set: { scene, camera, tick, cvs, ctx } });
+				// add set to sets array - to be rendered next tick
+				Self.sets.push({ scene, camera, tick, cvs, ctx });
 				break;
 		}
 	}

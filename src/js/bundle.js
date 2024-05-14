@@ -11,16 +11,10 @@ THREE_dispose = () => {
 
 
 
-let StarSystem = @import "../../public/data/solar-system.json";
-
-
-
 module.exports = {
 	THREE,
 	THREE_dispose,
 	
 	OBJLoader,
 	SVGLoader,
-
-	StarSystem,
 };
