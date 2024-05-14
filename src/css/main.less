@@ -184,6 +184,81 @@ content {
 				box-shadow: 0 0 19px rgba(#f93,.5),
 							0 0 31px rgba(#f90,.5);
 			}
+
+			span {
+				// background: rgba(#f00,.5);
+				position: absolute;
+				top: 210px;
+				transform: translateX(-50%) translateY(-50%);
+				border-radius: 50%;
+				cursor: pointer;
+
+				&:hover:after {
+					content: "";
+					position: absolute;
+					top: -7px;
+					left: -7px;
+					right: -7px;
+					bottom: -7px;
+					border-radius: inherit;
+					border: 3px dashed rgba(#999,.25);
+				}
+			}
+
+			.mercury {
+				left: 348px;
+				width: 25px;
+				height: 25px;
+			}
+
+			.venus {
+				left: 389px;
+				width: 25px;
+				height: 25px;
+			}
+
+			.earth {
+				left: 441px;
+				width: 35px;
+				height: 35px;
+			}
+
+			.mars {
+				left: 494px;
+				width: 30px;
+				height: 30px;
+			}
+
+			.jupiter {
+				left: 565px;
+				width: 64px;
+				height: 64px;
+			}
+
+			.saturn {
+				left: 662px;
+				width: 52px;
+				height: 52px;
+			}
+
+			.uranus {
+				left: 753px;
+				width: 43px;
+				height: 43px;
+			}
+
+			.neptune {
+				left: 819px;
+				width: 51px;
+				height: 51px;
+			}
+
+			.pluto {
+				left: 886px;
+				width: 21px;
+				height: 21px;
+			}
+
 		}
 
 		.sidebar {
