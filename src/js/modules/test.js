@@ -1,6 +1,8 @@
 
 let Test = {
 	init(APP) {
+		return;
+		
 		// auto stop hud player
 		setTimeout(() => {
 			Star.dispatch({ type: "show-system-map" });

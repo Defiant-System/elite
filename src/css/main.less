@@ -243,7 +243,7 @@ content {
 			}
 
 			.Uranus {
-				left: 751px;
+				left: 744px;
 				width: 44px;
 				height: 44px;
 			}
@@ -320,7 +320,8 @@ content {
 						top: -2px;
 						bottom: -2px;
 						left: -3px;
-						border-left: 1px solid #161;
+						width: 1px;
+						background: linear-gradient(0deg, transparent, rgba(#3c3,.5), transparent);
 					}
 
 					span {
@@ -344,15 +345,31 @@ content {
 			}
 
 			h2 {
+				position: relative;
 				color: #5d5;
-				border-top: 1px solid #161;
-				border-bottom: 1px solid #161;
 				padding: 6px 0 5px;
 				margin-bottom: 11px;
+				text-align: center;
 				font-size: 12px;
 
 				&:not(:first-child) {
 					margin-top: 23px;
+				}
+
+				&:before,
+				&:after {
+					content: "";
+					position: absolute;
+					top: 0;
+					left: 0;
+					right: 0;
+					height: 1px;
+					background: linear-gradient(90deg, transparent, rgba(#3c3,.5), transparent);
+				}
+
+				&:after {
+					top: auto;
+					bottom: 0;
 				}
 			}
 

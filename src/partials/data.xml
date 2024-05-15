@@ -365,7 +365,7 @@
 				</Planet>
 				
 				<Planet id="7" name="Uranus">
-					<Meta name="chart" position="39" scale="0.65"/>
+					<Meta name="chart" position="38" scale="0.65"/>
 					<Meta name="info" mass="8.681 * 10^25" diameter="51118" density="1271" gravity="8.7" rotationPeriod="-17.2" lengthOfDay="17.2" distanceFromParent="2872500000" orbitalPeriod="30589" orbitalVelocity="6.8" orbitalInclination="0.8" axialTilt="97.8" orbitPositionOffset="29654" meanTemperature="-195"/>
 					<Meta name="surfaceTemps" min="N/A" mean="57" max="N/A"/>
 					<Meta name="texture" base="~/img/textures/uranus.jpg"/>
