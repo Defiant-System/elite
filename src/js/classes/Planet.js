@@ -309,45 +309,83 @@ class Planet extends CelestialObject {
 		var outerRadius = data.rings.outerRadius * Constants.CELESTIAL_SCALE;
 		var thetaSegments = 180;
 		var phiSegments = 80;
-		
-		var texture = this._textureLoader.load("~/img/textures/uv_grid_opengl.jpg");
-		texture.wrapS =
-		texture.wrapT = THREE.RepeatWrapping;
-		texture.offset.set(0.5, 0);
-		texture.repeat.set(0.25, 1);
 
-		var geometry = new THREE.RingGeometry(outerRadius, innerRadius, thetaSegments);
-		console.log( geometry.getAttribute("uv") );
+		var geometry = new THREE.RingGeometry(innerRadius, outerRadius, thetaSegments);
+		var base = this._textureLoader.load(data.rings.textures.base);
+		var colorMap = this._textureLoader.load(data.rings.textures.colorMap);
 
-		// for(var yi=0; yi<innerRadius; yi++) {
-		// 	var u0= yi / innerRadius;
-		// 	var u1=(yi + 1) / innerRadius;
-		// 	for(var xi=0; xi < outerRadius; xi++) {
-		// 		var fi= 2 * (xi + outerRadius * yi);
-		// 		var v0= xi / outerRadius;
-		// 		var v1= (xi + 1) / outerRadius;
-		// 		geometry.faceVertexUvs[0][fi][0].x=u0;
-		// 		geometry.faceVertexUvs[0][fi][0].y=v0;
-		// 		geometry.faceVertexUvs[0][fi][1].x=u1;
-		// 		geometry.faceVertexUvs[0][fi][1].y=v0;
-		// 		geometry.faceVertexUvs[0][fi][2].x=u0;
-		// 		geometry.faceVertexUvs[0][fi][2].y=v1;
-		// 		fi++;
-		// 		geometry.faceVertexUvs[0][fi][0].x=u1;
-		// 		geometry.faceVertexUvs[0][fi][0].y=v0;
-		// 		geometry.faceVertexUvs[0][fi][1].x=u1;
-		// 		geometry.faceVertexUvs[0][fi][1].y=v1;
-		// 		geometry.faceVertexUvs[0][fi][2].x=u0;
-		// 		geometry.faceVertexUvs[0][fi][2].y=v1;
-		// 	}
-		// }
+		var uniforms = THREE.UniformsUtils.merge([
+				THREE.UniformsLib.ambient,
+				THREE.UniformsLib.lights,
+				THREE.UniformsLib.shadowmap,
+				{
+					ringTexture: { value: null },
+					innerRadius: { value: 0 },
+					outerRadius: { value: 0 },
+				}
+			]);
+		uniforms.ringTexture.value = base;
+		uniforms.innerRadius.value = innerRadius;
+		uniforms.outerRadius.value = outerRadius;
 
+		var material = new THREE.ShaderMaterial({
+				uniforms,
+				vertexShader: `
+					varying vec3 vPos;                                                     
+					varying vec3 vWorldPosition;                                           
+					varying vec3 vNormal;                                                 
 
-		var material = new THREE.MeshBasicMaterial({ map: texture });
+					${THREE.ShaderChunk["shadowmap_pars_vertex"]}                         
+
+					void main() {                                                         
+						vPos = position;                                                     
+						vec4 worldPosition = modelMatrix * vec4(position, 1.0);
+
+						gl_Position = projectionMatrix * viewMatrix * vec4(worldPosition.xyz, 1.);       
+
+						vNormal = normalMatrix * normal;                                     
+						vWorldPosition = worldPosition.xyz;                                 
+
+						${THREE.ShaderChunk["shadowmap_vertex"]}
+					}   
+				`,
+				fragmentShader: `
+					uniform sampler2D ringTexture;
+					uniform float innerRadius;
+					uniform float outerRadius;
+
+					varying vec3 vNormal;
+					varying vec3 vPos;
+					varying vec3 vWorldPosition;
+
+					${THREE.ShaderChunk["common"]}
+					${THREE.ShaderChunk["packing"]}
+					${THREE.ShaderChunk["bsdfs"]}
+					${THREE.ShaderChunk["lights_pars_begin"]}
+					${THREE.ShaderChunk["shadowmap_pars_fragment"]}
+					${THREE.ShaderChunk["shadowmask_pars_fragment"]}
+
+					vec4 color() {
+						vec2 uv = vec2(0);
+						uv.x = (length(vPos) - innerRadius) / (outerRadius - innerRadius);
+						if (uv.x < 0.0 || uv.x > 1.0) {
+							discard;
+						}                                                                           
+						vec4 pixel = texture2D(ringTexture, uv);
+						return pixel;
+					}
+
+					void main() {
+						gl_FragColor = color() * vec4(vec3(getShadowMask()), 0.4);
+					}
+				`,
+				transparent: true,
+				lights: true,
+				side: THREE.DoubleSide,
+			});
+
 
 		var ring = new THREE.Mesh(geometry, material);
-		// ring.castShadow = true;
-		// ring.receiveShadow = true;
 		ring.position.set(0, 0, 0);
 		ring.rotation.set(0, .75, 0);
 
