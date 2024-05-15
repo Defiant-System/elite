@@ -10,6 +10,7 @@ let Star = {
 		// fast references
 		this.els = {
 			content: window.find("content"),
+			sidebar: window.find(".system-map .sidebar"),
 			cvs: window.find(".map-cvs"),
 		}
 		// reset canvas
@@ -93,6 +94,13 @@ let Star = {
 				Game.fpsControl.start();
 				break;
 			case "render-system-map":
+				// render sidebar content
+				window.render({
+					template: "chart-sidebar-star",
+					match: "//StarSystem/Star",
+					target: Self.els.sidebar,
+				});
+
 				// canvas element
 				cvs = Self.els.cvs[0];
 				ctx = cvs.getContext("2d");

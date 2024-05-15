@@ -3,13 +3,13 @@
 	<StarSystem name="Solar System">
 		<Star id="0" name="Sun">
 			<Meta name="chart" position="-37" scale="0.15"/>
-			<Meta name="info" diameter="1391016" mass="1988500" gravity="274" density="1408" rotationPeriod="609.12" meanTemperature="5778 K" solarConstant="1.365"/>
+			<Meta name="info" diameter="1391016" mass="1.9885 * 10^30" gravity="274" density="1408" rotationPeriod="609.12" meanTemperature="5778 K" solarConstant="1.365"/>
 			<Meta type="composition" name="majorElements" abbr="H" element="Hydrogen" percentage="90.965"/>
 			<Meta name="texture" base="~/img/textures/sun.jpg"/>
 			<Satellites>
 				<Planet id="1" name="Mercury">
 					<Meta name="chart" position="-15" scale="3.75"/>
-					<Meta name="info" diameter="4879" mass="0.330" gravity="3.7" density="5427" rotationPeriod="1407.6" lengthOfDay="4222.6" distanceFromParent="57900000" orbitalPeriod="88" orbitalVelocity="47.4" orbitalInclination="7" axialTilt="0.01" orbitPositionOffset="48" meanTemperature="167"/>
+					<Meta name="info" diameter="4879" mass="3.301 * 10^23" gravity="3.7" density="5427" rotationPeriod="1407.6" lengthOfDay="4222.6" distanceFromParent="57900000" orbitalPeriod="88" orbitalVelocity="47.4" orbitalInclination="7" axialTilt="0.01" orbitPositionOffset="48" meanTemperature="167"/>
 					<Meta name="surfaceTemps" min="100" mean="340" max="700"/>
 					<Meta name="texture" base="~/img/textures/mercury.jpg"/>
 					<Satellites/>
@@ -17,7 +17,7 @@
 				
 				<Planet id="2" name="Venus">
 					<Meta name="chart" position="-9.5" scale="1.75"/>
-					<Meta name="info" diameter="12104" mass="4.87" gravity="8.9" density="5243" rotationPeriod="-5832.5" lengthOfDay="2802" distanceFromParent="108200000" orbitalPeriod="224.7" orbitalVelocity="35" orbitalInclination="3.4" axialTilt="177.4" orbitPositionOffset="155" meanTemperature="464" />
+					<Meta name="info" diameter="12104" mass="4.867 * 10^24" gravity="8.9" density="5243" rotationPeriod="-5832.5" lengthOfDay="2802" distanceFromParent="108200000" orbitalPeriod="224.7" orbitalVelocity="35" orbitalInclination="3.4" axialTilt="177.4" orbitPositionOffset="155" meanTemperature="464" />
 					<Meta name="surfaceTemps" min="655" mean="735" max="1100"/>
 					<Meta name="texture" base="~/img/textures/venus.jpg"/>
 					<Satellites/>
@@ -25,12 +25,12 @@
 				
 				<Planet id="3" name="Earth">
 					<Meta name="chart" position="-2.5" scale="2.25"/>
-					<Meta name="info" diameter="12756" mass="5.97" gravity="9.8" density="5514" rotationPeriod="23.9" lengthOfDay="24" distanceFromParent="149600000" orbitalPeriod="365.2" orbitalVelocity="29.8" orbitalInclination="0" axialTilt="23.4" orbitPositionOffset="0" meanTemperature="15" />
+					<Meta name="info" diameter="12756" mass="5.972 * 10^24" gravity="9.8" density="5514" rotationPeriod="23.9" lengthOfDay="24" distanceFromParent="149600000" orbitalPeriod="365.2" orbitalVelocity="29.8" orbitalInclination="0" axialTilt="23.4" orbitPositionOffset="0" meanTemperature="15" />
 					<Meta name="surfaceTemps" min="185" mean="288" max="331"/>
 					<Meta name="texture" base="~/img/textures/earth.jpg"/>
 					<Satellites>
 						<Moon id="3a" name="Moon">
-							<Meta name="info" diameter="3476.2" mass="0.07342" distanceFromParent="384400" orbitalPeriod="27.3" orbitalInclination="21" gravity="1.62"/>
+							<Meta name="info" diameter="3476.2" mass="7.348 * 10^22" distanceFromParent="384400" orbitalPeriod="27.3" orbitalInclination="21" gravity="1.62"/>
 							<Meta name="surfaceTemps" min="-110" mean="N/A" max="130"/>
 							<Meta name="texture" base="~/img/textures/earth/satellites/moon.jpg"/>
 						</Moon>
@@ -39,7 +39,7 @@
 				
 				<Planet id="4" name="Mars">
 					<Meta name="chart" position="4.5" scale="3.5"/>
-					<Meta name="info" diameter="6792" mass="0.642" gravity="3.7" density="3933" rotationPeriod="24.6" lengthOfDay="24.7" distanceFromParent="227900000" orbitalPeriod="687" orbitalVelocity="24.1" orbitalInclination="1.85" axialTilt="25.2" orbitPositionOffset="85" meanTemperature="-65"/>
+					<Meta name="info" diameter="6792" mass="6.417 * 10^23" gravity="3.7" density="3933" rotationPeriod="24.6" lengthOfDay="24.7" distanceFromParent="227900000" orbitalPeriod="687" orbitalVelocity="24.1" orbitalInclination="1.85" axialTilt="25.2" orbitPositionOffset="85" meanTemperature="-65"/>
 					<Meta name="surfaceTemps" min="130" mean="210" max="293"/>
 					<Meta name="texture" base="~/img/textures/mars.jpg"/>
 					<Satellites>
@@ -58,7 +58,7 @@
 				
 				<Planet id="5" name="Jupiter">
 					<Meta name="chart" position="14" scale="0.365"/>
-					<Meta name="info" diameter="142984" mass="1898" gravity="23.1" density="1326" rotationPeriod="9.9" lengthOfDay="9.9" distanceFromParent="778600000" orbitalPeriod="4331" orbitalVelocity="13.1" orbitalInclination="1.303" axialTilt="3.13" orbitPositionOffset="2692" meanTemperature="-110"/>
+					<Meta name="info" diameter="142984" mass="1.898 * 10^27" gravity="23.1" density="1326" rotationPeriod="9.9" lengthOfDay="9.9" distanceFromParent="778600000" orbitalPeriod="4331" orbitalVelocity="13.1" orbitalInclination="1.303" axialTilt="3.13" orbitPositionOffset="2692" meanTemperature="-110"/>
 					<Meta name="surfaceTemps" min="N/A" mean="125" max="N/A"/>
 					<Meta name="texture" base="~/img/textures/jupiter.jpg"/>
 					<Meta name="rings" innerRadius="110500" outerRadius="129000" base="~/img/textures/jupiter/rings/rings_map.png" colorMap="~/img/textures/jupiter/rings/rings_color_map.png"/>
@@ -218,7 +218,7 @@
 				
 				<Planet id="6" name="Saturn">
 					<Meta name="chart" position="27" scale="0.35"/>
-					<Meta name="info" diameter="120536" mass="568" density="687" gravity="9" rotationPeriod="10.7" lengthOfDay="10.7" distanceFromParent="1433500000" orbitalPeriod="10747" orbitalVelocity="9.7" orbitalInclination="2.48524" axialTilt="26.73" orbitPositionOffset="13753" meanTemperature="-140"/>
+					<Meta name="info" diameter="120536" mass="5.683 * 10^26" density="687" gravity="9" rotationPeriod="10.7" lengthOfDay="10.7" distanceFromParent="1433500000" orbitalPeriod="10747" orbitalVelocity="9.7" orbitalInclination="2.48524" axialTilt="26.73" orbitPositionOffset="13753" meanTemperature="-140"/>
 					<Meta name="surfaceTemps" min="N/A" mean="95" max="N/A"/>
 					<Meta name="texture" base="~/img/textures/saturn.jpg"/>
 					<Meta name="rings" innerRadius="74510" outerRadius="140220" base="~/img/textures/saturn/rings/rings_map.png" colorMap="~/img/textures/saturn/rings/rings_color_map.png"/>
@@ -363,7 +363,7 @@
 				
 				<Planet id="7" name="Uranus">
 					<Meta name="chart" position="39" scale="0.65"/>
-					<Meta name="info" mass="86.8" diameter="51118" density="1271" gravity="8.7" rotationPeriod="-17.2" lengthOfDay="17.2" distanceFromParent="2872500000" orbitalPeriod="30589" orbitalVelocity="6.8" orbitalInclination="0.8" axialTilt="97.8" orbitPositionOffset="29654" meanTemperature="-195"/>
+					<Meta name="info" mass="8.681 * 10^25" diameter="51118" density="1271" gravity="8.7" rotationPeriod="-17.2" lengthOfDay="17.2" distanceFromParent="2872500000" orbitalPeriod="30589" orbitalVelocity="6.8" orbitalInclination="0.8" axialTilt="97.8" orbitPositionOffset="29654" meanTemperature="-195"/>
 					<Meta name="surfaceTemps" min="N/A" mean="57" max="N/A"/>
 					<Meta name="texture" base="~/img/textures/uranus.jpg"/>
 					<Satellites>
@@ -497,7 +497,7 @@
 				
 				<Planet id="8" name="Neptune">
 					<Meta name="chart" position="48" scale="0.8"/>
-					<Meta name="info" mass="102" diameter="49528" density="1638" gravity="11" rotationPeriod="16.1" lengthOfDay="16.1" distanceFromParent="4495100000" orbitalPeriod="59800" orbitalVelocity="5.4" orbitalInclination="1.8" axialTilt="28.3" orbitPositionOffset="62885" meanTemperature="-200"/>
+					<Meta name="info" mass="1.024 * 10^26" diameter="49528" density="1638" gravity="11" rotationPeriod="16.1" lengthOfDay="16.1" distanceFromParent="4495100000" orbitalPeriod="59800" orbitalVelocity="5.4" orbitalInclination="1.8" axialTilt="28.3" orbitPositionOffset="62885" meanTemperature="-200"/>
 					<Meta name="surfaceTemps" min="N/A" mean="59" max="N/A"/>
 					<Meta name="texture" base="~/img/textures/neptune.jpg"/>
 					<Satellites>
@@ -558,7 +558,7 @@
 				
 				<Planet id="9" name="Pluto">
 					<Meta name="chart" position="57" scale="6.5"/>
-					<Meta name="info" mass="102" diameter="2374" density="1638" gravity="11" rotationPeriod="16.1" lengthOfDay="6.39" distanceFromParent="5874000000" orbitalPeriod="90570" orbitalVelocity="4.67" orbitalInclination="17.2" axialTilt="119.59" orbitPositionOffset="20" meanTemperature="-229"/>
+					<Meta name="info" mass="1.309 * 10^22" diameter="2374" density="1638" gravity="11" rotationPeriod="16.1" lengthOfDay="6.39" distanceFromParent="5874000000" orbitalPeriod="90570" orbitalVelocity="4.67" orbitalInclination="17.2" axialTilt="119.59" orbitPositionOffset="20" meanTemperature="-229"/>
 					<Meta name="surfaceTemps" min="40" mean="45" max="50"/>
 					<Meta name="texture" base="~/img/textures/pluto.jpg"/>
 					<Satellites>
