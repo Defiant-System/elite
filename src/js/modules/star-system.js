@@ -97,7 +97,8 @@ let Star = {
 				// render sidebar content
 				window.render({
 					template: "chart-sidebar-star",
-					match: "//StarSystem/Star",
+					// match: "//StarSystem/Star",
+					match: "//StarSystem//Planet[@id='2']",
 					target: Self.els.sidebar,
 				});
 

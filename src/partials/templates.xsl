@@ -17,7 +17,7 @@
 	<xsl:template name="chart-sidebar-star">
 		<xsl:call-template name="chart-sidebar-head"/>
 		<div class="cart-body">
-			<h2><xsl:value-of select="../@name"/></h2>
+			<h2><xsl:value-of select="ancestor::StarSystem/@name"/></h2>
 
 			<div class="row">
 				<span>Name</span>
@@ -63,6 +63,90 @@
 					</span>
 				</div>
 			</xsl:if>
+			<xsl:if test="./Meta[@name='info']/@meanTemperature">
+				<div class="row">
+					<span>Temperature</span>
+					<span>
+						<xsl:value-of select="./Meta[@name='info']/@meanTemperature"/>
+						<xsl:text> </xsl:text><i>K</i>
+					</span>
+				</div>
+			</xsl:if>
+			<xsl:if test="./Meta[@name='info']/@rotationPeriod">
+				<div class="row">
+					<span>Rotation</span>
+					<span>
+						<xsl:value-of select="./Meta[@name='info']/@rotationPeriod"/>
+						<xsl:text> </xsl:text><i>hours</i>
+					</span>
+				</div>
+			</xsl:if>
+
+			<xsl:if test="./Meta[@type='composition']">
+				<div class="row">
+					<span>Composition</span>
+					<span>
+						<xsl:for-each select="./Meta[@type = 'composition']">
+							
+								<xsl:value-of select="@element"/> 
+								(<xsl:value-of select="@abbr"/>) 
+								<xsl:value-of select="@percentage"/><xsl:text> </xsl:text><i>%</i>
+							<br/>
+						</xsl:for-each>
+					</span>
+				</div>
+			</xsl:if>
+
+
+			<xsl:if test="./Meta[@name='info']/@distanceFromParent">
+				<div class="row">
+					<span>Semi-major Axis</span>
+					<span>
+						<xsl:value-of select="format-number(./Meta[@name='info']/@distanceFromParent, '###,###,###')"/>
+						<xsl:text> </xsl:text><i>km</i>
+					</span>
+				</div>
+			</xsl:if>
+
+			<xsl:if test="./Meta[@name='info']/@lengthOfDay">
+				<div class="row">
+					<span>Length Of Day</span>
+					<span>
+						<xsl:value-of select="./Meta[@name='info']/@lengthOfDay"/>
+						<xsl:text> </xsl:text><i>hours</i>
+					</span>
+				</div>
+			</xsl:if>
+			
+			<xsl:if test="./Meta[@name='info']/@orbitalInclination">
+				<div class="row">
+					<span>Orbit Inclination</span>
+					<span>
+						<xsl:value-of select="./Meta[@name='info']/@orbitalInclination"/>
+						<xsl:text> </xsl:text><i>°</i>
+					</span>
+				</div>
+			</xsl:if>
+			
+			<xsl:if test="./Meta[@name='info']/@orbitalPeriod">
+				<div class="row">
+					<span>Orbital Period</span>
+					<span>
+						<xsl:value-of select="./Meta[@name='info']/@orbitalPeriod"/>
+						<xsl:text> </xsl:text><i>days</i>
+					</span>
+				</div>
+			</xsl:if>
+			
+			<xsl:if test="./Meta[@name='info']/@axialTilt">
+				<div class="row">
+					<span>Axial Tilt</span>
+					<span>
+						<xsl:value-of select="./Meta[@name='info']/@axialTilt"/>
+						<xsl:text> </xsl:text><i>°</i>
+					</span>
+				</div>
+			</xsl:if>
 
 			<!-- <div class="row">
 				<span>Orbital Period</span>
@@ -89,7 +173,7 @@
 				<span>1.0 Days</span>
 			</div>
 			<div class="row">
-				<span>Axial Tilt</span>
+				<span></span>
 				<span>0.00 Deg</span>
 			</div> -->
 
