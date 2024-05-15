@@ -1,17 +1,20 @@
 
 class Sun extends CelestialObject {
-	constructor(data) {
-		super(data.diameter, data.mass, data.gravity, data.density, data.chart);
+	constructor(xNode) {
+		super(xNode);
 
-		this._id = data.id || null;
-		this._name = data.name || null;
-		this._rotationPeriod = data.rotationPeriod || null;
-		this._lengthOfDay = data.lengthOfDay || null;
-		this._distanceFromParent = data.distanceFromParent || null;
-		this._axialTilt = data.axialTilt || null;
+		let xInfo = xNode.selectSingleNode(`./Meta[@name="info"]`),
+			xTexture = xNode.selectSingleNode(`./Meta[@name="texture"]`);
+
+		this._id = xNode.getAttribute("id") || null;
+		this._name = xNode.getAttribute("name") || null;
+		this._rotationPeriod = +xInfo.getAttribute("rotationPeriod") || null;
+		this._lengthOfDay = +xInfo.getAttribute("lengthOfDay") || null;
+		this._distanceFromParent = +xInfo.getAttribute("distanceFromParent") || null;
+		this._axialTilt = +xInfo.getAttribute("axialTilt") || null;
 		this._threeDiameter = this.createThreeDiameter();
 		this._threeRadius = this.createThreeRadius();
-		this._surface = this.createSurface(data._3d.textures.base, data._3d.textures.topo);
+		this._surface = this.createSurface(xTexture.getAttribute("base"), xTexture.getAttribute("topo"));
 		this._threeObject = this.createGeometry(this._surface);
 	}
 

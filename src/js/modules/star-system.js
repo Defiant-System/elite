@@ -45,23 +45,28 @@ let Star = {
 
 
 		// initiate solar system
-		this.dispatch({ type: "load-star-system", data: StarSystem });
+		this.dispatch({ type: "load-star-system" });
 	},
 	dispatch(event) {
 		let APP = elite,
 			Self = Star,
 			scene, camera, light, sun, planets, chart,
-			cvs, ctx, tick,
+			cvs, ctx, tick, xNode,
 			el;
 		switch (event.type) {
 			// custom events
 			case "load-star-system":
-				sun = new Sun(event.data.parent);
-				planets = event.data.planets.map(data => new Planet(data, sun));
+				xNode = window.bluePrint.selectSingleNode(`//StarSystem/Star`);
+				// references structure
+				Self.system = {
+					sun: new Sun(xNode),
+					planets: [],
+				};
+				// loop planets (skips dwarf types)
+				xNode.selectNodes(`./Satellites/Planet[not(@type)]`).map(xPlanet =>
+					Self.system.planets.push(new Planet(xPlanet, Self.system.sun)));
 
-				Self.system = { sun, planets };
-
-				// emit events
+				// // emit events
 				window.emit("star-system-ready");
 				break;
 			case "show-system-map":

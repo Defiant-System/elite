@@ -1,25 +1,29 @@
 
 class Planet extends CelestialObject {
-	constructor(data, threeParent) {
-		super(data.diameter, data.mass, data.gravity, data.density, data.chart);
+	constructor(xNode, threeParent) {
+		super(xNode);
+
+		let xInfo = xNode.selectSingleNode(`./Meta[@name="info"]`),
+			xTexture = xNode.selectSingleNode(`./Meta[@name="texture"]`),
+			xRings = xNode.selectSingleNode(`./Meta[@name="rings"]`);
 		
-		this._id = data.id || null;
-		this._name = data.name || null;
-		this._rotationPeriod = data.rotationPeriod || null;
-		this._lengthOfDay = data.lengthOfDay || null;
-		this._distanceFromParent = data.distanceFromParent || null;
-		this._orbitalPeriod = data.orbitalPeriod || null;
-		this._orbitalVelocity = data.orbitalVelocity || null;
-		this._orbitalInclination = data.orbitalInclination || null; // to the ecliptic plane
-		this._axialTilt = data.axialTilt || null;
-		this._meanTemperature = data.meanTemperature || null;
-		this._orbitPositionOffset = data.orbitPositionOffset;
-		this._orbitHighlightColor = data.orbitHighlightColor || "#2d2d2d";
+		this._id = xNode.getAttribute("id") || null;
+		this._name = xNode.getAttribute("name") || null;
+		this._rotationPeriod = +xInfo.getAttribute("rotationPeriod") || null;
+		this._lengthOfDay = +xInfo.getAttribute("lengthOfDay") || null;
+		this._distanceFromParent = +xInfo.getAttribute("distanceFromParent") || null;
+		this._orbitalPeriod = +xInfo.getAttribute("orbitalPeriod") || null;
+		this._orbitalVelocity = +xInfo.getAttribute("orbitalVelocity") || null;
+		this._orbitalInclination = +xInfo.getAttribute("orbitalInclination") || null; // to the ecliptic plane
+		this._axialTilt = +xInfo.getAttribute("axialTilt") || null;
+		this._meanTemperature = +xInfo.getAttribute("meanTemperature") || null;
+		this._orbitPositionOffset = +xInfo.getAttribute("orbitPositionOffset");
+		this._orbitHighlightColor = xInfo.getAttribute("orbitHighlightColor") || "#2d2d2d";
 		this._textureLoader = new THREE.TextureLoader();
 		this._threeDiameter = this.createThreeDiameter();
 		this._threeRadius = this.createThreeRadius();
-		this._surface = this.createSurface(data._3d.textures.base, data._3d.textures.topo, data._3d.textures.specular);
-		this._atmosphere = this.createAtmosphere(data._3d.textures.clouds);
+		this._surface = this.createSurface(xTexture.getAttribute("base"), xTexture.getAttribute("topo"), xTexture.getAttribute("specular"));
+		this._atmosphere = this.createAtmosphere(xTexture.getAttribute("clouds"));
 		this._threeObject = this.createGeometry(this._surface, this._atmosphere);
 		this._threeDistanceFromParent = this.createThreeDistanceFromParent();
 		this._threeParent = threeParent || null;
@@ -28,8 +32,8 @@ class Planet extends CelestialObject {
 		this._orbitCentroid = this.createOrbitCentroid();
 		this._highlight = this.createHighlight();
 
-		if (data.rings) {
-			this.createRingGeometry(data);
+		if (xRings) {
+			this.createRingGeometry(xRings);
 		}
 
 		// console.debug(this._name + " Diameter: "+ this._threeDiameter);
@@ -304,15 +308,15 @@ class Planet extends CelestialObject {
 		return null;
 	}
 
-	createRingGeometry(data) {
-		var innerRadius = data.rings.innerRadius * Constants.CELESTIAL_SCALE;
-		var outerRadius = data.rings.outerRadius * Constants.CELESTIAL_SCALE;
+	createRingGeometry(xRings) {
+		var innerRadius = +xRings.getAttribute("innerRadius") * Constants.CELESTIAL_SCALE;
+		var outerRadius = +xRings.getAttribute("outerRadius") * Constants.CELESTIAL_SCALE;
 		var thetaSegments = 180;
 		var phiSegments = 80;
 
 		var geometry = new THREE.RingGeometry(innerRadius, outerRadius, thetaSegments);
-		var base = this._textureLoader.load(data.rings.textures.base);
-		var colorMap = this._textureLoader.load(data.rings.textures.colorMap);
+		var base = this._textureLoader.load(xRings.getAttribute("base"));
+		var colorMap = this._textureLoader.load(xRings.getAttribute("colorMap"));
 
 		var uniforms = THREE.UniformsUtils.merge([
 				THREE.UniformsLib.ambient,

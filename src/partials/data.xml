@@ -1,7 +1,7 @@
 
 <Data>
 	<StarSystem name="Solar System">
-		<Star name="Sun">
+		<Star id="0" name="Sun">
 			<Meta name="chart" position="-37" scale="0.15"/>
 			<Meta name="info" diameter="1391016" mass="1988500" gravity="274" density="1408" rotationPeriod="609.12" meanTemperature="5778 K" solarConstant="1.365"/>
 			<Meta type="composition" name="majorElements" abbr="H" element="Hydrogen" percentage="90.965"/>
@@ -60,7 +60,7 @@
 					<Meta name="chart" position="14" scale="0.365"/>
 					<Meta name="info" diameter="142984" mass="1898" gravity="23.1" density="1326" rotationPeriod="9.9" lengthOfDay="9.9" distanceFromParent="778600000" orbitalPeriod="4331" orbitalVelocity="13.1" orbitalInclination="1.303" axialTilt="3.13" orbitPositionOffset="2692" meanTemperature="-110"/>
 					<Meta name="surfaceTemps" min="N/A" mean="125" max="N/A"/>
-					<Meta name="texture" base="~/img/textures/jupter.jpg"/>
+					<Meta name="texture" base="~/img/textures/jupiter.jpg"/>
 					<Meta name="rings" innerRadius="110500" outerRadius="129000" base="~/img/textures/jupiter/rings/rings_map.png" colorMap="~/img/textures/jupiter/rings/rings_color_map.png"/>
 					<Satellites>
 						<Moon id="5a" name="Europa">
@@ -595,11 +595,13 @@
 					<Meta name="surfaceTemps" min="N/A" mean="168" max="235"/>
 					<Meta name="texture" base="~/img/textures/pluto.jpg"/>
 				</Planet>
+
 				<Planet id="11" type="dwarf" name="Eris">
 					<Meta name="info" mass="1.66 * 10^22" diameter="2326" density="2.52" gravity="0.82" rotationPeriod="25.9" lengthOfDay="25.9" distanceFromParent="10166000000" orbitalPeriod="203830" orbitalVelocity="3.4338" orbitalInclination="44.04" axialTilt="0" meanTemperature="null"/>
 					<Meta name="surfaceTemps" min="30" mean="42.5" max="55"/>
 					<Meta name="texture" base="~/img/textures/pluto.jpg"/>
 				</Planet>
+
 				<Planet id="12" type="dwarf" name="Haumea">
 					<Meta name="info" mass="4.006 * 10^21" diameter="1436" density="2.6" gravity="0.63" rotationPeriod="3.9155" lengthOfDay="3.9155" distanceFromParent="6166212800" orbitalPeriod="103774" orbitalVelocity="4.53" orbitalInclination="28.19" axialTilt="0" meanTemperature="null"/>
 					<Meta name="surfaceTemps" min="50" mean="50" max="50"/>
@@ -617,6 +619,7 @@
 						</Moon>
 					</Satellites>
 				</Planet>
+
 				<Planet id="13" type="dwarf" name="Makemake">
 					<Meta name="info" mass="3 * 10^21" diameter="1440" density="2.6" gravity="null" rotationPeriod="7.771" lengthOfDay="7.771" distanceFromParent="6838867000" orbitalPeriod="112897" orbitalVelocity="4.419" orbitalInclination="29" axialTilt="null" meanTemperature="null"/>
 					<Meta name="surfaceTemps" min="32" mean="38" max="44"/>

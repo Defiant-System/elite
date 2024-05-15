@@ -7,5 +7,3 @@ let {
 	SVGLoader,
 } = await window.fetch("~/js/bundle.js");
 
-
-let StarSystem = @import "../../public/data/solar-system.json";
