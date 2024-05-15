@@ -1,7 +1,6 @@
 
 @import "./constants.js"
 @import "../classes/Orbit.js"
-@import "../classes/RadialRingGeometry.js"
 @import "../classes/CelestialObject.js"
 @import "../classes/Sun.js"
 @import "../classes/Planet.js"
@@ -15,7 +14,6 @@ let Star = {
 		}
 		// reset canvas
 		this.els.cvs.attr({ width: window.innerWidth, height: window.innerHeight });
-
 
 		// scene sets array
 		this.sets = [];
@@ -90,8 +88,12 @@ let Star = {
 				Game.fpsControl.start();
 				break;
 			case "render-system-map":
+				// canvas element
+				cvs = Self.els.cvs[0];
+				ctx = cvs.getContext("2d");
+				// scene
 				scene = new THREE.Scene();
-				camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 10, 500);
+				camera = new THREE.PerspectiveCamera(45, cvs.width / cvs.height, 10, 500);
 				light = new THREE.PointLight(0x666666, 5, 0, 0);
 				sun = Star.system.sun.threeObject.clone();
 				chart = Star.system.sun.chart;
@@ -100,6 +102,7 @@ let Star = {
 				camera.lookAt(0, 0, 0);
 				camera.add(light);
 				scene.add(camera);
+				// camera.updateProjectionMatrix();
 
 				// scale down star
 				sun.scale.set(chart.scale, chart.scale, chart.scale);
@@ -129,13 +132,6 @@ let Star = {
 				light.position.set(chart.position, 0, 0);
 				light.target = Self.system.planets[0];
 				scene.add(light);
-
-				// canvas element
-				cvs = Self.els.cvs[0];
-				ctx = cvs.getContext("2d");
-				// camera aspect
-				camera.aspect = cvs.width / cvs.height;
-				camera.updateProjectionMatrix();
 
 				// temporary tick function
 				tick = () => {

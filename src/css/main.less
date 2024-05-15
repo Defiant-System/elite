@@ -202,6 +202,7 @@ content {
 					bottom: -7px;
 					border-radius: inherit;
 					border: 3px dashed rgba(#999,.25);
+					animation: rotation 20s linear;
 				}
 			}
 
@@ -878,6 +879,15 @@ content {
 		}
 	}
 }
+
+
+
+// animation keyframes
+@keyframes rotation {
+	0%   { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
 
 // custom fonts
 @font-face {

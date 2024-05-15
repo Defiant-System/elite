@@ -29,7 +29,7 @@ class Planet extends CelestialObject {
 		this._highlight = this.createHighlight();
 
 		if (data.rings) {
-			// this.createRingGeometry(data);
+			this.createRingGeometry(data);
 		}
 
 		// console.debug(this._name + " Diameter: "+ this._threeDiameter);
@@ -309,28 +309,47 @@ class Planet extends CelestialObject {
 		var outerRadius = data.rings.outerRadius * Constants.CELESTIAL_SCALE;
 		var thetaSegments = 180;
 		var phiSegments = 80;
-		var geometry = new RadialRingGeometry(
-			innerRadius,
-			outerRadius,
-			thetaSegments
-		);
+		
+		var texture = this._textureLoader.load("~/img/textures/uv_grid_opengl.jpg");
+		texture.wrapS =
+		texture.wrapT = THREE.RepeatWrapping;
+		texture.offset.set(0.5, 0);
+		texture.repeat.set(0.25, 1);
 
-		var map = this._textureLoader.load(data.rings.textures.base); // THREE.ImageUtils.loadTexture(data.rings.textures.base);
-		map.minFilter = THREE.NearestFilter;
+		var geometry = new THREE.RingGeometry(outerRadius, innerRadius, thetaSegments);
+		console.log( geometry.getAttribute("uv") );
 
-		var colorMap = this._textureLoader.load(data.rings.textures.colorMap); // THREE.ImageUtils.loadTexture(data.rings.textures.colorMap);
-		colorMap.minFilter = THREE.NearestFilter;
+		// for(var yi=0; yi<innerRadius; yi++) {
+		// 	var u0= yi / innerRadius;
+		// 	var u1=(yi + 1) / innerRadius;
+		// 	for(var xi=0; xi < outerRadius; xi++) {
+		// 		var fi= 2 * (xi + outerRadius * yi);
+		// 		var v0= xi / outerRadius;
+		// 		var v1= (xi + 1) / outerRadius;
+		// 		geometry.faceVertexUvs[0][fi][0].x=u0;
+		// 		geometry.faceVertexUvs[0][fi][0].y=v0;
+		// 		geometry.faceVertexUvs[0][fi][1].x=u1;
+		// 		geometry.faceVertexUvs[0][fi][1].y=v0;
+		// 		geometry.faceVertexUvs[0][fi][2].x=u0;
+		// 		geometry.faceVertexUvs[0][fi][2].y=v1;
+		// 		fi++;
+		// 		geometry.faceVertexUvs[0][fi][0].x=u1;
+		// 		geometry.faceVertexUvs[0][fi][0].y=v0;
+		// 		geometry.faceVertexUvs[0][fi][1].x=u1;
+		// 		geometry.faceVertexUvs[0][fi][1].y=v1;
+		// 		geometry.faceVertexUvs[0][fi][2].x=u0;
+		// 		geometry.faceVertexUvs[0][fi][2].y=v1;
+		// 	}
+		// }
 
-		var material = new THREE.MeshLambertMaterial({
-			map: colorMap,
-			alphaMap: map,
-			transparent: true,
-			opacity: 0.98,
-			side: THREE.DoubleSide
-		});
+
+		var material = new THREE.MeshBasicMaterial({ map: texture });
 
 		var ring = new THREE.Mesh(geometry, material);
+		// ring.castShadow = true;
+		// ring.receiveShadow = true;
 		ring.position.set(0, 0, 0);
+		ring.rotation.set(0, .75, 0);
 
 		this._threeObject.add(ring);
 	}
