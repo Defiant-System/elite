@@ -10,6 +10,7 @@ let Star = {
 		// fast references
 		this.els = {
 			content: window.find("content"),
+			chart: window.find(".system-map"),
 			sidebar: window.find(".system-map .sidebar"),
 			cvs: window.find(".map-cvs"),
 		}
@@ -44,9 +45,10 @@ let Star = {
 			}
 		});
 
-
 		// initiate solar system
 		this.dispatch({ type: "load-star-system" });
+		// bind event handlers
+		this.els.chart.on("mouseover mouseout", ".hover-discs", this.dispatch);
 	},
 	dispatch(event) {
 		let APP = elite,
@@ -55,6 +57,17 @@ let Star = {
 			cvs, ctx, tick, xNode,
 			el;
 		switch (event.type) {
+			// native events
+			case "mouseover":
+				el = $(event.target);
+				if (!el.data("id")) return;
+				// auto render sun content in sidebar
+				Self.dispatch({ type: "render-sidebar", id: el.data("id") });
+				break;
+			case "mouseout":
+				// auto render sun content in sidebar
+				Self.dispatch({ type: "render-sidebar" });
+				break;
 			// custom events
 			case "load-star-system":
 				xNode = window.bluePrint.selectSingleNode(`//StarSystem/Star`);
@@ -93,13 +106,22 @@ let Star = {
 				// start game FPS
 				Game.fpsControl.start();
 				break;
-			case "render-system-map":
+			case "render-sidebar":
 				// render sidebar content
 				window.render({
 					template: "chart-sidebar-star",
-					// match: "//StarSystem/Star",
-					match: "//StarSystem//Planet[@id='2']",
+					match: `//StarSystem//*[@id="${event.id || 0}"]`,
 					target: Self.els.sidebar,
+				});
+				break;
+			case "render-system-map":
+				// render sidebar content
+				Self.dispatch({ type: "render-sidebar" });
+				// render sidebar content
+				window.render({
+					template: "chart-hover-discs",
+					match: `//StarSystem/*`,
+					target: Self.els.chart.find(".hover-discs"),
 				});
 
 				// canvas element

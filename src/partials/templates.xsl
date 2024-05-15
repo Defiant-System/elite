@@ -1,5 +1,15 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+	<xsl:template name="chart-hover-discs">
+		<div data-id="0" class="sun"></div>
+		<xsl:for-each select="./Satellites/Planet[not(@type)]">
+			<span>
+				<xsl:attribute name="data-id"><xsl:value-of select="@id"/></xsl:attribute>
+				<xsl:attribute name="class"><xsl:value-of select="@name"/></xsl:attribute>
+			</span>
+		</xsl:for-each>
+	</xsl:template>
+
 	<xsl:template name="chart-sidebar-head">
 		<div class="cart-head">
 			<div class="unicart-logo">
@@ -8,8 +18,8 @@
 				<h3>Cartographics</h3>
 			</div>
 			<div class="game-date">
-				<span>03:14</span>
-				<span>20 Dec 3024</span>
+				<span>13:37</span>
+				<span>4 May 3024</span>
 			</div>
 		</div>
 	</xsl:template>
@@ -65,7 +75,7 @@
 			</xsl:if>
 			<xsl:if test="./Meta[@name='info']/@meanTemperature">
 				<div class="row">
-					<span>Temperature</span>
+					<span>Surface Temp.</span>
 					<span>
 						<xsl:value-of select="./Meta[@name='info']/@meanTemperature"/>
 						<xsl:text> </xsl:text><i>K</i>
@@ -87,16 +97,14 @@
 					<span>Composition</span>
 					<span>
 						<xsl:for-each select="./Meta[@type = 'composition']">
-							
-								<xsl:value-of select="@element"/> 
-								(<xsl:value-of select="@abbr"/>) 
-								<xsl:value-of select="@percentage"/><xsl:text> </xsl:text><i>%</i>
+							<xsl:value-of select="@element"/> 
+							(<xsl:value-of select="@abbr"/>) 
+							<xsl:value-of select="@percentage"/><xsl:text> </xsl:text><i>%</i>
 							<br/>
 						</xsl:for-each>
 					</span>
 				</div>
 			</xsl:if>
-
 
 			<xsl:if test="./Meta[@name='info']/@distanceFromParent">
 				<div class="row">
@@ -148,39 +156,12 @@
 				</div>
 			</xsl:if>
 
-			<!-- <div class="row">
-				<span>Orbital Period</span>
-				<span>1 Days</span>
-			</div>
-			<div class="row">
-				<span>Semi Major Axis</span>
-				<span>0.00 AU</span>
-			</div>
-			<div class="row">
-				<span>Orbital Eccentricity</span>
-				<span>0.0323</span>
-			</div>
-			<div class="row">
-				<span>Orbital Inclintation</span>
-				<span>1.40 deg</span>
-			</div>
-			<div class="row">
-				<span>Arg Of Periapsis</span>
-				<span>60.90 deg</span>
-			</div>
-			<div class="row">
-				<span>Rotational Period</span>
-				<span>1.0 Days</span>
-			</div>
-			<div class="row">
-				<span></span>
-				<span>0.00 Deg</span>
-			</div> -->
-
-			<h2>Summary</h2>
-			<div class="summary">
-				Industrial Economy.
-			</div>
+			<xsl:if test="./Meta[@name='summary']/@value">
+				<h2>Summary</h2>
+				<div class="summary">
+					<xsl:value-of select="./Meta[@name='summary']/@value"/>
+				</div>
+			</xsl:if>
 		</div>
 	</xsl:template>
 

@@ -7,6 +7,7 @@
 			<Meta type="composition" abbr="H" element="Hydrogen" percentage="91"/>
 			<Meta type="composition" abbr="He" element="Helium" percentage="8.9"/>
 			<Meta name="texture" base="~/img/textures/sun.jpg"/>
+			<Meta name="summary" value="Origin star of humanity."/>
 			<Satellites>
 				<Planet id="1" name="Mercury">
 					<Meta name="chart" position="-15" scale="3.75"/>
@@ -29,6 +30,7 @@
 					<Meta name="info" diameter="12756" mass="5.972 * 10^24" gravity="9.8" density="5514" rotationPeriod="23.9" lengthOfDay="24" distanceFromParent="149600000" orbitalPeriod="365.2" orbitalVelocity="29.8" orbitalInclination="0" axialTilt="23.4" orbitPositionOffset="0" meanTemperature="15" />
 					<Meta name="surfaceTemps" min="185" mean="288" max="331"/>
 					<Meta name="texture" base="~/img/textures/earth.jpg"/>
+					<Meta name="summary" value="Industrial Economy."/>
 					<Satellites>
 						<Moon id="3a" name="Moon">
 							<Meta name="info" diameter="3476.2" mass="7.348 * 10^22" distanceFromParent="384400" orbitalPeriod="27.3" orbitalInclination="21" gravity="1.62"/>
