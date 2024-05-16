@@ -27,9 +27,15 @@ let Bank = (() => {
 				color = 0x229922,
 				mesh;
 			if (!org) {
+				let textureLoader = new THREE.TextureLoader(),
+					texture = textureLoader.load("~/img/textures/earth.jpg");
+				texture.wrapS = THREE.ClampToEdgeWrapping;
+				texture.wrapT = THREE.ClampToEdgeWrapping;
+
 				// probably asking for holo-planet
-				let geo = new THREE.SphereGeometry(20, 8, 8),
-					mat = Bank.createHologramMaterial(color);
+				let geo = new THREE.SphereGeometry(25, 16, 16),
+					mat = new THREE.MeshPhongMaterial({ map: texture });
+					// mat = Bank.createHologramMaterial(color);
 				mesh = new THREE.Mesh(geo, mat);
 
 				return { mesh, color };

@@ -827,14 +827,15 @@ content {
 
 				&.target {
 					left: 159px;
-					--color: #ff9900aa;
+					--color: #171;
 					// transform: rotate(-2deg);
 
 					canvas {
-						filter: drop-shadow(1px 0 0 var( --color ))
-								drop-shadow(-1px 0 0 var( --color ))
-								drop-shadow(0 -1px 0 var( --color ))
-								drop-shadow(0 1px 0 var( --color ));
+						// filter: drop-shadow(1px 0 0 var( --color ))
+						// 		drop-shadow(-1px 0 0 var( --color ))
+						// 		drop-shadow(0 -1px 0 var( --color ))
+						// 		drop-shadow(0 1px 0 var( --color ))
+						filter: sepia(1) hue-rotate(75deg) saturate(2.5) brightness(0.75);
 					}
 				}
 

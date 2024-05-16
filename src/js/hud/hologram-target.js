@@ -35,13 +35,13 @@
 				let { mesh, color } = Bank.clone("earth");
 				scene.add(mesh);
 				// hologram outline color (with transparency)
-				Self.els.cvs.css({ "--color": `#${color.toString(16)}77` });
+				// Self.els.cvs.css({ "--color": `#${color.toString(16)}77` });
 				// canvas element
 				let cvs = Self.els.cvs[0];
 				let ctx = cvs.getContext("2d");
 				// temporary tick function
 				let tick = () => {
-						mesh.rotation.y -= 0.025;
+						mesh.rotation.y += 0.025;
 					};
 				// fick camera aspect
 				camera.aspect = cvs.width / cvs.height;
