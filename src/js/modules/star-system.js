@@ -54,7 +54,7 @@ let Star = {
 		let APP = elite,
 			Self = Star,
 			scene, camera, light, sun, planets, chart,
-			cvs, ctx, tick, xNode,
+			cvs, ctx, tick, xNode, mesh,
 			el;
 		switch (event.type) {
 			// native events
@@ -66,7 +66,7 @@ let Star = {
 				break;
 			case "mouseout":
 				// auto render sun content in sidebar
-				Self.dispatch({ type: "render-sidebar" });
+				Self.dispatch({ type: "render-sidebar", id: "sun" });
 				break;
 			// custom events
 			case "load-star-system":
@@ -80,7 +80,7 @@ let Star = {
 				xNode.selectNodes(`./Satellites/Planet[not(@type)]`).map(xPlanet =>
 					Self.system.planets.push(new Planet(xPlanet, Self.system.sun)));
 
-				// // emit events
+				// emit events
 				window.emit("star-system-ready");
 				break;
 			case "show-system-map":
@@ -106,6 +106,12 @@ let Star = {
 				// start game FPS
 				Game.fpsControl.start();
 				break;
+			case "holo-clone":
+				mesh = event.id === "sun"
+						? Self.system.sun
+						: Self.system.planets.find(planet => planet.id === event.id);
+				mesh = mesh.threeObject;
+				return mesh.clone();
 			case "render-sidebar":
 				// render sidebar content
 				window.render({
@@ -116,7 +122,7 @@ let Star = {
 				break;
 			case "render-system-map":
 				// render sidebar content
-				Self.dispatch({ type: "render-sidebar" });
+				Self.dispatch({ type: "render-sidebar", id: "sun" });
 				// render sidebar content
 				window.render({
 					template: "chart-hover-discs",

@@ -25,15 +25,17 @@
 			case "setup-scene":
 				let scene = new THREE.Scene(),
 					camera = new THREE.PerspectiveCamera(45, 2, 1, 1000),
-					light = new THREE.PointLight(0xffffff, 20, 0, 0);
+					light = new THREE.PointLight(0xffffff, 2, 0, 0);
 				// camera settings
 				camera.position.set(0, 0, 100);
 				camera.lookAt(0, 0, 0);
 				camera.add(light);
 				scene.add(camera);
 				// setup model
-				let mesh = Bank.clone("elite");
+				let { mesh, color } = Bank.clone("earth");
 				scene.add(mesh);
+				// hologram outline color (with transparency)
+				Self.els.cvs.css({ "--color": `#${color.toString(16)}77` });
 				// canvas element
 				let cvs = Self.els.cvs[0];
 				let ctx = cvs.getContext("2d");

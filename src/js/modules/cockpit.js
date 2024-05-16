@@ -10,6 +10,7 @@ let Cockpit = {
 		this.state = {
 			"status": "start",
 			"super-cruise": false,
+			"system-map": false,
 		};
 	},
 	dispatch(event) {
@@ -75,6 +76,15 @@ let Cockpit = {
 						// }
 						break;
 
+					case 77: // "M" - star system Map
+						if (!Self.state["system-map"]) {
+							Star.dispatch({ type: "show-system-map" });
+							Self.state["system-map"] = true;
+						} else {
+							Star.dispatch({ type: "hide-system-map" });
+							Self.state["system-map"] = false;
+						}
+						break;
 					case 70: // "F" - Frame Shift Drive
 						if (!Self.state["super-cruise"]) {
 							Bg.dispatch({ worker: "stars", type: "super-cruise-on" });

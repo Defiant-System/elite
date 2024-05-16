@@ -1,6 +1,8 @@
 
 let Test = {
 	init(APP) {
+		// return;
+
 		return;
 
 		return setTimeout(() => Game.els.content.data({ status: "game" }), 500);

@@ -23,11 +23,21 @@ let Bank = (() => {
 			this.dispatch({ type: "parse-svg" });
 		},
 		clone(id) {
-			let org = this.vault[id];
+			let org = this.vault[id],
+				color = 0x229922,
+				mesh;
+			if (!org) {
+				// probably asking for holo-planet
+				let geo = new THREE.SphereGeometry(20, 8, 8),
+					mat = Bank.createHologramMaterial(color);
+				mesh = new THREE.Mesh(geo, mat);
+
+				return { mesh, color };
+			}
 			if (org.svg) return org.obj3d.clone();
 
-			let mesh = org.obj3d.clone(),
-				color = org.color;
+			mesh = org.obj3d.clone();
+			color = org.color;
 
 			return { mesh, color };
 		},
