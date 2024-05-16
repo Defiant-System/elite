@@ -42,6 +42,10 @@ content {
 
 					.speed-gage {
 						transform: translateY(0px);
+
+						.max {
+							opacity: 1;
+						}
 					}
 				}
 
@@ -608,6 +612,7 @@ content {
 			right: 0;
 			bottom: 0;
 			height: 137px;
+			// perspective: 700px;
 
 			canvas {
 				// background-color: rgba(#fff,.1);
@@ -716,6 +721,17 @@ content {
 					transform: translateY(-7px);
 					transition: transform @hudAnim ease-in-out;
 
+					.max {
+						position: absolute;
+						top: 1px;
+						left: 48px;
+						width: 15px;
+						height: 1px;
+						opacity: .25;
+						background: #194d28;
+						transition: opacity @hudAnim ease-in-out;
+					}
+
 					.rec {
 						position: absolute;
 						top: 0;
@@ -810,7 +826,7 @@ content {
 				}
 
 				&.target {
-					left: 153px;
+					left: 159px;
 					--color: #ff9900aa;
 					// transform: rotate(-2deg);
 
@@ -823,7 +839,7 @@ content {
 				}
 
 				&.ship {
-					right: 153px;
+					right: 159px;
 					--color: #11ee1199;
 					// transform: rotate(2deg);
 
@@ -904,6 +920,82 @@ content {
 					// background-color: rgba(#fff,.1);
 					background-image: url(~/icons/holo-base-1.png);
 					background-position: -129px -565px;
+				}
+			}
+
+			.monitor {
+				background-color: rgba(#131,.1);
+				position: absolute;
+				bottom: 17px;
+				width: 137px;
+				height: 93px;
+				// border-top: 2px solid #272;
+
+				&:after1 {
+					content: "";
+					position: absolute;
+					top: 0;
+					left: 0;
+					right: 0;
+					height: 2px;
+					background: linear-gradient(90deg, transparent, rgba(#3c3,.5), transparent);
+				}
+
+				&.left {
+					left: 13px;
+					// transform-origin: 0% 0%;
+					// transform: skew(0deg, -4deg);
+				}
+
+				&.right {
+					right: 13px;
+					// transform-origin: 100% 0%;
+					// transform: skew(0deg, 4deg);
+				}
+
+				.power-bank {
+					position: relative;
+					left: 31px;
+
+					.bar {
+						background: repeating-linear-gradient(0deg, #131 0px, #131 4px,transparent 4px, transparent 5px);
+						// background: rgba(#393,.35);
+						position: absolute;
+						width: 17px;
+						height: 59px;
+
+						&:nth-child(1) {
+							top: 7px;
+							left: 0;
+						}
+
+						&:nth-child(2) {
+							top: 0;
+							left: 31px;
+						}
+
+						&:nth-child(3) {
+							top: 7px;
+							left: 61px;
+						}
+
+						ul {
+							position: absolute;
+							bottom: -7px;
+							font-size: 0;
+
+							li {
+								background: #131;
+								display: inline-block;
+								width: 5px;
+								height: 5px;
+								
+								&:not(:first-child) {
+									margin-left: 1px;
+								}
+							}
+						}
+					}
 				}
 			}
 		}
