@@ -22,7 +22,12 @@ class Planet extends CelestialObject {
 		this._textureLoader = new THREE.TextureLoader();
 		this._threeDiameter = this.createThreeDiameter();
 		this._threeRadius = this.createThreeRadius();
-		this._surface = this.createSurface(xTexture.getAttribute("base"), xTexture.getAttribute("topo"), xTexture.getAttribute("specular"));
+		this._texture = {
+			base: xTexture.getAttribute("base"),
+			topo: xTexture.getAttribute("topo"),
+			specular: xTexture.getAttribute("specular"),
+		};
+		this._surface = this.createSurface(this._texture.base, this._texture.topo, this._texture.specular);
 		this._atmosphere = this.createAtmosphere(xTexture.getAttribute("clouds"));
 		this._threeObject = this.createGeometry(this._surface, this._atmosphere);
 		this._threeDistanceFromParent = this.createThreeDistanceFromParent();
@@ -240,24 +245,20 @@ class Planet extends CelestialObject {
 
 		var hiRes = false;
 		var segmentsOffset = Number.parseInt(this._threeDiameter + 1.1 * 60);
-
 		if (hiRes) {
 			segmentsOffset = Number.parseInt(this._threeDiameter + 1.5 * 120);
 		}
 
 		var map = this.getTexture(base);
-
 		map.minFilter = THREE.NearestFilter;
 
 		if (topo) {
 			var bumpMap = this.getTexture(topo);
-
 			bumpMap.minFilter = THREE.NearestFilter;
 		}
 
 		if (specular) {
 			var specularMap = this.getTexture(specular);
-
 			specularMap.minFilter = THREE.LinearFilter;
 		}
 

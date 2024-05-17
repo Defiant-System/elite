@@ -106,12 +106,6 @@ let Star = {
 				// start game FPS
 				Game.fpsControl.start();
 				break;
-			case "holo-clone":
-				mesh = event.id === "sun"
-						? Self.system.sun
-						: Self.system.planets.find(planet => planet.id === event.id);
-				mesh = mesh.threeObject;
-				return mesh.clone();
 			case "render-sidebar":
 				// render sidebar content
 				window.render({

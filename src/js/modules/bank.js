@@ -27,16 +27,17 @@ let Bank = (() => {
 				color = 0x229922,
 				mesh;
 			if (!org) {
-				let textureLoader = new THREE.TextureLoader(),
-					texture = textureLoader.load("~/img/textures/earth.jpg");
-				texture.wrapS = THREE.ClampToEdgeWrapping;
-				texture.wrapT = THREE.ClampToEdgeWrapping;
+				let planet = Star.system.planets.find(planet => planet.id === id),
+					textureLoader = new THREE.TextureLoader(),
+					texture = textureLoader.load(planet._texture.base);
 
 				// probably asking for holo-planet
 				let geo = new THREE.SphereGeometry(25, 16, 16),
 					mat = new THREE.MeshPhongMaterial({ map: texture });
 					// mat = Bank.createHologramMaterial(color);
 				mesh = new THREE.Mesh(geo, mat);
+
+				mesh.rotation.set(.25, -3, 0);
 
 				return { mesh, color };
 			}
