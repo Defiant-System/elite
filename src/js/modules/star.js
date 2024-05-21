@@ -202,9 +202,6 @@ let Star = {
 
 					Game.scene.add(planet.orbitCentroid);
 				});
-
-				// Game.set.camera.lookAt(0, 0, 0);
-				
 				break;
 		}
 	}

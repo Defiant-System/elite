@@ -57,6 +57,7 @@ let Game = {
 	dispatch(event) {
 		let APP = elite,
 			Self = Game,
+			target,
 			value,
 			el;
 		switch (event.type) {
@@ -81,6 +82,15 @@ let Game = {
 				break;
 
 			// contextmenu events
+			case "look-at":
+				target = Star.system.sun;
+				if (event.arg !== "sun") {
+					target = Star.system.planets.find(planet => planet._id === event.arg);
+				}
+				// Game.set.camera.lookAt(0, 0, 0);
+				// Game.set.camera.position.set(0, 0, 5e3);
+				console.log( target );
+				break;
 			case "bloom-exposure":
 				value = Math.lerp(0.1, 2, event.arg/100);
 				Self.renderer.toneMappingExposure = Math.pow(value, 4.0);
@@ -136,6 +146,8 @@ let Game = {
 				camera.add(light);
 				scene.add(camera);
 				
+				let controls = new OrbitControls(camera, Self.renderer.domElement);
+
 				bloomPass.threshold = params.bloomThreshold;
 				bloomPass.strength = params.bloomStrength;
 				bloomPass.radius = params.bloomRadius;

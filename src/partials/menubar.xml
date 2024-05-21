@@ -14,8 +14,15 @@
 		<Menu name="Look At">
 			<Menu name="Sun" click="look-at" arg="sun"/>
 			<Menu type="divider"/>
+			<Menu name="Mercury" click="look-at" arg="mercury"/>
+			<Menu name="Venus" click="look-at" arg="venus"/>
 			<Menu name="Earth" click="look-at" arg="earth"/>
 			<Menu name="Mars" click="look-at" arg="mars"/>
+			<Menu name="Jupiter" click="look-at" arg="jupiter"/>
+			<Menu name="Saturn" click="look-at" arg="saturn"/>
+			<Menu name="Uranus" click="look-at" arg="uranus"/>
+			<Menu name="Neptune" click="look-at" arg="neptune"/>
+			<Menu name="Pluto" click="look-at" arg="pluto"/>
 		</Menu>
 		<Menu type="divider"/>
 		<Menu name="Bloom">

@@ -3,6 +3,7 @@ import * as THREE from "./modules/threejs/build/three.module.js";
 
 import Stats from "./modules/threejs/examples/jsm/libs/stats.module.js";
 
+import { OrbitControls } from "./modules/threejs/examples/jsm/controls/OrbitControls.js";
 import { OBJLoader } from "./modules/threejs/examples/jsm/loaders/OBJLoader.js";
 import { SVGLoader } from "./modules/threejs/examples/jsm/loaders/SVGLoader.js";
 
@@ -21,6 +22,7 @@ module.exports = {
 	THREE,
 	THREE_dispose,
 	Stats,
+	OrbitControls,
 	OBJLoader,
 	SVGLoader,
 	EffectComposer,

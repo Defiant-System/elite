@@ -4,6 +4,7 @@ let {
 	THREE,
 	THREE_dispose,
 	Stats,
+	OrbitControls,
 	OBJLoader,
 	SVGLoader,
 	EffectComposer,
