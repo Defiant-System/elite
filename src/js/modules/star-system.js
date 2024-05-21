@@ -129,8 +129,9 @@ let Star = {
 				ctx = cvs.getContext("2d");
 				// scene
 				scene = new THREE.Scene();
-				camera = new THREE.PerspectiveCamera(45, cvs.width / cvs.height, 10, 500);
-				light = new THREE.PointLight(0x666666, 5, 0, 0);
+				scene.add(new THREE.AmbientLight(0x505050));
+				camera = new THREE.PerspectiveCamera(45, cvs.width / cvs.height, 50, 150);
+				light = new THREE.PointLight(0x666666, 1, 0, 0);
 				sun = Star.system.sun.threeObject.clone();
 				chart = Star.system.sun.chart;
 				// camera settings
@@ -162,12 +163,6 @@ let Star = {
 					// add sun to scene
 					scene.add(planet);
 				});
-
-
-				light = new THREE.PointLight(0xffffff, 1.75, 0, 0);
-				light.position.set(chart.position, 0, 0);
-				light.target = Self.system.planets[0];
-				scene.add(light);
 
 				// temporary tick function
 				tick = () => {

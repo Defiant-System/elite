@@ -46,6 +46,8 @@ const elite = {
 			case "open-help":
 				karaqu.shell("fs -u '~/help/index.md'");
 				break;
+			default:
+				console.log(event);
 		}
 	},
 	hud: @import "./hud/index.js",

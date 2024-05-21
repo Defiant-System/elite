@@ -54,7 +54,7 @@ class Sun extends CelestialObject {
 		let geometry = new THREE.SphereGeometry(this._threeRadius, 84, 42);
 		let mesh = new THREE.Mesh(geometry, surface);
 		let lightColor = 0xffffff;
-		let intesity = 5;
+		let intesity = 1;
 		let lightDistanceStrength = Constants.DISTANCE_TO_KUIPER_BELT * Constants.UNIVERSE_SCALE;
 		let lightDecayRate = 0.6;
 		let sunLight = new THREE.PointLight(lightColor, intesity, lightDistanceStrength, lightDecayRate);

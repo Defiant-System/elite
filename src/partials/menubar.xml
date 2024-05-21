@@ -9,4 +9,15 @@
 		<Menu type="divider"/>
 		<Menu name="License" shell="win -al"/>
 	</Menu>
+	
+	<Menu for="bloom-options">
+		<Menu type="caption" name="Exposure:"/>
+		<Menu type="slider" min="0" max="100" value="50" change="bloom-exposure"/>
+		<Menu type="caption" name="Threshold:"/>
+		<Menu type="slider" min="0" max="100" value="0" change="bloom-threshold"/>
+		<Menu type="caption" name="Strength:"/>
+		<Menu type="slider" min="0" max="100" value="50" change="bloom-strength"/>
+		<Menu type="caption" name="Radius:"/>
+		<Menu type="slider" min="0" max="100" value="0" change="bloom-radius"/>
+	</Menu>
 </MenuBar>

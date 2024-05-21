@@ -4,7 +4,8 @@ let Bg = {
 		let cvs = window.find(".bg-stars");
 		// reset canvas
 		cvs.attr({ width: window.innerWidth, height: window.innerHeight });
-
+		// return;
+		
 		// save references to items
 		this.cvs = cvs;
 		this.stars = new Worker("~/js/bg-stars.js");
@@ -24,7 +25,7 @@ let Bg = {
 			case "dispose":
 				break;
 			default:
-				if (event.worker) {
+				if (event.worker && Self[event.worker]) {
 					Self[event.worker].postMessage(event);
 				}
 		}

@@ -17,7 +17,7 @@ let Game = {
 
 		// create FPS controller
 		this.fpsControl = karaqu.FpsControl({
-			fps: 40,
+			fps: 60,
 			autoplay: true,
 			callback() {
 				let APP = elite,
@@ -28,13 +28,23 @@ let Game = {
 						height = set.cvs.height;
 					// call tick if set has any
 					if (set.tick) set.tick();
-					// renderer
-					Self.renderer.setSize(width, height);
-					Self.renderer.render(set.scene, set.camera);
-					// clear canvas
-					set.cvs.width = width;
-					// transfer rendered image
-					set.ctx.drawImage(Self.renderer.domElement, 0, 0);
+
+					if (set.composer) {
+						Self.renderer.setSize(width, height);
+						set.composer.setSize(width, height);
+						set.composer.render();
+						// clear canvas
+						set.cvs.width = width;
+						set.ctx.drawImage(Self.renderer.domElement, 0, 0);
+					} else {
+						// renderer
+						Self.renderer.setSize(width, height);
+						Self.renderer.render(set.scene, set.camera);
+						// clear canvas
+						set.cvs.width = width;
+						// transfer rendered image
+						set.ctx.drawImage(Self.renderer.domElement, 0, 0);
+					}
 				});
 			}
 		});
@@ -73,16 +83,59 @@ let Game = {
 				// add set to sets array - to be rendered next tick
 				Self.sets.push(event.set);
 				break;
+
 			case "setup-scene":
+				let params = {
+						exposure: 1,
+						bloomThreshold: 0,
+						bloomStrength: 1.15,
+						bloomRadius: 1,
+					};
+
+				// canvas element
+				let cvs = Self.els.cvs[0];
+				let ctx = cvs.getContext("2d");
+				// add stats display
+				let stats = new Stats();
+				Self.els.cvs.after(stats.dom).addClass("stats-display").css({ position: "absolute", top: 3, left: 838 });
+
 				let scene = new THREE.Scene(),
-					camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.05, 5e13),
-					light = new THREE.PointLight(0x666666, 20, 0, 0);
+					ratio = cvs.width / cvs.height,
+					camera = new THREE.PerspectiveCamera(45, ratio, 200, 5e13),
+					light = new THREE.PointLight(0x444444, 1, 0, 0),
+					renderScene = new RenderPass(scene, camera),
+					// resolution, strength, radius, threshold, selectedObjects, scene, camera
+					bloomPass = new UnrealBloomPass(new THREE.Vector2(ratio), 1.5, 0.4, 0.85),
+					composer = new EffectComposer(Self.renderer);
+
 				// camera settings
-				camera.position.set(0, 0, 20e3);
+				camera.position.set(0, 0, 1e3);
 				camera.lookAt(0, 0, 0);
 				camera.add(light);
 				scene.add(camera);
 				
+				// add sun to scene
+				scene.add(Star.system.sun.threeObject);
+
+				bloomPass.threshold = params.bloomThreshold;
+				bloomPass.strength = params.bloomStrength;
+				bloomPass.radius = params.bloomRadius;
+		
+				composer.addPass(renderScene);
+				composer.addPass(bloomPass);
+
+				// temporary tick function
+				let tick = () => {
+						stats.update();
+						Star.system.sun.threeObject.rotation.z += 0.005;
+					};
+
+				Self.dispatch({ type: "register-set", set: { composer, tick, cvs, ctx } });
+				// Self.dispatch({ type: "register-set", set: { scene, camera, tick, cvs, ctx } });
+				break;
+
+			/*
+			case "setup-scene-old":
 				// add sun to scene
 				scene.add(Star.system.sun.threeObject);
 
@@ -93,13 +146,10 @@ let Game = {
 				camera.aspect = cvs.width / cvs.height;
 				camera.updateProjectionMatrix();
 
-				// temporary tick function
-				let tick = () => {
-						Star.system.sun.threeObject.rotation.z += 0.005
-					};
 				
-				Self.dispatch({ type: "register-set", set: { scene, camera, tick, cvs, ctx } });
+				// Self.dispatch({ type: "register-set", set: { scene, camera, tick, cvs, ctx } });
 				break;
+			*/
 		}
 	}
 };

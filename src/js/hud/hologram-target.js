@@ -24,12 +24,12 @@
 			// custom events
 			case "setup-scene":
 				let scene = new THREE.Scene(),
-					camera = new THREE.PerspectiveCamera(45, 2, 1, 1000),
-					light = new THREE.PointLight(0xffffff, 2, 0, 0);
+					camera = new THREE.PerspectiveCamera(45, 2, 1, 1000);
 				// camera settings
 				camera.position.set(0, 0, 100);
 				camera.lookAt(0, 0, 0);
-				camera.add(light);
+				scene.add(new THREE.AmbientLight(0x555555));
+				camera.add(new THREE.PointLight(0xb0b0b0, .75, 0, 0));
 				scene.add(camera);
 				// setup model
 				let { mesh, color } = Bank.clone("jupiter");
@@ -41,7 +41,7 @@
 				let ctx = cvs.getContext("2d");
 				// temporary tick function
 				let tick = () => {
-						mesh.rotation.y += 0.01;
+						mesh.rotation.y += 0.0025;
 					};
 				// fick camera aspect
 				camera.aspect = cvs.width / cvs.height;
