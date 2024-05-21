@@ -2,7 +2,7 @@
 @import "./main.three.js";
 @import "./modules/bg.js"
 @import "./modules/game.js"
-@import "./modules/star-system.js"
+@import "./modules/star.js"
 @import "./modules/bank.js"
 @import "./modules/cockpit.js"
 @import "./modules/test.js"
@@ -47,7 +47,8 @@ const elite = {
 				karaqu.shell("fs -u '~/help/index.md'");
 				break;
 			default:
-				console.log(event);
+				// forward event to game
+				Game.dispatch(event);
 		}
 	},
 	hud: @import "./hud/index.js",

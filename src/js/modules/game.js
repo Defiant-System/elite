@@ -57,6 +57,7 @@ let Game = {
 	dispatch(event) {
 		let APP = elite,
 			Self = Game,
+			value,
 			el;
 		switch (event.type) {
 			// "super" events
@@ -78,6 +79,25 @@ let Game = {
 				// initiate hologram scene
 				Self.dispatch({ type: "setup-scene" });
 				break;
+
+			// contextmenu events
+			case "bloom-exposure":
+				value = Math.lerp(0.1, 2, event.arg/100);
+				Self.renderer.toneMappingExposure = Math.pow(value, 4.0);
+				break;
+			case "bloom-threshold":
+				value = Math.lerp(0, 1, event.arg/100);
+				Self.bloomPass.threshold = value;
+				break;
+			case "bloom-strength":
+				value = Math.lerp(0, 3, event.arg/100);
+				Self.bloomPass.strength = value;
+				break;
+			case "bloom-radius":
+				value = Math.lerp(0, 1, event.arg/100);
+				Self.bloomPass.radius = value;
+				break;
+
 			// custom events
 			case "register-set":
 				// add set to sets array - to be rendered next tick
@@ -87,7 +107,7 @@ let Game = {
 			case "setup-scene":
 				let params = {
 						exposure: 1,
-						bloomThreshold: 0,
+						bloomThreshold: 0.25,
 						bloomStrength: 1.15,
 						bloomRadius: 1,
 					};
@@ -101,12 +121,14 @@ let Game = {
 
 				let scene = new THREE.Scene(),
 					ratio = cvs.width / cvs.height,
-					camera = new THREE.PerspectiveCamera(45, ratio, 200, 5e13),
+					camera = new THREE.PerspectiveCamera(50, ratio, 200, 5e13),
 					light = new THREE.PointLight(0x444444, 1, 0, 0),
 					renderScene = new RenderPass(scene, camera),
 					// resolution, strength, radius, threshold, selectedObjects, scene, camera
-					bloomPass = new UnrealBloomPass(new THREE.Vector2(ratio), 1.5, 0.4, 0.85),
-					composer = new EffectComposer(Self.renderer);
+					bloomPass = new UnrealBloomPass(new THREE.Vector2(ratio)),
+					composer = new EffectComposer(Self.renderer),
+					// create scene set
+					set = { composer, camera, cvs, ctx };
 
 				// camera settings
 				camera.position.set(0, 0, 1e3);
@@ -114,42 +136,25 @@ let Game = {
 				camera.add(light);
 				scene.add(camera);
 				
-				// add sun to scene
-				scene.add(Star.system.sun.threeObject);
-
 				bloomPass.threshold = params.bloomThreshold;
 				bloomPass.strength = params.bloomStrength;
 				bloomPass.radius = params.bloomRadius;
-		
+
 				composer.addPass(renderScene);
 				composer.addPass(bloomPass);
 
-				// temporary tick function
-				let tick = () => {
-						stats.update();
-						Star.system.sun.threeObject.rotation.z += 0.005;
-					};
-
-				Self.dispatch({ type: "register-set", set: { composer, tick, cvs, ctx } });
-				// Self.dispatch({ type: "register-set", set: { scene, camera, tick, cvs, ctx } });
-				break;
-
-			/*
-			case "setup-scene-old":
-				// add sun to scene
-				scene.add(Star.system.sun.threeObject);
-
-				// canvas element
-				let cvs = Self.els.cvs[0];
-				let ctx = cvs.getContext("2d");
-				// camera aspect
-				camera.aspect = cvs.width / cvs.height;
-				camera.updateProjectionMatrix();
-
+				// reference to items
+				Self.set = set;
+				Self.stats = stats;
+				Self.scene = scene;
+				Self.bloomPass = bloomPass;
 				
+				// build star system
+				Star.dispatch({ type: "plot-star-system" });
+
 				// Self.dispatch({ type: "register-set", set: { scene, camera, tick, cvs, ctx } });
+				Self.dispatch({ type: "register-set", set });
 				break;
-			*/
 		}
 	}
 };

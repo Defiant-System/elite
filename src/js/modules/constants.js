@@ -2,6 +2,7 @@
 // console.debug('Distance to Kuiper Belt', UNIVERSE_SCALE * 14959787070);
 
 let Constants = {
+		COORDINATE_PRECISION: 12,
 		UNIVERSE_SCALE: Math.pow(10, -4.2), // 4.2
 		CELESTIAL_SCALE: Math.pow(10, -3.8), // 3.9
 		ORBIT_SCALE: Math.pow(10, -4.2),

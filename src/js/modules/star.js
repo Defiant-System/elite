@@ -1,18 +1,28 @@
 
 @import "./constants.js"
+@import "../classes/Clock.js"
+@import "../classes/StarDate.js"
 @import "../classes/Orbit.js"
+@import "../classes/OrbitController.js"
 @import "../classes/CelestialObject.js"
 @import "../classes/Sun.js"
 @import "../classes/Planet.js"
+
+
+let starClock = new Clock();
+let prevTime = 0;
+starClock.start();
+starClock.stop();
+
 
 let Star = {
 	init() {
 		// fast references
 		this.els = {
 			content: window.find("content"),
-			chart: window.find(".system-map"),
-			sidebar: window.find(".system-map .sidebar"),
-			cvs: window.find(".map-cvs"),
+			chart: window.find(".system-chart"),
+			sidebar: window.find(".system-chart .sidebar"),
+			cvs: window.find(".chart-cvs"),
 		}
 		// reset canvas
 		this.els.cvs.attr({ width: window.innerWidth, height: window.innerHeight });
@@ -83,20 +93,20 @@ let Star = {
 				// emit events
 				window.emit("star-system-ready");
 				break;
-			case "show-system-map":
+			case "show-system-chart":
 				// stop game FPS
 				Game.fpsControl.stop();
 				// pause background stars
 				Bg.dispatch({ worker: "stars", type: "pause" });
 				// show star system map view
-				Self.els.content.data({ status: "system-map" });
+				Self.els.content.data({ status: "system-chart" });
 
-				Self.dispatch({ type: "render-system-map" });
+				Self.dispatch({ type: "render-system-chart" });
 
 				// start FPS control for star map
 				Self.fpsControl.start();
 				break;
-			case "hide-system-map":
+			case "hide-system-chart":
 				// stop FPS control for star map
 				Self.fpsControl.stop();
 				// resume background stars
@@ -114,7 +124,7 @@ let Star = {
 					target: Self.els.sidebar,
 				});
 				break;
-			case "render-system-map":
+			case "render-system-chart":
 				// render sidebar content
 				Self.dispatch({ type: "render-sidebar", id: "sun" });
 				// render sidebar content
@@ -171,6 +181,30 @@ let Star = {
 				
 				// add set to sets array - to be rendered next tick
 				Self.sets.push({ scene, camera, tick, cvs, ctx });
+				break;
+
+			case "plot-star-system":
+				let tick = () => {
+						// update statistics
+						Game.stats.update();
+						// rotate sun
+						Self.system.sun.threeObject.rotation.z += 0.0035;
+					};
+
+				Game.set.tick = tick;
+
+				// add sun to scene
+				Game.scene.add(Self.system.sun.threeObject);
+				// add planets
+				Self.system.planets.map(planet => {
+					let orbitCtrl = new OrbitController(planet);
+					// console.log(orbitCtrl);
+
+					Game.scene.add(planet.orbitCentroid);
+				});
+
+				// Game.set.camera.lookAt(0, 0, 0);
+				
 				break;
 		}
 	}
