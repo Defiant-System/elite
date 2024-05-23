@@ -115,13 +115,6 @@ let Game = {
 				break;
 
 			case "setup-scene":
-				let params = {
-						exposure: 1,
-						bloomThreshold: 0.25,
-						bloomStrength: 1.15,
-						bloomRadius: 1,
-					};
-
 				// canvas element
 				let cvs = Self.els.cvs[0];
 				let ctx = cvs.getContext("2d");
@@ -136,6 +129,7 @@ let Game = {
 					renderScene = new RenderPass(scene, camera),
 					// resolution, strength, radius, threshold, selectedObjects, scene, camera
 					bloomPass = new UnrealBloomPass(new THREE.Vector2(ratio)),
+					outlinePass = new OutlinePass(new THREE.Vector2(cvs.width, cvs.height), scene, camera),
 					composer = new EffectComposer(Self.renderer),
 					// create scene set
 					set = { composer, camera, cvs, ctx };
@@ -146,19 +140,27 @@ let Game = {
 				camera.add(light);
 				scene.add(camera);
 				
-				let controls = new OrbitControls(camera, Self.renderer.domElement);
-
-				bloomPass.threshold = params.bloomThreshold;
-				bloomPass.strength = params.bloomStrength;
-				bloomPass.radius = params.bloomRadius;
+				// let controls = new OrbitControls(camera, Self.renderer.domElement);
 
 				composer.addPass(renderScene);
+				composer.addPass(outlinePass);
 				composer.addPass(bloomPass);
+
+				bloomPass.threshold = 0.25;
+				bloomPass.strength = 1.15;
+				bloomPass.radius = 1;
+
+				outlinePass.edgeStrength = 5.0;
+				outlinePass.edgeGlow = 2.0;
+				outlinePass.edgeThickness = 2.0;
+				outlinePass.visibleEdgeColor.set('#aa6600');
+				outlinePass.selectedObjects = [];
 
 				// reference to items
 				Self.set = set;
 				Self.stats = stats;
 				Self.scene = scene;
+				Self.outlinePass = outlinePass;
 				Self.bloomPass = bloomPass;
 				
 				// build star system

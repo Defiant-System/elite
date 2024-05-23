@@ -9,6 +9,7 @@ import { SVGLoader } from "./modules/threejs/examples/jsm/loaders/SVGLoader.js";
 
 import { EffectComposer } from "./modules/threejs/examples/jsm/postprocessing/EffectComposer.js";
 import { RenderPass } from "./modules/threejs/examples/jsm/postprocessing/RenderPass.js";
+import { OutlinePass } from "./modules/threejs/examples/jsm/postprocessing/OutlinePass.js";
 import { UnrealBloomPass } from "./modules/threejs/examples/jsm/postprocessing/UnrealBloomPass-r2.js";
 
 // custom THREE.js "dispose"
@@ -27,5 +28,6 @@ module.exports = {
 	SVGLoader,
 	EffectComposer,
 	RenderPass,
+	OutlinePass,
 	UnrealBloomPass,
 };

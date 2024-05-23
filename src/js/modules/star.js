@@ -195,6 +195,9 @@ let Star = {
 
 				// add sun to scene
 				Game.scene.add(Self.system.sun.threeObject);
+
+				Game.outlinePass.selectedObjects = [Self.system.sun.threeObject];
+
 				// add planets
 				Self.system.planets.map(planet => {
 					let orbitCtrl = new OrbitController(planet);

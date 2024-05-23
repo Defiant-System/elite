@@ -9,5 +9,6 @@ let {
 	SVGLoader,
 	EffectComposer,
 	RenderPass,
+	OutlinePass,
 	UnrealBloomPass,
 } = await window.fetch("~/js/bundle.js");
