@@ -184,24 +184,22 @@ let Star = {
 				break;
 
 			case "plot-star-system":
-				let tick = () => {
-						// update statistics
-						Game.stats.update();
-						// rotate sun
-						Self.system.sun.threeObject.rotation.z += 0.0035;
-					};
-
-				Game.set.tick = tick;
+				Game.set.tick = () => {
+					// update statistics
+					Game.stats.update();
+					// rotate sun
+					Self.system.sun.threeObject.rotation.z += 0.0035;
+				};
 
 				// add sun to scene
 				Game.scene.add(Self.system.sun.threeObject);
-
+				// for outline pass
 				Game.outlinePass.selectedObjects = [Self.system.sun.threeObject];
 
 				// add planets
-				Self.system.planets.map(planet => {
-					let orbitCtrl = new OrbitController(planet);
-					// console.log(orbitCtrl);
+				Self.system.planets.slice(0,2).map(planet => {
+					// let orbitCtrl = new OrbitController(planet);
+					// console.log(planet.orbitCentroid);
 
 					Game.scene.add(planet.orbitCentroid);
 				});

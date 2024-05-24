@@ -91,10 +91,6 @@ let Game = {
 				// Game.set.camera.position.set(0, 0, 5e3);
 				console.log( target );
 				break;
-			case "bloom-exposure":
-				value = Math.lerp(0.1, 2, event.arg/100);
-				Self.renderer.toneMappingExposure = Math.pow(value, 4.0);
-				break;
 			case "bloom-threshold":
 				value = Math.lerp(0, 1, event.arg/100);
 				Self.bloomPass.threshold = value;
@@ -135,7 +131,7 @@ let Game = {
 					set = { composer, camera, cvs, ctx };
 
 				// camera settings
-				camera.position.set(0, 0, 1e3);
+				camera.position.set(0, 0, 10e3);
 				camera.lookAt(0, 0, 0);
 				camera.add(light);
 				scene.add(camera);
@@ -147,13 +143,13 @@ let Game = {
 				composer.addPass(bloomPass);
 
 				bloomPass.threshold = 0.25;
-				bloomPass.strength = 1.15;
+				bloomPass.strength = 0.85;
 				bloomPass.radius = 1;
 
 				outlinePass.edgeStrength = 5.0;
 				outlinePass.edgeGlow = 2.0;
 				outlinePass.edgeThickness = 2.0;
-				outlinePass.visibleEdgeColor.set('#aa6600');
+				outlinePass.visibleEdgeColor.set(0xcc6600);
 				outlinePass.selectedObjects = [];
 
 				// reference to items

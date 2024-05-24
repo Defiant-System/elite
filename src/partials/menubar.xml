@@ -26,8 +26,6 @@
 		</Menu>
 		<Menu type="divider"/>
 		<Menu name="Bloom">
-			<Menu type="caption" name="Exposure:"/>
-			<Menu type="slider" min="0" max="100" value="50" change="bloom-exposure"/>
 			<Menu type="caption" name="Threshold:"/>
 			<Menu type="slider" min="0" max="100" value="0" change="bloom-threshold"/>
 			<Menu type="caption" name="Strength:"/>
