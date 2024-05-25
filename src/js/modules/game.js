@@ -131,7 +131,7 @@ let Game = {
 					set = { composer, camera, cvs, ctx };
 
 				// camera settings
-				camera.position.set(0, 0, 10e3);
+				camera.position.set(0, 0, 1e3);
 				camera.lookAt(0, 0, 0);
 				camera.add(light);
 				scene.add(camera);
