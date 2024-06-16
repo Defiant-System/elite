@@ -433,26 +433,44 @@ content {
 		bottom: 0;
 		text-align: center;
 
-		h2 {
-			margin-top: 31px;
-			font-weight: 400;
-			font-size: 73px;
-			font-family: Righteous, sans-serif;
-			text-transform: uppercase;
-			color: #c0ffc0bb;
-			text-shadow: 0 0 5px #aaffaa66,
-						0 0 17px #1eff9066,
-						0 0 29px #00ff0066;
-		}
+		.logo {
+			position: relative;
+			margin: 37px auto;
+			width: 445px;
+			height: 133px;
 
-		h3 {
-			font-weight: 400;
-			font-size: 23px;
-			font-family: Righteous, sans-serif;
-			text-transform: uppercase;
-			color: #f0f0ffbb;
-			text-shadow: 0 0 3px #aaaaffbb,
-						0 0 7px #1e90ffbb;
+			svg {
+				width: inherit;
+				height: inherit;
+				filter: drop-shadow(0 1px 0 hsl(174, 5%, 80%))
+						drop-shadow(0 2px 0 hsl(174, 5%, 75%))
+						drop-shadow(0 3px 0 hsl(174, 5%, 70%))
+						drop-shadow(0 4px 0 hsl(174, 5%, 66%))
+						drop-shadow(0 5px 0 hsl(174, 5%, 64%))
+						drop-shadow(0 6px 0 hsl(174, 5%, 62%))
+						// drop-shadow(0 7px 0 hsl(174, 5%, 61%))
+						// drop-shadow(0 8px 0 hsl(174, 5%, 60%))
+						// drop-shadow(0 0 5px rgba(0, 0, 0, .05))
+						// drop-shadow(0 1px 3px rgba(0, 0, 0, .2))
+						// drop-shadow(0 3px 5px rgba(0, 0, 0, .2))
+						drop-shadow(0 3px 11px rgba(#000,.2))
+						drop-shadow(0 5px 11px rgba(#000,.2))
+						drop-shadow(0 7px 21px rgba(#000,.3))
+						sepia(1) saturate(3) hue-rotate(345deg);
+			}
+
+			h3 {
+				position: absolute;
+				bottom: -5px;
+				right: 31px;
+				font-weight: 400;
+				font-size: 17px;
+				font-family: Righteous, sans-serif;
+				text-transform: uppercase;
+				color: #ffedcebb;
+				text-shadow: 0 0 3px #ffd5aabb,
+							0 0 7px #ff921ebb;
+			}
 		}
 	}
 
