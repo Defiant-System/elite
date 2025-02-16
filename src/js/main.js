@@ -30,6 +30,10 @@ const elite = {
 			// system events
 			case "window.init":
 				break;
+			case "window.close":
+				// clear three.js from memory
+				THREE_dispose();
+				break;
 			case "window.focus":
 				Game.dispatch({ type: "game-resume" });
 				break;
